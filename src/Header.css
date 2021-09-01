@@ -1,0 +1,44 @@
+.header {
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  background-color: var(--light-blue);
+}
+
+header {
+  padding: 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 71.25rem;
+  margin: 0 auto;
+}
+
+header .logo {
+  width: 6.25rem;
+}
+nav {
+  color: #fff;
+}
+ul {
+  display: flex;
+  gap: 1.25rem;
+  padding: 0;
+}
+ul li {
+  list-style: none;
+  cursor: pointer;
+}
+ul li a {
+  text-decoration: none;
+  color: #fff;
+}
+ul li a:hover {
+  color: var(--yellow);
+}
+@media (max-width: 36.25rem) {
+  header {
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+}
