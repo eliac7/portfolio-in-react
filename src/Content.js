@@ -5,7 +5,10 @@ import { ReactComponent as WaveStart } from "./assets/images/wave_start.svg";
 import { ReactComponent as WaveEnd } from "./assets/images/wave_end.svg";
 import { ReactComponent as MailMan } from "./assets/images/MailMan.svg";
 import Me from "./assets/images/me.jpg";
-import Splashes from "./assets/images/splashes.png";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
+AOS.init({ delay: 100 });
 
 const age = new Date().getFullYear() - Number(1997);
 
@@ -17,6 +20,7 @@ function Content() {
           className="container p-relative mt-5 flex-grow-1"
           style={{ zIndex: 1 }}
           id="about"
+          data-aos="fade-in"
         >
           <div className="row flex-column flex-md-row hero-row">
             <div className="col">
@@ -46,10 +50,7 @@ function Content() {
                 </a>
               </div>
             </div>
-            <div className="col d-flex align-items-center justify-content-center position-relative overflow-hidden">
-              <div className="splashes">
-                <img src={Splashes} alt="splashes" />
-              </div>
+            <div className="col d-flex align-items-center justify-content-center position-relative me-col">
               <div className="image-behind"></div>
               <div className="image">
                 <img src={Me} className="me" alt="Me myself and I " />
@@ -65,7 +66,10 @@ function Content() {
         id="experience"
       >
         <div className="container">
-          <h1 className="text-center experience-text position-relative">
+          <h1
+            data-aos="fade-up"
+            className="text-center experience-text position-relative"
+          >
             My Experience
           </h1>
           <p></p>
@@ -73,7 +77,7 @@ function Content() {
       </section>
       <section className="contact d-flex align-items-center justify-content-center flex-column position-relative">
         <WaveEnd />
-        <div className="container my-5 p-5" id="contact">
+        <div className="container my-5 p-5" id="contact" data-aos="fade-up">
           <div className="row d-flex flex-row-reverse gap-5 gap-lg-0">
             <div className="col-lg-6">
               <h1 className="text-center touch-text position-relative">

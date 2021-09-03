@@ -65,17 +65,19 @@ h1 {
   position: absolute;
   box-shadow: 7px 6px 20px 3px rgb(0 0 0 / 42%);
 }
-.splashes {
+.me-col::before {
+  background: url("./assets/images/splashes.png");
+  content: "";
   position: absolute;
-  transform: rotate(10deg);
-  width: 100%;
-  height: 100%;
-}
-.splashes img {
-  filter: invert(94%) sepia(16%) saturate(966%) hue-rotate(344deg)
+  inset: 0;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  filter: invert(94%) sepia(16%) saturate(966%) hue-rotate(145deg)
     brightness(99%) contrast(95%);
-  opacity: 0.7;
+  opacity: 0.5;
 }
+
 .image {
   height: 15.625rem;
   width: 15.625rem;
