@@ -18,6 +18,10 @@ footer {
 .sm ul li svg {
   fill: gray;
 }
+.sm ul li:hover:not(:last-child) svg {
+  background-color: #fff;
+  border-radius: 50%;
+}
 .sm ul li:first-child:hover svg {
   fill: #e1306c;
 }
@@ -26,6 +30,9 @@ footer {
 }
 .sm ul li:nth-child(3):hover svg {
   fill: #1da1f2;
+}
+.sm ul li:nth-child(4):hover svg {
+  fill: #fff;
 }
 @media (max-width: 48rem) {
   .container-inner {

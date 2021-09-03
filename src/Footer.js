@@ -3,6 +3,7 @@ import "./Footer.css";
 import { ReactComponent as Twitter } from "./assets/images/twitter.svg";
 import { ReactComponent as Instagram } from "./assets/images/instagram.svg";
 import { ReactComponent as LinkedIn } from "./assets/images/linkedin.svg";
+import { ReactComponent as Github } from "./assets/images/github.svg";
 const year = new Date().getFullYear();
 
 function Footer() {
@@ -43,6 +44,15 @@ function Footer() {
                   rel="noreferrer"
                 >
                   <Twitter></Twitter>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://github.com/eliac7"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <Github></Github>
                 </a>
               </li>
             </ul>
