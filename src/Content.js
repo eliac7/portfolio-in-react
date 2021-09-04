@@ -5,7 +5,7 @@ import { ReactComponent as WaveStart } from "./assets/images/wave_start.svg";
 import { ReactComponent as WaveEnd } from "./assets/images/wave_end.svg";
 import { ReactComponent as WaveEndGreen } from "./assets/images/wave_end_green.svg";
 import { ReactComponent as MailMan } from "./assets/images/MailMan.svg";
-import Me from "./assets/images/me.jpg";
+import Me from "./assets/images/me.webp";
 import HTML from "./assets/images/logos/html.svg";
 import CSS from "./assets/images/logos/css.svg";
 import Javascript from "./assets/images/logos/javascript.svg";
@@ -49,7 +49,7 @@ window.addEventListener("load", function () {
     cursor.style.opacity = 1;
   }
 
-  function mouseUpHandler(e) {
+  function mouseUpHandler() {
     cursor.style.transform = "scale(1)";
   }
 
@@ -77,8 +77,8 @@ function Content() {
                   Hi, I'm <br className="br-hero" />
                   Elias
                 </h1>
-                <h4>Front End Developer and lover of good code & food.</h4>
-                <p className="mt-3">
+                <h4> Web Developer and lover of good code & food.</h4>
+                <p className="mt-3 text-left ">
                   Hello, and welcome to my site! My full name is Ilias Nikolaos
                   Thalassochoritis (call me Ilias) and I am a newbie Front End
                   Developer. I am {age}-year-old Studied Computer Science at
@@ -272,8 +272,8 @@ function Content() {
         </div>
       </section>
       <section className="contact position-relative">
-        <WaveEndGreen />
-        <div className="container mt-5 p-5" id="contact" data-aos="fade-up">
+        <WaveEndGreen id="contact" />
+        <div className="container mt-5 p-5" data-aos="fade-up">
           <div className="row d-flex flex-row-reverse gap-5 gap-lg-0">
             <div className="col-lg-6">
               <h1 className="text-center touch-text position-relative">

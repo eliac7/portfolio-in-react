@@ -17,6 +17,87 @@ header {
 header .logo {
   width: 6.25rem;
 }
+
+.burger {
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  position: relative;
+  width: 2.5rem;
+  height: 2.5rem;
+  background: transparent;
+  cursor: pointer;
+  display: none;
+  transition: 0.25s ease-in-out;
+}
+.burger span {
+  position: relative;
+  height: 0.1875rem;
+  width: 100%;
+  border-radius: 9px;
+  background: #b56d6f;
+}
+.sidemenu.mobile {
+  position: fixed;
+  height: 100vh;
+  width: 115px;
+  background: #b8808d;
+  right: 0;
+  bottom: 0;
+  z-index: 9;
+  transition: 0.25s ease-in-out;
+}
+.sidemenu.mobile.closed {
+  width: 0px;
+}
+nav.mobile {
+  height: 100%;
+}
+.mobile ul {
+  flex-direction: column;
+  text-align: center;
+  justify-content: space-evenly;
+  height: 100%;
+}
+.close-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  position: relative;
+  width: 2.5rem;
+  height: 2.5rem;
+  background: transparent;
+  cursor: pointer;
+  transition: 0.25s ease-in-out;
+  margin-left: auto;
+  margin-right: 5px;
+}
+.close-btn span {
+  position: relative;
+  height: 0.1875rem;
+  width: 100%;
+  border-radius: 9px;
+  background: #fff;
+}
+.close-btn span:first-child {
+  transform: rotate(135deg);
+  top: 38px;
+}
+.close-btn span:nth-child(2) {
+  transform: rotate(-135deg);
+  top: 18px;
+}
+.overlay {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+}
+.overlay.closed {
+  display: none;
+}
 nav {
   color: #fff;
 }
@@ -39,5 +120,18 @@ ul li a:hover {
   header {
     flex-direction: column;
     gap: 1.25rem;
+  }
+}
+@media (min-width: 48rem) {
+  nav.mobile {
+    display: none;
+  }
+}
+@media (max-width: 48rem) {
+  .burger.closed {
+    display: flex;
+  }
+  nav:not(.mobile) {
+    display: none;
   }
 }

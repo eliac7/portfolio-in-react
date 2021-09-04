@@ -16,7 +16,7 @@ html {
 
 body {
   margin: 0; /* 1 */
-  font-family: "Roboto", system-ui, -apple-system,
+  font-family: "Poppins", system-ui, -apple-system,
     /* Firefox supports this but not yet `system-ui` */ "Segoe UI", Roboto,
     Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji"; /* 2 */
   min-height: 100vh;
