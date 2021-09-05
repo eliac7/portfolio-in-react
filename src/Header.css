@@ -34,13 +34,13 @@ header .logo {
   position: relative;
   height: 0.1875rem;
   width: 100%;
-  border-radius: 9px;
+  border-radius: 0.5625rem;
   background: #b56d6f;
 }
 .sidemenu.mobile {
   position: fixed;
   height: 100vh;
-  width: 115px;
+  width: 7.1875rem;
   background: #b8808d;
   right: 0;
   bottom: 0;
@@ -48,7 +48,7 @@ header .logo {
   transition: 0.25s ease-in-out;
 }
 .sidemenu.mobile.closed {
-  width: 0px;
+  width: 0rem;
 }
 nav.mobile {
   height: 100%;
@@ -71,22 +71,22 @@ nav.mobile {
   cursor: pointer;
   transition: 0.25s ease-in-out;
   margin-left: auto;
-  margin-right: 5px;
+  margin-right: 0.3125rem;
 }
 .close-btn span {
   position: relative;
   height: 0.1875rem;
   width: 100%;
-  border-radius: 9px;
+  border-radius: 0.5625rem;
   background: #ffff;
 }
 .close-btn span:first-child {
   transform: rotate(135deg);
-  top: 38px;
+  top: 2.375rem;
 }
 .close-btn span:nth-child(2) {
   transform: rotate(-135deg);
-  top: 18px;
+  top: 1.125rem;
 }
 .overlay {
   position: fixed;

@@ -42,8 +42,8 @@ section svg {
   content: "About";
   position: absolute;
   color: var(--light-red);
-  left: -40px;
-  top: -35px;
+  left: -2.5rem;
+  top: -2.1875rem;
   font-size: 2.5rem;
   transform: rotate(329deg);
   font-family: "Allison", cursive;
@@ -56,8 +56,8 @@ section svg {
   content: "Work";
   position: absolute;
   color: var(--light-red);
-  left: -40px;
-  top: -35px;
+  left: -2.5rem;
+  top: -2.1875rem;
   font-size: 2.5rem;
   transform: rotate(329deg);
   font-family: "Allison", cursive;
@@ -68,16 +68,16 @@ section svg {
 .project span.technology {
   background: #fff;
   color: var(--text-gray);
-  margin: 0px 3px;
-  padding: 3px;
+  margin: 0rem 0.1875rem;
+  padding: 0.1875rem;
 }
 
 .project-text::before {
   content: "Projects";
   position: absolute;
   color: var(--light-red);
-  left: -40px;
-  top: -35px;
+  left: -2.5rem;
+  top: -2.1875rem;
   font-size: 2.5rem;
   transform: rotate(334deg);
   font-family: "Allison", cursive;
@@ -398,7 +398,7 @@ section.contact svg.mailman {
     padding: 1rem;
   }
   .projects-row {
-    gap: 20px;
+    gap: 1.25rem;
   }
   .cursor {
     display: none !important;
