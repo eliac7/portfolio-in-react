@@ -8,6 +8,20 @@ function Header() {
   const [NavMobileSidebar, setNavMobileSidebar] = useState(false);
   const [Overlay, setOverlay] = useState(false);
 
+  window.addEventListener("resize", function (e) {
+    if (e.target.innerWidth > 768) {
+      if (NavMobileSidebar) {
+        setNavMobile(!NavMobile);
+        setNavMobileSidebar(!NavMobileSidebar);
+        setOverlay(!Overlay);
+      } else {
+        setNavMobile(false);
+        setNavMobileSidebar(false);
+        setOverlay(false);
+      }
+    }
+  });
+
   return (
     <div className="header">
       <header>
@@ -32,7 +46,7 @@ function Header() {
               <a href="#about">About</a>
             </li>
             <li>
-              <a href="#Skills">Skills</a>
+              <a href="#skills">Skills</a>
             </li>
             <li>
               <a href="#projects">Projects</a>
@@ -76,7 +90,7 @@ function Header() {
                   setOverlay(!Overlay);
                 }}
               >
-                <a href="#Skills">Skills</a>
+                <a href="#skills">Skills</a>
               </li>
               <li
                 onClick={() => {

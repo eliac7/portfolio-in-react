@@ -35,47 +35,62 @@ section svg {
 
 .hero-text {
   position: relative;
+  max-width: fit-content;
 }
 
 .hero-text::before {
   content: "About";
   position: absolute;
   color: var(--light-red);
-  top: -1.25rem;
-  left: -2.5rem;
+  left: -40px;
+  top: -35px;
   font-size: 2.5rem;
   transform: rotate(329deg);
   font-family: "Allison", cursive;
 }
+.skills-text {
+  max-width: fit-content;
+}
 
-.Skills-text::before {
+.skills-text::before {
   content: "Work";
   position: absolute;
   color: var(--light-red);
-  top: -1.25rem;
-  left: 28%;
+  left: -40px;
+  top: -35px;
   font-size: 2.5rem;
   transform: rotate(329deg);
   font-family: "Allison", cursive;
+}
+.project-text {
+  max-width: fit-content;
+}
+.project span.technology {
+  background: #fff;
+  color: var(--text-gray);
+  margin: 0px 3px;
+  padding: 3px;
 }
 
 .project-text::before {
-  content: "Work";
+  content: "Projects";
   position: absolute;
   color: var(--light-red);
-  left: 33%;
-  top: -1.25rem;
-  font-size: 1.875rem;
+  left: -40px;
+  top: -35px;
+  font-size: 2.5rem;
   transform: rotate(334deg);
   font-family: "Allison", cursive;
 }
-
+.touch-text {
+  max-width: fit-content;
+}
 .touch-text::before {
   content: "Contact";
   position: absolute;
   color: var(--light-red);
-  top: -1.25rem;
-  left: -1.25rem;
+  top: -1.5625rem;
+  left: -3.125rem;
   font-size: 2.5rem;
   transform: rotate(329deg);
   font-family: "Allison", cursive;
@@ -133,6 +148,18 @@ h1 {
   border-radius: 3.125rem;
   max-width: 25%;
 }
+.btn-toggle {
+  background-color: #ffff;
+  border: 0.0625rem solid transparent;
+  color: #141a34;
+  border-radius: 3.125rem;
+  transform: all 0.2s ease-in-out;
+  cursor: none !important;
+}
+.btn-toggle.active {
+  background: var(--light-red);
+  color: #fff;
+}
 .btn-custom:hover {
   background-color: transparent;
   border: 0.0625rem solid #141a34;
@@ -154,17 +181,17 @@ h1 {
   background: var(--light-red-disabled);
   color: rgba(255, 255, 255, 0.5);
 }
-section.Skills {
+section.skills {
   background-color: var(--dark-blue);
 }
-.SkillsContainer {
+.skillsContainer {
   background-color: white;
   border-radius: 3.125rem;
   padding: 3rem;
   margin-top: 8rem;
   font-size: 0.7rem;
 }
-.SkillsGrid {
+.skillsGrid {
   display: grid;
   gap: unset;
   grid-template-columns: repeat(auto-fill, minmax(5rem, 1fr));
@@ -172,7 +199,7 @@ section.Skills {
   grid-column-gap: 3.125rem;
   grid-row-gap: 3.125rem;
 }
-.SkillsGrid li {
+.skillsGrid li {
   background-color: white;
   padding: 0.625rem;
   border-radius: 0.9375rem;
@@ -181,16 +208,16 @@ section.Skills {
   transition: all 0.3s ease-in !important;
 }
 
-.SkillsGrid li img {
+.skillsGrid li img {
   width: 2.1875rem;
   height: 2.1875rem;
   object-fit: contain;
 }
-.SkillsItem {
+.skillsItem {
   display: grid;
   place-items: center;
 }
-.SkillsItem p {
+.skillsItem p {
   color: var(--text-gray);
   margin-top: 0.625rem;
 }
@@ -228,6 +255,69 @@ section.contact svg.mailman {
   animation: pulse 2s infinite ease;
 }
 
+.screen {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  transition: background-position 11s !important;
+  background-position: top center;
+  background-size: 100% auto !important;
+  height: 21.875rem;
+  width: 100%;
+  position: relative;
+  background-repeat: no-repeat;
+}
+.screen:hover {
+  background-position: bottom center !important;
+}
+.screen.rebrain {
+  background-image: url("./assets/images/rebrain.webp");
+}
+.screen.rebrain::before {
+  content: "";
+  position: absolute;
+  background-color: var(--light-red);
+  -webkit-mask-image: url("./assets/images/arrow.svg");
+  mask-image: url("./assets/images/arrow.svg");
+  mask-repeat: no-repeat;
+  mask-size: contain;
+  top: -1.25rem;
+  left: 0.625rem;
+  width: 3.125rem;
+  height: 3.125rem;
+  top: -1.375rem;
+  left: -2.1875rem;
+  transform: rotate(41deg);
+}
+.screen.rebrain::after {
+  content: "Hover me";
+  position: absolute;
+  top: -3.125rem;
+  left: 0;
+  letter-spacing: 0.1875rem;
+  font-family: "Allison", cursive;
+  font-size: 1.5rem;
+
+  color: var(--yellow);
+  transform: rotate(340deg);
+
+  width: fit-content;
+}
+
+.screen.sgm {
+  background-image: url("./assets/images/sgm.webp");
+}
+.screen.ampelokipi {
+  background-image: url("./assets/images/ampelokipi.webp");
+}
+.screen.chatbot {
+  background-image: url("./assets/images/chatbot.webp");
+}
+.screen.thesis {
+  background-repeat: no-repeat !important;
+  background-position: top !important;
+  background-image: url("./assets/images/thesis.webp");
+}
+
 @keyframes pulse {
   0% {
     box-shadow: 0 0 0 0 rgba(214, 40, 40, 0.8);
@@ -243,15 +333,36 @@ section.contact svg.mailman {
 }
 /*Responsive*/
 
+@media (min-width: 48rem) {
+  .skillsGrid li:hover {
+    box-shadow: 0 0.625rem 1.75rem rgb(0 0 0 / 20%);
+  }
+}
+
 @media (max-width: 48rem) {
   .br-hero {
     display: none;
   }
   .hero-text::before {
-    left: 0;
+    left: 1.25rem;
     top: -2.5rem;
 
     transform: unset;
+  }
+  .project-text::before {
+    transform: unset;
+    left: 1.25rem;
+    top: -2.5rem;
+  }
+  .touch-text::before {
+    transform: unset;
+    left: 1.25rem;
+    top: -2.5rem;
+  }
+  .skills-text::before {
+    transform: unset;
+    left: 1.25rem;
+    top: -2.5rem;
   }
   .hero-row {
     gap: 6.25rem;
@@ -259,27 +370,38 @@ section.contact svg.mailman {
   .splashes {
     transform: unset;
   }
+  .screen.rebrain::after {
+    content: "Tap me";
+    transform: unset;
+    top: -1.875rem;
+    left: 3.125rem;
+  }
+  .screen.rebrain::before {
+    transform: rotate(90deg);
+    top: -2.1875rem;
+    left: 0;
+  }
+  .screen.thesis {
+    background-position: center !important;
+  }
 }
 @media (max-width: 62rem) {
   .btn-custom {
     max-width: 100%;
   }
   .skillsGrid {
-    row-gap: 15px;
-    column-gap: 15px;
+    row-gap: 0.9375rem;
+    column-gap: 0.9375rem;
   }
-  .SkillsContainer {
+  .skillsContainer {
     margin-top: 5rem;
     padding: 1rem;
   }
+  .projects-row {
+    gap: 20px;
+  }
   .cursor {
     display: none !important;
-  }
-}
-
-@media (min-width: 768px) {
-  .SkillsGrid li:hover {
-    box-shadow: 0 10px 28px rgb(0 0 0 / 20%);
   }
 }
 

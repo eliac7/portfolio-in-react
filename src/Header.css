@@ -78,7 +78,7 @@ nav.mobile {
   height: 0.1875rem;
   width: 100%;
   border-radius: 9px;
-  background: #fff;
+  background: #ffff;
 }
 .close-btn span:first-child {
   transform: rotate(135deg);
@@ -118,7 +118,6 @@ ul li a:hover {
 }
 @media (max-width: 36.25rem) {
   header {
-    flex-direction: column;
     gap: 1.25rem;
   }
 }
