@@ -388,7 +388,12 @@ function Content() {
                 <div className="col-lg-6">
                   <div className={"screen " + item.className}></div>
                 </div>
-                <div className="col-lg-6">
+                <div
+                  className={
+                    "col-lg-6 text-lg-start text-center" +
+                    (index % 2 === 1 ? " text-lg-end text-center" : "")
+                  }
+                >
                   <h4>{item.name}</h4>
                   <p>
                     Technologies:{" "}
