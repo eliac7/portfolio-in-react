@@ -1,6 +1,11 @@
 import React from "react";
+import axios from "axios";
 import "./Content.css";
 import FormExample from "./Form.js";
+
+import { useState, useEffect } from "react";
+import { ReactComponent as Github } from "./assets/images/github.svg";
+import { ReactComponent as Site } from "./assets/images/site.svg";
 import { ReactComponent as WaveStart } from "./assets/images/wave_start.svg";
 import { ReactComponent as WaveEnd } from "./assets/images/wave_end.svg";
 import { ReactComponent as WaveEndGreen } from "./assets/images/wave_end_green.svg";
@@ -25,79 +30,58 @@ import WordPress from "./assets/images/logos/wp.svg";
 import PHP from "./assets/images/logos/php.svg";
 import Linux from "./assets/images/logos/linux.svg";
 
+import localjson from "./projects.json";
+
 import AOS from "aos";
 import "aos/dist/aos.css";
 AOS.init({ delay: 100, once: true });
 
 const age = new Date().getFullYear() - Number(1997);
-
-const projects = [
-  {
-    name: "Rebrain Jobs",
-    className: "rebrain",
-    type: "work",
-    content:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis porro enim ratione. Expedita explicabo dicta obcaecati quis voluptas laudantium sit placeat illo provident nobis deleniti sapiente, recusandae laborum sed odit.",
-    technologies: "WordPress, PHP,REST API,JavaScript",
-  },
-  {
-    name: "Support Greek Music",
-    type: "work",
-    className: "sgm",
-    content:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis porro enim ratione. Expedita explicabo dicta obcaecati quis voluptas laudantium sit placeat illo provident nobis deleniti sapiente, recusandae laborum sed odit.",
-    technologies: "WordPress, PHP,JavaScript",
-  },
-  {
-    name: "Ampelokipi - Menemeni",
-    type: "work",
-    className: "ampelokipi",
-    content:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis porro enim ratione. Expedita explicabo dicta obcaecati quis voluptas laudantium sit placeat illo provident nobis deleniti sapiente, recusandae laborum sed odit.",
-    technologies: "WordPress, PHP, JavaScript",
-  },
-  {
-    name: "DEDDIE Chatbot",
-    type: "work",
-    className: "chatbot",
-    content:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis porro enim ratione. Expedita explicabo dicta obcaecati quis voluptas laudantium sit placeat illo provident nobis deleniti sapiente, recusandae laborum sed odit.",
-    technologies: "WordPress, PHP, JavaScript",
-  },
-  {
-    name: "Thesis",
-    type: "personal",
-    className: "thesis",
-    content:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis porro enim ratione. Expedita explicabo dicta obcaecati quis voluptas laudantium sit placeat illo provident nobis deleniti sapiente, recusandae laborum sed odit.",
-    technologies: "Python, JavaScript, REST API",
-  },
-];
-
-window.addEventListener("load", function () {
-  const cursor = document.querySelector(".cursor");
-
-  window.addEventListener("mousemove", mouseMoveHandler);
-  window.addEventListener("mousedown", mouseDownHandler);
-  window.addEventListener("mouseup", mouseUpHandler);
-
-  function mouseMoveHandler(e) {
-    cursor.style.display = "block";
-    cursor.style.left = e.clientX - cursor.offsetWidth / 2.15 + "px";
-    cursor.style.top = e.clientY - cursor.offsetHeight / 2 + "px";
-    cursor.style.opacity = 1;
-  }
-
-  function mouseUpHandler() {
-    cursor.style.transform = "scale(1)";
-  }
-
-  function mouseDownHandler() {
-    cursor.style.transform = "scale(1.5)";
-  }
-});
+const URL_TO_FETCH =
+  "https://agile-sea-08846.herokuapp.com/?key=" +
+  process.env.REACT_APP_API_TOKEN;
 
 function Content() {
+  const [isLoading, setLoading] = useState(true);
+  let [projects, setProjects] = useState(null);
+
+  useEffect(() => {
+    axios
+      .get(URL_TO_FETCH)
+      .then((res) => {
+        setProjects(res.data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        if (err.message) {
+          setProjects(localjson);
+          setLoading(false);
+        }
+      });
+  }, []);
+
+  if (!isLoading) {
+    setTimeout(() => {
+      const cursor = document.querySelector(".cursor");
+      function mouseMoveHandler(e) {
+        cursor.style.display = "block";
+        cursor.style.left = e.clientX - cursor.offsetWidth / 2.15 + "px";
+        cursor.style.top = e.clientY - cursor.offsetHeight / 2 + "px";
+        cursor.style.opacity = 1;
+      }
+      function mouseUpHandler() {
+        cursor.style.transform = "scale(1)";
+      }
+      function mouseDownHandler() {
+        cursor.style.transform = "scale(1.5)";
+      }
+
+      window.addEventListener("mousemove", mouseMoveHandler);
+      window.addEventListener("mousedown", mouseDownHandler);
+      window.addEventListener("mouseup", mouseUpHandler);
+    }, 1000);
+  }
+
   function handleToggler(e) {
     AOS.refresh();
     let work = document.querySelectorAll('div[data-item="work"]');
@@ -107,33 +91,39 @@ function Content() {
     let btns = document.querySelectorAll(".btn-toggle");
 
     let name = e.target.dataset.toggle;
-    if (name === "work") {
-      for (let i = 0; i < personal.length; i++) {
-        personal[i].classList.add("d-none");
-      }
-      for (let i = 0; i < work.length; i++) {
-        work[i].classList.remove("d-none");
-      }
-    } else if (name === "personal") {
-      for (let i = 0; i < work.length; i++) {
-        work[i].classList.add("d-none");
-      }
-      for (let i = 0; i < personal.length; i++) {
-        personal[i].classList.remove("d-none");
-      }
-    } else {
-      for (let i = 0; i < all.length; i++) {
-        all[i].classList.remove("d-none");
-      }
-    }
 
     for (let i = 0; i < btns.length; i++) {
       if (name === btns[i].dataset.toggle) {
+        let items = document.querySelectorAll(
+          `div[data-item="${name.toString()}"]`
+        );
+        if (name !== "all") {
+          for (let i = 0; i < all.length; i++) {
+            all[i].classList.add("d-none");
+          }
+          for (let i = 0; i < items.length; i++) {
+            items[i].classList.remove("d-none");
+          }
+        } else {
+          for (let i = 0; i < all.length; i++) {
+            all[i].classList.remove("d-none");
+          }
+        }
         btns[i].classList.add("active");
       } else {
         btns[i].classList.remove("active");
       }
     }
+  }
+  if (isLoading) {
+    return (
+      <div
+        className="Loading min-vh-100 d-flex align-items-center justify-content-center fw-bold text-white"
+        style={{ backgroundColor: "var(--light-blue)" }}
+      >
+        Loading...
+      </div>
+    );
   }
 
   return (
@@ -343,6 +333,7 @@ function Content() {
               </h1>
             </div>
           </div>
+
           <div className="row toggles-row d-flex align-items-center justify-content-center mt-3 ">
             <div
               className="toggles mw-100  gap-3 d-flex align-items-center justify-content-center"
@@ -390,27 +381,60 @@ function Content() {
                 </div>
                 <div
                   className={
-                    "col-lg-6 text-lg-start text-center" +
-                    (index % 2 === 1 ? " text-lg-end text-center" : "")
+                    "col-lg-6 text-lg-start text-center d-flex flex-column justify-content-around" +
+                    (index % 2 === 1 ? " text-lg-end " : "")
                   }
                 >
                   <h4>{item.name}</h4>
-                  <p>
-                    Technologies:{" "}
-                    <span>
-                      {items.map(function (technology) {
-                        return (
-                          <span
-                            className="technology"
-                            key={technology.toString()}
-                          >
-                            {technology}
-                          </span>
-                        );
-                      })}
-                    </span>
-                  </p>
+                  <div
+                    className={
+                      "technologies d-flex flex-wrap gap-lg-0 gap-1 align-items-center justify-content-center " +
+                      (index % 2 === 1
+                        ? "justify-content-lg-end"
+                        : "justify-content-lg-start")
+                    }
+                  >
+                    <p className="mb-0 me-2">Technologies:</p>
+                    {items.map(function (technology) {
+                      return (
+                        <span
+                          className="technology"
+                          key={technology.toString()}
+                        >
+                          {technology}
+                        </span>
+                      );
+                    })}
+                  </div>
                   <p>{item.content}</p>
+                  <div
+                    className={
+                      "links d-flex gap-2 justify-content-center " +
+                      (index % 2 === 1
+                        ? "justify-content-lg-end"
+                        : "justify-content-lg-start")
+                    }
+                  >
+                    {item.github ? (
+                      <a
+                        href={item.github}
+                        style={{ borderRadius: 50 + "%" }}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        <Github />
+                      </a>
+                    ) : (
+                      ""
+                    )}
+                    {item.live ? (
+                      <a href={item.live} target="_blank" rel="noreferrer">
+                        <Site />
+                      </a>
+                    ) : (
+                      ""
+                    )}
+                  </div>
                 </div>
               </div>
             );

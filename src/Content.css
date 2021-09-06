@@ -296,10 +296,8 @@ section.contact svg.mailman {
   letter-spacing: 0.1875rem;
   font-family: "Allison", cursive;
   font-size: 1.5rem;
-
   color: var(--yellow);
   transform: rotate(340deg);
-
   width: fit-content;
 }
 
@@ -312,15 +310,41 @@ section.contact svg.mailman {
 .screen.chatbot {
   background-image: url("./assets/images/chatbot.webp");
 }
+.screen.events {
+  background-image: url("./assets/images/cp-events.webp");
+}
 .screen.thesis {
   background-repeat: no-repeat !important;
   background-position: top !important;
   background-image: url("./assets/images/thesis.webp");
 }
+.screen.todo {
+  background-repeat: no-repeat !important;
+  background-position: top !important;
+  background-image: url("https://github.com/eliac7/React-Todo-App/blob/main/gif.gif?raw=true");
+}
+
+.links a svg {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+}
+.links a:hover svg:first-child {
+  fill: white;
+}
+.links a:hover svg .clear-1 {
+  fill: white;
+}
+.links a:hover svg .clear-2 {
+  fill: #303038;
+}
+.links a:hover svg .clear-3 {
+  fill: #fff;
+}
 
 @keyframes pulse {
   0% {
-    box-shadow: 0 0 0 0 rgba(214, 40, 40, 0.8);
+    box-shadow: 0 0 0 0 #ffba08;
   }
 
   70% {
@@ -382,6 +406,9 @@ section.contact svg.mailman {
     left: 0;
   }
   .screen.thesis {
+    background-position: center !important;
+  }
+  .screen.todo {
     background-position: center !important;
   }
 }

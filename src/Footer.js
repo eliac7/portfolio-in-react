@@ -14,7 +14,7 @@ function Footer() {
           <div className="copyright">
             ©{year} -
             <p>
-              Made with <span>♥</span> by me.
+              Made with <span style={{ color: "red" }}>♥</span> by me.
             </p>
           </div>
           <div className="sm">

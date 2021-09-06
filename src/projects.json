@@ -1,0 +1,59 @@
+[
+  {
+    "name": "Rebrain Platform",
+    "className": "rebrain",
+    "type": "work",
+    "content": "Mechanism for connecting highly skilled workers abroad with businesses operating in Greece. Each user can be registered as Scientists / Experts / Researchers (S.E.R) or as business and have the respectively permissions and features. Implemented with CPT's of WordPress, ACF. It contains interactivity with ESCO's API.",
+    "technologies": "WordPress, PHP,REST API,JavaScript",
+    "live": "https://platform.rebraingreece.gr/"
+  },
+  {
+    "name": "Support Greek Music",
+    "type": "work",
+    "className": "sgm",
+    "content": "Crowdfunding platform to aid and practically bind the creators’ copyright, during a deafeningly resonant period, caused by COVID-19 pandemic. My contribution in that project was the frontend development.",
+    "technologies": "WordPress, PHP,JavaScript",
+    "live": "https://supportgreekmusic.gr/"
+  },
+  {
+    "name": "Ampelokipi - Menemeni",
+    "type": "work",
+    "className": "ampelokipi",
+    "content": "A multilanguage portal for Ampelokipi - Menemeni Municipality. The citizen can apply online for problems or questions, connected with TaxisNet or simple login. Implementation of custom search functionality with AJAX filters to improve user's experience.",
+    "technologies": "WordPress, PHP, JavaScript",
+    "live": "https://www.ampelokipi-menemeni.gr/"
+  },
+  {
+    "name": "HEDNO (ΔΕΔΔΗΕ) Chatbot",
+    "type": "work",
+    "className": "chatbot",
+    "content": "Hellenic Electricity Distribution Network Operator's chatbot landing page.",
+    "technologies": "HTML, SCSS, JavaScript",
+    "live": "https://chatbot.deddie.gr/"
+  },
+  {
+    "name": "Crowdpolicy events",
+    "type": "work",
+    "className": "events",
+    "content": "Crowdpolicy's events with AJAX filtering with pagination. Built with WordPress' CPT, ACF.",
+    "technologies": "WordPress, jQuery",
+    "live": "https://www.crowdpolicy.com/en/events/"
+  },
+  {
+    "name": "Web app for Image Similarity using Siamese Neural Network",
+    "type": "personal",
+    "className": "thesis",
+    "content": "My thesis was to implement a Siamese Neural Network using the VGG19 model, pre-trained on ImageNet to calculate the match of a query image through a dataset of images. To find the similarity, I used a contrastive loss function and a Euclidean distance. You will find my implementation on a web app for this purpose on the below link of Github.",
+    "technologies": "Python, jQuery, JavaScript, REST API",
+    "github": "https://github.com/eliac7/image-similarity-siamese"
+  },
+  {
+    "name": "Todo App",
+    "type": "personal",
+    "className": "todo",
+    "content": "Classic Todo app developed on React(CRA) as a practice project. You can add, edit and delete a task, as well as, to mark it as completed with one click.",
+    "technologies": "React, Javascript",
+    "live": "https://eliac7.github.io/React-Todo-App-Pages/",
+    "github": "https://github.com/eliac7/React-Todo-App"
+  }
+]

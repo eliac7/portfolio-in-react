@@ -40,7 +40,7 @@ header .logo {
 .sidemenu.mobile {
   position: fixed;
   height: 100vh;
-  width: 7.1875rem;
+  width: 100%;
   background: #b8808d;
   right: 0;
   bottom: 0;
@@ -58,6 +58,9 @@ nav.mobile {
   text-align: center;
   justify-content: space-evenly;
   height: 100%;
+}
+.mobile ul li {
+  font-size: 2.5rem;
 }
 .close-btn {
   display: flex;
