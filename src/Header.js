@@ -1,8 +1,6 @@
 import React from "react";
 import { useState } from "react";
-
 import { HashLink as Link } from "react-router-hash-link";
-
 import "./Header.css";
 import { ReactComponent as Logo } from "./assets/images/logo.svg";
 
