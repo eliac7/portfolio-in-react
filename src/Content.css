@@ -1,5 +1,5 @@
 section {
-  min-height: 100vh;
+  min-height: 50vh;
   position: relative;
   color: #fff;
 }
@@ -9,7 +9,6 @@ section.hero {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 50vh;
 }
 section.contact {
   min-height: 60vh;
