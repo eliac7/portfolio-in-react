@@ -1,8 +1,8 @@
 [
   {
     "name": "Rebrain Platform",
-    "className": "rebrain",
     "type": "work",
+    "className": "rebrain",
     "content": "Mechanism for connecting highly skilled workers abroad with businesses operating in Greece. Each user can be registered as Scientists / Experts / Researchers (S.E.R) or as business and have the respectively permissions and features. Implemented with CPT's of WordPress, ACF. It contains interactivity with ESCO's API.",
     "technologies": "WordPress, PHP,REST API,JavaScript",
     "live": "https://platform.rebraingreece.gr/"
