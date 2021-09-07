@@ -381,31 +381,34 @@ function Content() {
                 </div>
                 <div
                   className={
-                    "col-lg-6 text-lg-start text-center d-flex flex-column justify-content-around" +
+                    "col-lg-6 text-lg-start text-center d-flex flex-column justify-content-between" +
                     (index % 2 === 1 ? " text-lg-end " : "")
                   }
                 >
-                  <h4>{item.name}</h4>
-                  <div
-                    className={
-                      "technologies d-flex flex-wrap gap-lg-0 gap-1 align-items-center justify-content-center " +
-                      (index % 2 === 1
-                        ? "justify-content-lg-end"
-                        : "justify-content-lg-start")
-                    }
-                  >
-                    <p className="mb-0 me-2">Technologies:</p>
-                    {items.map(function (technology) {
-                      return (
-                        <span
-                          className="technology"
-                          key={technology.toString()}
-                        >
-                          {technology}
-                        </span>
-                      );
-                    })}
+                  <div className="d-flex flex-column">
+                    <h4>{item.name}</h4>
+                    <div
+                      className={
+                        "technologies d-flex flex-wrap gap-lg-0 gap-1 align-items-center justify-content-center " +
+                        (index % 2 === 1
+                          ? "justify-content-lg-end"
+                          : "justify-content-lg-start")
+                      }
+                    >
+                      <p className="mb-0 me-2">Technologies:</p>
+                      {items.map(function (technology) {
+                        return (
+                          <span
+                            className="technology"
+                            key={technology.toString()}
+                          >
+                            {technology}
+                          </span>
+                        );
+                      })}
+                    </div>
                   </div>
+
                   <p>{item.content}</p>
                   <div
                     className={

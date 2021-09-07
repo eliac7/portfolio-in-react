@@ -9,9 +9,14 @@ section.hero {
   display: flex;
   align-items: center;
   justify-content: center;
+  min-height: 50vh;
+}
+section.contact {
+  min-height: 60vh;
 }
 section svg {
   max-width: 100%;
+  width: 100%;
 }
 
 .cursor {
@@ -233,7 +238,9 @@ section.contact > svg path {
 }
 
 section.contact svg.mailman {
-  position: inherit;
+  height: 100%;
+  position: relative;
+  inset: 0;
 }
 
 .text-email {
@@ -317,18 +324,21 @@ section.contact svg.mailman {
   background-repeat: no-repeat !important;
   background-position: top !important;
   background-image: url("./assets/images/thesis.webp");
+  background-size: cover !important;
 }
 .screen.todo {
   background-repeat: no-repeat !important;
   background-position: top !important;
   background-image: url("https://github.com/eliac7/React-Todo-App/blob/main/gif.gif?raw=true");
+  background-size: cover !important;
 }
 
 .links a svg {
   display: inline-block;
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
 }
+
 .links a:hover svg:first-child {
   fill: white;
 }
