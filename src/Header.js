@@ -1,7 +1,10 @@
 import React from "react";
+import { useState } from "react";
+
+import { HashLink as Link } from "react-router-hash-link";
+
 import "./Header.css";
 import { ReactComponent as Logo } from "./assets/images/logo.svg";
-import { useState } from "react";
 
 function Header() {
   const [NavMobile, setNavMobile] = useState(false);
@@ -43,16 +46,16 @@ function Header() {
         <nav>
           <ul>
             <li>
-              <a href="#about">About</a>
+              <Link to="/#about">About</Link>
             </li>
             <li>
-              <a href="#skills">Skills</a>
+              <Link to="/#skills">Skills</Link>
             </li>
             <li>
-              <a href="#projects">Projects</a>
+              <Link to="/#projects">Projects</Link>
             </li>
             <li>
-              <a href="#contact">Contact</a>
+              <Link to="/#contact">Contact</Link>
             </li>
           </ul>
         </nav>
@@ -81,7 +84,7 @@ function Header() {
                   setOverlay(!Overlay);
                 }}
               >
-                <a href="#about">About</a>
+                <Link to="/#about">About</Link>
               </li>
               <li
                 onClick={() => {
@@ -90,7 +93,7 @@ function Header() {
                   setOverlay(!Overlay);
                 }}
               >
-                <a href="#skills">Skills</a>
+                <Link to="/#skills">Skills</Link>
               </li>
               <li
                 onClick={() => {
@@ -99,7 +102,7 @@ function Header() {
                   setOverlay(!Overlay);
                 }}
               >
-                <a href="#projects">Projects</a>
+                <Link to="/#projects">Projects</Link>
               </li>
               <li
                 onClick={() => {
@@ -108,7 +111,7 @@ function Header() {
                   setOverlay(!Overlay);
                 }}
               >
-                <a href="#contact">Contact</a>
+                <Link to="/#contact">Contact</Link>
               </li>
             </ul>
           </nav>

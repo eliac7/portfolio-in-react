@@ -11,7 +11,7 @@ section.hero {
   justify-content: center;
 }
 section.contact {
-  min-height: 60vh;
+  min-height: 80vh;
 }
 section svg {
   max-width: 100%;
@@ -115,7 +115,7 @@ h1 {
   box-shadow: 0.4375rem 0.375rem 1.25rem 0.1875rem rgb(0 0 0 / 42%);
 }
 .me-col::before {
-  background: url("./assets/images/splashes.webp");
+  background: url("./assets/images/splashes.png");
   content: "";
   position: absolute;
   inset: 0;
@@ -276,7 +276,7 @@ section.contact svg.mailman {
   background-position: bottom center !important;
 }
 .screen.rebrain {
-  background-image: url("./assets/images/rebrain.webp");
+  background-image: url("./assets/images/rebrain.png");
 }
 .screen.rebrain::before {
   content: "";
@@ -308,21 +308,21 @@ section.contact svg.mailman {
 }
 
 .screen.sgm {
-  background-image: url("./assets/images/sgm.webp");
+  background-image: url("./assets/images/sgm.png");
 }
 .screen.ampelokipi {
-  background-image: url("./assets/images/ampelokipi.webp");
+  background-image: url("./assets/images/ampelokipi.png");
 }
 .screen.chatbot {
-  background-image: url("./assets/images/chatbot.webp");
+  background-image: url("./assets/images/chatbot.png");
 }
 .screen.events {
-  background-image: url("./assets/images/cp-events.webp");
+  background-image: url("./assets/images/cp-events.png");
 }
 .screen.thesis {
   background-repeat: no-repeat !important;
   background-position: top !important;
-  background-image: url("./assets/images/thesis.webp");
+  background-image: url("./assets/images/thesis.png");
   background-size: cover !important;
 }
 .screen.todo {
@@ -436,6 +436,9 @@ section.contact svg.mailman {
   .projects-row {
     gap: 1.25rem;
   }
+}
+/* smartphones, touchscreens */
+@media (hover: none) and (pointer: coarse) {
   .cursor {
     display: none !important;
   }

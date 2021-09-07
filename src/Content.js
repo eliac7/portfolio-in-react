@@ -11,7 +11,7 @@ import { ReactComponent as WaveEnd } from "./assets/images/wave_end.svg";
 import { ReactComponent as WaveEndGreen } from "./assets/images/wave_end_green.svg";
 import { ReactComponent as MailMan } from "./assets/images/MailMan.svg";
 
-import Me from "./assets/images/me.webp";
+import Me from "./assets/images/me.png";
 import HTML from "./assets/images/logos/html.svg";
 import CSS from "./assets/images/logos/css.svg";
 import Javascript from "./assets/images/logos/javascript.svg";
@@ -177,7 +177,7 @@ function Content() {
             </div>
           </div>
         </div>
-        <WaveStart />
+        <WaveStart style={{ position: "relative", bottom: "-1px" }} />
       </section>
       <section className="skills d-flex align-items-center justify-content-center">
         <div className="container pt-5" id="skills">
@@ -321,7 +321,7 @@ function Content() {
         </div>
       </section>
       <section className="project d-flex flex-column align-items-center justify-content-center">
-        <WaveEnd></WaveEnd>
+        <WaveEnd style={{ position: "relative", bottom: "1px" }}></WaveEnd>
         <div className="container p-relative pt-5 flex-grow-1" id="projects">
           <div className="row d-flex flex-column justify-content-center align-items-center">
             <div className="col-lg-12">
@@ -445,7 +445,7 @@ function Content() {
         </div>
       </section>
       <section className="contact position-relative">
-        <WaveEndGreen />
+        <WaveEndGreen style={{ position: "relative", bottom: "1px" }} />
         <div className="container py-5" data-aos="fade-up" id="contact">
           <div className="row d-flex flex-row-reverse gap-5 gap-lg-0">
             <div className="col-lg-6">

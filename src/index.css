@@ -4,6 +4,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  -webkit-overflow-scrolling: touch;
 }
 
 html {
@@ -12,6 +13,7 @@ html {
   -moz-tab-size: 4; /* 3 */
   tab-size: 4; /* 3 */
   height: 100%;
+  scroll-behavior: smooth;
 }
 
 body {
