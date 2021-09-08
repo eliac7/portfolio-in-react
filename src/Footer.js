@@ -12,12 +12,17 @@ function Footer() {
       <div className="container">
         <div className="container-inner pt-3">
           <div className="copyright">
-            ©{year} -
-            <p>
-              Made with <span style={{ color: "red" }}>♥</span> by me.
-            </p>
+            ©{year}{" "}
+            <span className="mx-3" style={{ color: "#fff" }}>
+              -
+            </span>{" "}
+            Made with{" "}
+            <span className="mx-1" style={{ color: "red" }}>
+              ♥
+            </span>{" "}
+            by me.
           </div>
-          <div className="sm">
+          <div className="sm mt-5 mt-md-0">
             <ul>
               <li>
                 <a

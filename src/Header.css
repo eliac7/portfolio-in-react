@@ -46,51 +46,46 @@ header .logo {
   bottom: 0;
   z-index: 9;
   transition: 0.25s ease-in-out;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
+
 .sidemenu.mobile.closed {
   width: 0rem;
 }
 nav.mobile {
   height: 100%;
+  width: 100%;
 }
 .mobile ul {
   flex-direction: column;
   text-align: center;
   justify-content: space-evenly;
   height: 100%;
+  width: 100%;
 }
 .mobile ul li {
   font-size: 2.5rem;
 }
 .close-btn {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-  position: relative;
-  width: 2.5rem;
-  height: 2.5rem;
-  background: transparent;
-  cursor: pointer;
-  transition: 0.25s ease-in-out;
-  margin-left: auto;
-  margin-right: 0.3125rem;
+  font-size: 50px;
+  color: #fff;
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 10px;
+  z-index: 999999;
+  opacity: 1;
+  visibility: visible;
+  transition: all 0.2s ease-in-out;
 }
-.close-btn span {
-  position: relative;
-  height: 0.1875rem;
-  width: 100%;
-  border-radius: 0.5625rem;
-  background: #ffff;
+.sidemenu.mobile.closed .close-btn {
+  opacity: 0;
+  visibility: hidden;
 }
-.close-btn span:first-child {
-  transform: rotate(135deg);
-  top: 2.375rem;
-}
-.close-btn span:nth-child(2) {
-  transform: rotate(-135deg);
-  top: 1.125rem;
-}
+
 .overlay {
   position: fixed;
   height: 100%;
@@ -106,11 +101,11 @@ nav {
 }
 ul {
   display: flex;
-  gap: 1.25rem;
   padding: 0;
 }
 ul li {
   list-style: none;
+  margin: 0 1.25rem;
 }
 ul li a {
   text-decoration: none;
@@ -124,7 +119,7 @@ ul li a:hover {
     gap: 1.25rem;
   }
 }
-@media (min-width: 48rem) {
+@media (min-width: 769px) {
   nav.mobile {
     display: none;
   }

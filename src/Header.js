@@ -8,10 +8,10 @@ function Header() {
   const [NavMobile, setNavMobile] = useState(false);
   const [NavMobileSidebar, setNavMobileSidebar] = useState(false);
   const [Overlay, setOverlay] = useState(false);
-
   window.addEventListener("resize", function (e) {
     if (e.target.innerWidth > 768) {
       if (NavMobileSidebar) {
+        console.log(NavMobileSidebar);
         setNavMobile(!NavMobile);
         setNavMobileSidebar(!NavMobileSidebar);
         setOverlay(!Overlay);
@@ -30,7 +30,7 @@ function Header() {
           <Logo />
         </div>
         <div
-          className={NavMobile ? "burger" : "burger closed"}
+          className={NavMobile ? "burger" : "burger closed "}
           onClick={() => {
             setNavMobile(!NavMobile);
             setNavMobileSidebar(!NavMobileSidebar);
@@ -70,8 +70,7 @@ function Header() {
               setOverlay(!Overlay);
             }}
           >
-            <span></span>
-            <span></span>
+            ×
           </div>
           <nav className="mobile">
             <ul>

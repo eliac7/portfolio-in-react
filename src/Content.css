@@ -328,14 +328,14 @@ section.contact svg.mailman {
 .screen.todo {
   background-repeat: no-repeat !important;
   background-position: top !important;
-  background-image: url("https://github.com/eliac7/React-Todo-App/blob/main/gif.gif?raw=true");
+  background-image: url("./assets/images/todo_gif.gif");
   background-size: cover !important;
 }
 
 .links a svg {
   display: inline-block;
-  width: 40px;
-  height: 40px;
+  width: 2.5rem;
+  height: 2.5rem;
 }
 
 .links a:hover svg:first-child {
@@ -373,6 +373,7 @@ section.contact svg.mailman {
 }
 
 @media (max-width: 48rem) {
+  /*48rem*/
   .br-hero {
     display: none;
   }
@@ -397,8 +398,8 @@ section.contact svg.mailman {
     left: 1.25rem;
     top: -2.5rem;
   }
-  .hero-row {
-    gap: 6.25rem;
+  .me-col {
+    margin: 6.25rem 0;
   }
   .splashes {
     transform: unset;
@@ -420,8 +421,21 @@ section.contact svg.mailman {
   .screen.todo {
     background-position: center !important;
   }
+  [data-aos] {
+    pointer-events: auto !important;
+  }
+
+  html:not(.no-js) [data-aos^="fade"][data-aos^="fade"] {
+    opacity: 1 !important;
+  }
+
+  html:not(.no-js) [data-aos="fade-up"] {
+    transform: none !important;
+  }
 }
+
 @media (max-width: 62rem) {
+  /*62rem*/
   .btn-custom {
     max-width: 100%;
   }
@@ -445,6 +459,7 @@ section.contact svg.mailman {
 }
 
 @media (max-width: 75rem) {
+  /*75rem*/
   .btn-custom {
     max-width: 50%;
   }

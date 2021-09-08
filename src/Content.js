@@ -11,7 +11,7 @@ import { ReactComponent as WaveEnd } from "./assets/images/wave_end.svg";
 import { ReactComponent as WaveEndGreen } from "./assets/images/wave_end_green.svg";
 import { ReactComponent as MailMan } from "./assets/images/MailMan.svg";
 
-import Me from "./assets/images/me.png";
+import Me from "./assets/images/me.jpg";
 import HTML from "./assets/images/logos/html.svg";
 import CSS from "./assets/images/logos/css.svg";
 import Javascript from "./assets/images/logos/javascript.svg";
@@ -34,7 +34,7 @@ import localjson from "./projects.json";
 
 import AOS from "aos";
 import "aos/dist/aos.css";
-AOS.init({ delay: 100, once: true });
+AOS.init({ delay: 100, once: true, disable: window.innerWidth < 768 });
 
 const age = new Date().getFullYear() - Number(1997);
 const URL_TO_FETCH =
@@ -336,25 +336,25 @@ function Content() {
 
           <div className="row toggles-row d-flex align-items-center justify-content-center mt-3 ">
             <div
-              className="toggles mw-100  gap-3 d-flex align-items-center justify-content-center"
+              className="toggles mw-100 d-flex align-items-center justify-content-center "
               data-aos="fade-up"
             >
               <button
-                className="btn btn-toggle active"
+                className="btn btn-toggle mx-3 active"
                 data-toggle="all"
                 onClick={(e) => handleToggler(e)}
               >
                 All
               </button>
               <button
-                className="btn btn-toggle"
+                className="btn btn-toggle mx-3"
                 data-toggle="work"
                 onClick={(e) => handleToggler(e)}
               >
                 Work
               </button>
               <button
-                className="btn btn-toggle"
+                className="btn btn-toggle mx-3"
                 data-toggle="personal"
                 onClick={(e) => handleToggler(e)}
               >
@@ -389,30 +389,32 @@ function Content() {
                     <h4>{item.name}</h4>
                     <div
                       className={
-                        "technologies d-flex flex-wrap gap-lg-0 gap-1 align-items-center justify-content-center " +
+                        "technologies d-flex flex-wrap  flex-sm-column flex-md-row align-items-center justify-content-center my-3 " +
                         (index % 2 === 1
                           ? "justify-content-lg-end"
                           : "justify-content-lg-start")
                       }
                     >
                       <p className="mb-0 me-2">Technologies:</p>
-                      {items.map(function (technology) {
-                        return (
-                          <span
-                            className="technology"
-                            key={technology.toString()}
-                          >
-                            {technology}
-                          </span>
-                        );
-                      })}
+                      <div className="technology-outer d-flex flex-wrap justify-content-center align-items-center">
+                        {items.map(function (technology) {
+                          return (
+                            <span
+                              className="technology my-2 my-lg-0"
+                              key={technology.toString()}
+                            >
+                              {technology}
+                            </span>
+                          );
+                        })}
+                      </div>
                     </div>
                   </div>
 
                   <p>{item.content}</p>
                   <div
                     className={
-                      "links d-flex gap-2 justify-content-center " +
+                      "links d-flex justify-content-center " +
                       (index % 2 === 1
                         ? "justify-content-lg-end"
                         : "justify-content-lg-start")
@@ -424,6 +426,7 @@ function Content() {
                         style={{ borderRadius: 50 + "%" }}
                         target="_blank"
                         rel="noreferrer"
+                        className="mx-2"
                       >
                         <Github />
                       </a>
@@ -431,7 +434,12 @@ function Content() {
                       ""
                     )}
                     {item.live ? (
-                      <a href={item.live} target="_blank" rel="noreferrer">
+                      <a
+                        href={item.live}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="mx-2"
+                      >
                         <Site />
                       </a>
                     ) : (
@@ -447,14 +455,14 @@ function Content() {
       <section className="contact position-relative">
         <WaveEndGreen style={{ position: "relative", bottom: "1px" }} />
         <div className="container py-5" data-aos="fade-up" id="contact">
-          <div className="row d-flex flex-row-reverse gap-5 gap-lg-0">
+          <div className="row d-flex flex-row-reverse">
             <div className="col-lg-6">
               <h1 className="text-center touch-text position-relative m-auto">
                 Get in Touch
               </h1>
               <FormExample></FormExample>
             </div>
-            <div className="col-lg-6 d-flex align-items-center justify-content-center">
+            <div className="col-lg-6 d-flex align-items-center justify-content-center my-5 my-lg-0">
               <MailMan></MailMan>
             </div>
           </div>
