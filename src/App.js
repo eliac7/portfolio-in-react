@@ -1,16 +1,16 @@
-import Content from "./Content";
-import Footer from "./Footer";
-import Header from "./Header";
-import { BrowserRouter } from "react-router-dom";
+import Home from "./Home";
+import Error404 from "./Error404";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 const App = () => {
   return (
     <>
-      <BrowserRouter>
-        <Header></Header>
-        <Content></Content>
-        <Footer></Footer>
-      </BrowserRouter>
+      <Router>
+        <Switch>
+          <Route path="/" exact component={Home}></Route>
+          <Route path="*" component={Error404}></Route>
+        </Switch>
+      </Router>
     </>
   );
 };

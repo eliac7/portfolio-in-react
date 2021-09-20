@@ -146,8 +146,8 @@ function Content() {
                 <h4> Web Developer and lover of good code & food.</h4>
                 <p className="mt-3">
                   Hello, and welcome to my site! My full name is Ilias Nikolaos
-                  Thalassochoritis (call me Ilias) and I am a Web Developer. I
-                  am {age}-year-old Studied Computer Science at University of
+                  Thalassochoritis (call me Ilias), and I am a Web Developer. I
+                  am {age} years old Studied Computer Science at University of
                   Thessaly and graduated in 2021. I live in Athens, GR.
                 </p>
                 <p className="mt-3">
@@ -156,7 +156,7 @@ function Content() {
                 </p>
                 <p className="mt-3">
                   Aside from writing lines of code and trying to fight bugs I
-                  really enjoy taking photos and riding my car.
+                  enjoy taking photos and riding my car.
                 </p>
                 <a href="#contact" className="btn btn-custom rounded-5 mr-auto">
                   GET IN TOUCH

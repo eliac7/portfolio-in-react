@@ -1,0 +1,30 @@
+.error_404 {
+  background: var(--light-blue);
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.error_404 a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.error_404 svg:nth-child(3) {
+  fill: #fff;
+  opacity: 0.5;
+}
+.btn-spaceman {
+  font-size: 2rem;
+  padding: 0.5rem 4rem;
+  border-radius: 20px;
+  background-color: #fff;
+  border: 3px solid transparent;
+}
+.btn-spaceman:hover {
+  background-color: transparent;
+  color: #fff;
+  border: 3px solid var(--dark-blue);
+}

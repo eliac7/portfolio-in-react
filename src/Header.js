@@ -26,9 +26,11 @@ function Header() {
   return (
     <div className="header">
       <header>
-        <div className="logo">
-          <Logo />
-        </div>
+        <Link to="/">
+          <div className="logo">
+            <Logo />
+          </div>
+        </Link>
         <div
           className={NavMobile ? "burger" : "burger closed "}
           onClick={() => {
