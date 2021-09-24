@@ -29,6 +29,7 @@ import Python from "./assets/images/logos/python.svg";
 import WordPress from "./assets/images/logos/wp.svg";
 import PHP from "./assets/images/logos/php.svg";
 import Linux from "./assets/images/logos/linux.svg";
+import NodeJS from "./assets/images/logos/nodejs.svg";
 
 import localjson from "./projects.json";
 
@@ -255,6 +256,12 @@ function Content() {
                     <div className="skillsItem">
                       <img src={Python} alt="Logo of Python" loading="lazy" />
                       <p>Python</p>
+                    </div>
+                  </li>
+                  <li data-aos="fade-up">
+                    <div className="skillsItem">
+                      <img src={NodeJS} alt="Logo of Node.js" loading="lazy" />
+                      <p>Node.js</p>
                     </div>
                   </li>
                   <li data-aos="fade-up">
