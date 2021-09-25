@@ -1,9 +1,9 @@
 import React from "react";
 import "./Footer.css";
-import { ReactComponent as Twitter } from "./assets/images/twitter.svg";
-import { ReactComponent as Instagram } from "./assets/images/instagram.svg";
-import { ReactComponent as LinkedIn } from "./assets/images/linkedin.svg";
-import { ReactComponent as Github } from "./assets/images/github.svg";
+import { ReactComponent as Twitter } from "../../assets/images/twitter.svg";
+import { ReactComponent as Instagram } from "../../assets/images/instagram.svg";
+import { ReactComponent as LinkedIn } from "../../assets/images/linkedin.svg";
+import { ReactComponent as Github } from "../../assets/images/github.svg";
 const year = new Date().getFullYear();
 
 function Footer() {

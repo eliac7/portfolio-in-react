@@ -1,14 +1,16 @@
 import Home from "./Home";
-import Error404 from "./Error404";
+import NotFound from "./components/Error/NotFound";
+import { Mouse } from "./components/Mouse/Mouse";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 const App = () => {
   return (
     <>
+      <Mouse></Mouse>
       <Router>
         <Switch>
           <Route path="/" exact component={Home}></Route>
-          <Route path="*" component={Error404}></Route>
+          <Route path="*" component={NotFound}></Route>
         </Switch>
       </Router>
     </>
