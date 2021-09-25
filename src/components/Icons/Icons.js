@@ -5,6 +5,7 @@ import { ReactComponent as WaveEnd } from "../../assets/images/wave_end.svg";
 import { ReactComponent as WaveEndGreen } from "../../assets/images/wave_end_green.svg";
 import { ReactComponent as MailMan } from "../../assets/images/MailMan.svg";
 import { ReactComponent as SpaceMan } from "../../assets/images/spaceman.svg";
+import { ReactComponent as ArrowUp } from "../../assets/images/arrowup.svg";
 
 import Me from "../../assets/images/me.jpg";
 import HTML from "../../assets/images/logos/html.svg";
@@ -34,6 +35,7 @@ const MyIcons = {
   WaveEndGreen,
   MailMan,
   SpaceMan,
+  ArrowUp,
   Me,
   HTML,
   CSS,

@@ -25,7 +25,6 @@ function Content() {
     axios
       .get(URL_TO_FETCH)
       .then((res) => {
-        console.log(res.data);
         setProjects(res.data);
         setLoading(false);
       })
