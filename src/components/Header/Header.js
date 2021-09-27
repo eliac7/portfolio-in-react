@@ -1,17 +1,16 @@
 import React from "react";
 import { useState } from "react";
-import { HashLink as Link } from "react-router-hash-link";
+import { NavHashLink as Link } from "react-router-hash-link";
 import "./Header.css";
-import { ReactComponent as Logo } from "../../assets/images/logo.svg";
+import MyIcons from "../Icons/Icons";
 
-function Header() {
+function Header(props) {
   const [NavMobile, setNavMobile] = useState(false);
   const [NavMobileSidebar, setNavMobileSidebar] = useState(false);
   const [Overlay, setOverlay] = useState(false);
   window.addEventListener("resize", function (e) {
     if (e.target.innerWidth > 768) {
       if (NavMobileSidebar) {
-        console.log(NavMobileSidebar);
         setNavMobile(!NavMobile);
         setNavMobileSidebar(!NavMobileSidebar);
         setOverlay(!Overlay);
@@ -26,9 +25,9 @@ function Header() {
   return (
     <div className="header">
       <header>
-        <Link to="/">
+        <Link to={window.location.pathname === "/" ? "/" : "/admin"}>
           <div className="logo">
-            <Logo />
+            <MyIcons.Logo />
           </div>
         </Link>
         <div
@@ -45,18 +44,13 @@ function Header() {
         </div>
         <nav>
           <ul>
-            <li>
-              <Link to="/#about">About</Link>
-            </li>
-            <li>
-              <Link to="/#skills">Skills</Link>
-            </li>
-            <li>
-              <Link to="/#projects">Projects</Link>
-            </li>
-            <li>
-              <Link to="/#contact">Contact</Link>
-            </li>
+            {props.items.map((item, index) => {
+              return (
+                <li key={index}>
+                  <Link to={item.link}>{item.name}</Link>
+                </li>
+              );
+            })}
           </ul>
         </nav>
         <div
@@ -76,42 +70,20 @@ function Header() {
           </div>
           <nav className="mobile">
             <ul>
-              <li
-                onClick={() => {
-                  setNavMobile(!NavMobile);
-                  setNavMobileSidebar(!NavMobileSidebar);
-                  setOverlay(!Overlay);
-                }}
-              >
-                <Link to="/#about">About</Link>
-              </li>
-              <li
-                onClick={() => {
-                  setNavMobile(!NavMobile);
-                  setNavMobileSidebar(!NavMobileSidebar);
-                  setOverlay(!Overlay);
-                }}
-              >
-                <Link to="/#skills">Skills</Link>
-              </li>
-              <li
-                onClick={() => {
-                  setNavMobile(!NavMobile);
-                  setNavMobileSidebar(!NavMobileSidebar);
-                  setOverlay(!Overlay);
-                }}
-              >
-                <Link to="/#projects">Projects</Link>
-              </li>
-              <li
-                onClick={() => {
-                  setNavMobile(!NavMobile);
-                  setNavMobileSidebar(!NavMobileSidebar);
-                  setOverlay(!Overlay);
-                }}
-              >
-                <Link to="/#contact">Contact</Link>
-              </li>
+              {props.items.map((item, index) => {
+                return (
+                  <li
+                    key={index}
+                    onClick={() => {
+                      setNavMobile(!NavMobile);
+                      setNavMobileSidebar(!NavMobileSidebar);
+                      setOverlay(!Overlay);
+                    }}
+                  >
+                    <Link to={item.link}>{item.name}</Link>
+                  </li>
+                );
+              })}
             </ul>
           </nav>
         </div>
