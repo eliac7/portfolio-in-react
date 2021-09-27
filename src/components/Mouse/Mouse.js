@@ -22,6 +22,9 @@ export const Mouse = () => {
     document.addEventListener("mouseup", () => {
       cursorRef.current.style.transform = "scale(1)";
     });
+    document.addEventListener("mouseleave", () => {
+      cursorRef.current.style.display = "none";
+    });
   }, []);
 
   return <div className="cursor" ref={cursorRef}></div>;

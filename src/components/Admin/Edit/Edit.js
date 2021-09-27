@@ -33,6 +33,7 @@ function Edit(props) {
     { name: "Add New Skill", link: "/admin/new" },
   ];
   const [toUpdate, setToUpdate] = useState([]);
+  const [tempTitle, settempTitle] = useState("");
   const [IsLoading, setIsLoading] = useState(true);
   const [isError, setisError] = useState({
     error: false,
@@ -52,6 +53,7 @@ function Edit(props) {
       .then((res) => {
         setIsLoading(true);
         setToUpdate(res.data);
+        settempTitle(res.data.title);
       })
       .then(() => setIsLoading(false))
       .catch((err) => {
@@ -80,16 +82,19 @@ function Edit(props) {
         <div className="container">
           {!isError.err ? (
             <>
-              <h2 className="text-center">Editting skill: {toUpdate.title}</h2>
+              <h2 className="text-center">Editting skill: {tempTitle}</h2>
               <div className="row">
                 <div className="col-lg-12">
                   <form onSubmit={handleSubmit(PostUpdate)}>
                     <div className="row mt-5">
-                      <div className="col-lg-6">
+                      <div className="col-lg-6 d-flex flex-column">
                         <div className="form-group d-flex flex-column">
-                          <label htmlFor="title">Title</label>
+                          <label htmlFor="title" className="form-label my-2">
+                            Title
+                          </label>
                           <input
                             type="text"
+                            className="form-control"
                             id="title"
                             value={toUpdate.title}
                             {...register("title", { required: true })}
@@ -101,9 +106,15 @@ function Edit(props) {
                             }}
                           />
                           <span>{errors.title?.message}</span>
-                          <label htmlFor="description">Description</label>
+                          <label
+                            htmlFor="description"
+                            className="form-label my-2"
+                          >
+                            Description
+                          </label>
                           <textarea
-                            rows={10}
+                            rows={6}
+                            className="form-control"
                             id="description"
                             {...register("description", { required: true })}
                             value={toUpdate.description}
@@ -115,10 +126,16 @@ function Edit(props) {
                             }}
                           />
                           <span>{errors.description?.message}</span>
-                          <label htmlFor="technologies">Technologies</label>
+                          <label
+                            className="form-label my-2"
+                            htmlFor="technologies"
+                          >
+                            Technologies
+                          </label>
                           <input
                             type="text"
                             id="technologies"
+                            className="form-control"
                             value={toUpdate.technologies.replace(" ", "")}
                             {...register("technologies", { required: true })}
                             onChange={function (e) {
@@ -128,16 +145,21 @@ function Edit(props) {
                               }));
                             }}
                           />
-                          <span className="text-muted">With commas only.</span>
+                          <span className="form-text text-muted">
+                            With commas only.
+                          </span>
                           <span>{errors.technologies?.message}</span>
                         </div>
                       </div>
-                      <div className="col-lg-6">
-                        <div className="form-group d-flex flex-column">
-                          <label htmlFor="type">Type</label>
+                      <div className="col-lg-6 d-flex flex-column justify-content-around">
+                        <div className="form-group d-flex flex-column justify-content-around">
+                          <label className="form-label my-2" htmlFor="type">
+                            Type
+                          </label>
                           <input
                             type="text"
                             id="type"
+                            className="form-control"
                             {...register("type", { required: true })}
                             value={toUpdate.type}
                             onChange={function (e) {
@@ -148,9 +170,15 @@ function Edit(props) {
                             }}
                           />
                           <span>{errors.type?.message}</span>
-                          <label htmlFor="className">ClassName</label>
+                          <label
+                            className="form-label my-2"
+                            htmlFor="className"
+                          >
+                            ClassName
+                          </label>
                           <input
                             type="text"
+                            className="form-control"
                             id="className"
                             {...register("className", { required: true })}
                             value={toUpdate.className}
@@ -162,10 +190,13 @@ function Edit(props) {
                             }}
                           />
                           <span>{errors.className?.message}</span>
-                          <label htmlFor="url_live">URL Live</label>
+                          <label className="form-label my-2" htmlFor="url_live">
+                            URL Live
+                          </label>
                           <input
                             type="text"
                             id="url_live"
+                            className="form-control"
                             value={
                               toUpdate.URL.live === undefined
                                 ? ""
@@ -181,10 +212,16 @@ function Edit(props) {
                               }));
                             }}
                           />
-                          <label htmlFor="url_github">URL Github</label>
+                          <label
+                            className="form-label my-2"
+                            htmlFor="url_github"
+                          >
+                            URL Github
+                          </label>
                           <input
                             type="text"
                             id="url_github"
+                            className="form-control"
                             value={
                               toUpdate.URL.github === undefined
                                 ? ""
