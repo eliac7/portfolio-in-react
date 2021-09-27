@@ -111,6 +111,9 @@ ul li a {
   text-decoration: none;
   color: #fff;
 }
+ul li a.active {
+  color: tomato;
+}
 ul li a:hover {
   color: var(--yellow);
 }

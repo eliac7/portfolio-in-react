@@ -1,0 +1,8 @@
+.main {
+  background-color: var(--dark-blue);
+  color: #fff;
+  padding: 40px 0px;
+}
+.card-body {
+  color: #232323;
+}

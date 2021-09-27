@@ -6,6 +6,7 @@ import { ReactComponent as WaveEndGreen } from "../../assets/images/wave_end_gre
 import { ReactComponent as MailMan } from "../../assets/images/MailMan.svg";
 import { ReactComponent as SpaceMan } from "../../assets/images/spaceman.svg";
 import { ReactComponent as ArrowUp } from "../../assets/images/arrowup.svg";
+import { ReactComponent as Logo } from "../../assets/images/logo.svg";
 
 import Me from "../../assets/images/me.jpg";
 import HTML from "../../assets/images/logos/html.svg";
@@ -28,6 +29,7 @@ import Linux from "../../assets/images/logos/linux.svg";
 import NodeJS from "../../assets/images/logos/nodejs.svg";
 
 const MyIcons = {
+  Logo,
   Github,
   Site,
   WaveStart,
