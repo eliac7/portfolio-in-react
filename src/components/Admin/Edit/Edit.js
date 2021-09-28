@@ -6,7 +6,15 @@ import Button from "react-bootstrap/Button";
 import { useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import {
+  getStorage,
+  ref,
+  deleteObject,
+  uploadBytes,
+  getDownloadURL,
+} from "firebase/storage";
 import * as yup from "yup";
+import { v4 as uuidv4 } from "uuid";
 
 function Edit(props) {
   const id = props.match.params.id;
@@ -39,12 +47,105 @@ function Edit(props) {
     error: false,
     msg: "",
   });
+  const [image, setImage] = useState("");
 
-  const PostUpdate = (e) => {
-    axios
-      .patch("http://localhost:5000/api/skills/" + id, toUpdate)
-      .then(() => history.push("/admin/skills"))
-      .catch((err) => console.log(err));
+  const [isActive, setIsActive] = useState(false);
+  const [counter, setCounter] = useState(3);
+
+  const updateToAPI = async (id, data) => {
+    await axios
+      .patch(
+        `http://localhost:5000/api/skills/${id && id !== undefined ? id : ""}`,
+        data
+      )
+      .then((res) => {
+        console.log(res);
+        setIsActive(!isActive);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    let intervalId;
+
+    if (isActive) {
+      intervalId = setInterval(() => {
+        setCounter((counter) => counter - 1);
+      }, 1000);
+    }
+
+    return () => clearInterval(intervalId);
+  }, [isActive, counter]);
+
+  const PostUpdate = () => {
+    const storage = getStorage();
+    if (toUpdate.image && toUpdate.image !== undefined) {
+      //If we have already image and not undefined
+      if (image) {
+        //And if we have a new image, then delete the existed one
+
+        const storageRef = ref(storage, `/skills/${uuidv4()}-${image.name}`);
+
+        const fileRef = ref(storage, toUpdate.image);
+        deleteObject(fileRef)
+          .then(() => {
+            console.log("Image deleted successfully.");
+          })
+          .catch((error) => {
+            console.log(error);
+          })
+          .then(() => {
+            uploadBytes(storageRef, image).then((snapshot) => {
+              getDownloadURL(snapshot.ref)
+                .then((downloadURL) => {
+                  return downloadURL;
+                })
+                .then((url) => {
+                  toUpdate["image"] = url;
+                })
+                .then(() => {
+                  updateToAPI(id, toUpdate);
+                });
+            });
+          });
+      } else if (!image) {
+        //else if we don't have a new image, then just update our fieldss
+        updateToAPI(id, toUpdate);
+      }
+    } else if (!toUpdate.image) {
+      //if we don't have an already uploaded image
+      if (image) {
+        //and we have a new image
+
+        const storageRef = ref(storage, `/skills/${uuidv4()}-${image.name}`);
+        uploadBytes(storageRef, image).then((snapshot) => {
+          getDownloadURL(snapshot.ref)
+            .then((downloadURL) => {
+              return downloadURL;
+            })
+            .then((downloadURL) => {
+              console.log(downloadURL);
+              toUpdate["image"] = downloadURL;
+            })
+            .then(() => {
+              console.log("ELAAA");
+              console.log(toUpdate);
+              updateToAPI(id, toUpdate);
+            });
+        });
+      } else {
+        //else just update the fields
+        axios
+          .patch("http://localhost:5000/api/skills/" + id, toUpdate)
+          .then((res) => {
+            console.log(res);
+            setIsActive(!isActive);
+          })
+          .catch((err) => console.log(err));
+      }
+    }
   };
 
   useEffect(() => {
@@ -174,7 +275,7 @@ function Edit(props) {
                             className="form-label my-2"
                             htmlFor="className"
                           >
-                            ClassName
+                            Classname
                           </label>
                           <input
                             type="text"
@@ -237,6 +338,33 @@ function Edit(props) {
                               }));
                             }}
                           />
+                          {toUpdate.image ? (
+                            <div className="w-100 mt-3 text-center d-flex flex-column justify-content-center align-items-center">
+                              <label className="form-label">
+                                Current image:
+                              </label>
+                              <div
+                                className="position-relative "
+                                style={{ width: "250px" }}
+                              >
+                                <img src={toUpdate.image} className="" alt="" />
+                              </div>
+                            </div>
+                          ) : (
+                            ""
+                          )}
+
+                          <label htmlFor="formFile" className="form-label">
+                            {toUpdate.image ? "Replace image with" : "Image"}
+                          </label>
+                          <input
+                            className="form-control"
+                            type="file"
+                            onChange={(e) => {
+                              setImage(e.target.files[0]);
+                            }}
+                            id="formFile"
+                          ></input>
                         </div>
                       </div>
                     </div>
@@ -252,6 +380,19 @@ function Edit(props) {
                           Update
                         </Button>
                       </div>
+                      {isActive ? (
+                        <>
+                          <p className="text-success mt-2">
+                            Your new skill has been created successfully!
+                          </p>
+                          <p>
+                            You will be redirected back to skills in {counter}
+                            {counter <= 0 ? history.push("/admin/skills") : ""}
+                          </p>
+                        </>
+                      ) : (
+                        ""
+                      )}
                     </div>
                   </form>
                 </div>
