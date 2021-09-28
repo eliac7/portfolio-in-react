@@ -5,6 +5,8 @@ import Footer from "../../Footer/Footer";
 import Button from "react-bootstrap/Button";
 import "./Skills.css";
 import { useHistory } from "react-router-dom";
+import { getStorage, ref, deleteObject } from "firebase/storage";
+import ModalDialog from "../Modal/ModalDialog";
 
 function Skills() {
   const history = useHistory();
@@ -16,22 +18,16 @@ function Skills() {
 
   const [skills, setSkills] = useState([]);
   const [ErrorGetSkills, setErrorGetSkills] = useState(false);
-  useEffect(() => {
-    axios
-      .get("http://localhost:5000/api/skills")
-      .then((res) => setSkills(res.data))
-      .catch((err) => setErrorGetSkills(true));
-  }, []);
+  const [skillToDelete, setskillToDelete] = useState([]);
 
-  const handleDelete = (id) => {
-    axios
-      .delete("http://localhost:5000/api/skills/" + id)
-      .then(() => {
-        console.log(`${id} was deleted successfully.`);
-        const remainingResults = skills.filter((skill) => skill._id !== id);
-        setSkills(remainingResults);
-      })
-      .catch((err) => console.log(err));
+  const [show, setShow] = useState(false);
+  const [toDelete, settoDelete] = useState(null);
+
+  const Showing = (val) => {
+    setShow(val);
+  };
+  const Deleting = (val) => {
+    settoDelete(val);
   };
 
   const routeChange = (id) => {
@@ -39,8 +35,44 @@ function Skills() {
     history.push(path);
   };
 
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/api/skills")
+      .then((res) => setSkills(res.data))
+      .catch(() => setErrorGetSkills(true));
+  }, []);
+
+  const handleDelete = (image, id, toDelete) => {
+    if (toDelete) {
+      axios
+        .delete("http://localhost:5000/api/skills/" + id)
+        .then(() => {
+          console.log(`${id} was deleted successfully.`);
+          const remainingResults = skills.filter((skill) => skill._id !== id);
+          setSkills(remainingResults);
+        })
+        .catch((err) => console.log(err));
+      const storage = getStorage();
+      const fileRef = ref(storage, image);
+      deleteObject(fileRef)
+        .then(() => {
+          console.log("Image deleted successfully.");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  };
+
   return (
     <>
+      <ModalDialog
+        showModal={show}
+        handleModal={Showing}
+        deleteItem={toDelete}
+        skill={skillToDelete}
+        handleDeleteItem={Deleting}
+      ></ModalDialog>
       <Header items={HeaderArray}></Header>
       <div className="main">
         <div className="container" id="allskills">
@@ -59,11 +91,24 @@ function Skills() {
                     className="card m-2"
                     style={{ width: "20rem" }}
                   >
-                    <img
-                      className="card-img-top"
-                      src="https://i1.wp.com/techbooky.com/wp-content/uploads/2020/02/project-management.png?resize=750%2C504&ssl=1"
-                      alt="Placeholder"
-                    />
+                    <div
+                      style={{
+                        position: "relative",
+                        height: "150px",
+                      }}
+                    >
+                      <img
+                        className="card-img-top position-absolute h-100 w-100"
+                        style={{ inset: 0, objectFit: "cover" }}
+                        src={
+                          skill.image
+                            ? skill.image
+                            : "https://via.placeholder.com/300/D3D3D3/FFFFFFF/?text=Project"
+                        }
+                        alt="Placeholder"
+                      />
+                    </div>
+
                     <div className="card-body d-flex flex-column justify-content-between">
                       <div>
                         <h5 className="card-title text-center">
@@ -92,7 +137,11 @@ function Skills() {
                         </Button>
                         <Button
                           variant="danger"
-                          onClick={() => handleDelete(skill._id)}
+                          onClick={() => {
+                            setShow(!show);
+                            setskillToDelete(skill.title);
+                            handleDelete(skill.image, skill._id, show);
+                          }}
                         >
                           Delete
                         </Button>
