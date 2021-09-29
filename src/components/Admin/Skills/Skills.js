@@ -28,6 +28,32 @@ function Skills() {
   };
   const Deleting = (val) => {
     settoDelete(val);
+    if (val) {
+      axios
+        .delete("http://localhost:5000/api/skills/" + skillToDelete.id)
+        .then(() => {
+          console.log(`${skillToDelete.id} was deleted successfully.`);
+          const remainingResults = skills.filter(
+            (skill) => skill._id !== skillToDelete.id
+          );
+          setSkills(remainingResults);
+        })
+        .catch((err) => console.log(err))
+        .then(() => setShow(false));
+
+      if (skillToDelete.image) {
+        const storage = getStorage();
+        const fileRef = ref(storage, skillToDelete.image);
+        console.log(fileRef);
+        deleteObject(fileRef)
+          .then(() => {
+            console.log("Image deleted successfully.");
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
+    }
   };
 
   const routeChange = (id) => {
@@ -41,28 +67,6 @@ function Skills() {
       .then((res) => setSkills(res.data))
       .catch(() => setErrorGetSkills(true));
   }, []);
-
-  const handleDelete = (image, id, toDelete) => {
-    if (toDelete) {
-      axios
-        .delete("http://localhost:5000/api/skills/" + id)
-        .then(() => {
-          console.log(`${id} was deleted successfully.`);
-          const remainingResults = skills.filter((skill) => skill._id !== id);
-          setSkills(remainingResults);
-        })
-        .catch((err) => console.log(err));
-      const storage = getStorage();
-      const fileRef = ref(storage, image);
-      deleteObject(fileRef)
-        .then(() => {
-          console.log("Image deleted successfully.");
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }
-  };
 
   return (
     <>
@@ -139,8 +143,11 @@ function Skills() {
                           variant="danger"
                           onClick={() => {
                             setShow(!show);
-                            setskillToDelete(skill.title);
-                            handleDelete(skill.image, skill._id, show);
+                            setskillToDelete({
+                              title: skill.title,
+                              id: skill._id,
+                              image: skill?.image,
+                            });
                           }}
                         >
                           Delete
