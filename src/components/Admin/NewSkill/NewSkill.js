@@ -113,11 +113,13 @@ function NewSkill() {
                       <div className="form-group d-flex flex-column">
                         <label htmlFor="title" className="form-label my-2">
                           Title
+                          <span>*</span>
                         </label>
                         <input
                           type="text"
                           className="form-control"
                           id="title"
+                          required
                           {...register("title", { required: true })}
                         />
                         <span>{errors.title?.message}</span>
@@ -126,11 +128,13 @@ function NewSkill() {
                           className="form-label my-2"
                         >
                           Description
+                          <span>*</span>
                         </label>
                         <textarea
                           rows={6}
                           className="form-control"
                           id="description"
+                          required
                           {...register("description", { required: true })}
                         />
                         <span>{errors.description?.message}</span>
@@ -139,11 +143,13 @@ function NewSkill() {
                           htmlFor="technologies"
                         >
                           Technologies
+                          <span>*</span>
                         </label>
                         <input
                           type="text"
                           id="technologies"
                           className="form-control"
+                          required
                           {...register("technologies", { required: true })}
                         />
                         <span className="form-text text-muted">
@@ -156,21 +162,25 @@ function NewSkill() {
                       <div className="form-group d-flex flex-column">
                         <label className="form-label my-2" htmlFor="type">
                           Type
+                          <span>*</span>
                         </label>
                         <input
                           type="text"
                           id="type"
                           className="form-control"
+                          required
                           {...register("type", { required: true })}
                         />
                         <span>{errors.type?.message}</span>
                         <label className="form-label my-2" htmlFor="className">
                           Classname
+                          <span>*</span>
                         </label>
                         <input
                           type="text"
                           className="form-control"
                           id="className"
+                          required
                           {...register("className", { required: true })}
                         />
                         <span>{errors.className?.message}</span>
@@ -197,7 +207,7 @@ function NewSkill() {
                         />
                         <span>{errors?.URL?.github?.message}</span>
 
-                        <label htmlFor="formFile" className="form-label">
+                        <label htmlFor="formFile" className="form-label my-2">
                           Image
                         </label>
                         <input
