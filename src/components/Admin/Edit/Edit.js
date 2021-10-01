@@ -192,12 +192,14 @@ function Edit(props) {
                         <div className="form-group d-flex flex-column">
                           <label htmlFor="title" className="form-label my-2">
                             Title
+                            <span>*</span>
                           </label>
                           <input
                             type="text"
                             className="form-control"
                             id="title"
                             value={toUpdate.title}
+                            required
                             {...register("title", { required: true })}
                             onChange={function (e) {
                               setToUpdate((prevState) => ({
@@ -212,11 +214,13 @@ function Edit(props) {
                             className="form-label my-2"
                           >
                             Description
+                            <span>*</span>
                           </label>
                           <textarea
                             rows={6}
                             className="form-control"
                             id="description"
+                            required
                             {...register("description", { required: true })}
                             value={toUpdate.description}
                             onChange={function (e) {
@@ -232,12 +236,14 @@ function Edit(props) {
                             htmlFor="technologies"
                           >
                             Technologies
+                            <span>*</span>
                           </label>
                           <input
                             type="text"
                             id="technologies"
                             className="form-control"
                             value={toUpdate.technologies.replace(" ", "")}
+                            required
                             {...register("technologies", { required: true })}
                             onChange={function (e) {
                               setToUpdate((prevState) => ({
@@ -256,11 +262,13 @@ function Edit(props) {
                         <div className="form-group d-flex flex-column justify-content-around">
                           <label className="form-label my-2" htmlFor="type">
                             Type
+                            <span>*</span>
                           </label>
                           <input
                             type="text"
                             id="type"
                             className="form-control"
+                            required
                             {...register("type", { required: true })}
                             value={toUpdate.type}
                             onChange={function (e) {
@@ -276,6 +284,7 @@ function Edit(props) {
                             htmlFor="className"
                           >
                             Classname
+                            <span>*</span>
                           </label>
                           <input
                             type="text"
@@ -283,6 +292,7 @@ function Edit(props) {
                             id="className"
                             {...register("className", { required: true })}
                             value={toUpdate.className}
+                            required
                             onChange={function (e) {
                               setToUpdate((prevState) => ({
                                 ...prevState,
