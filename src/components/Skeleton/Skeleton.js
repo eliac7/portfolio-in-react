@@ -12,11 +12,20 @@ const skeletonLoading = keyframes`
 
 const Container = styled.div`
   display: flex;
-  min-height: 350px;
-  margin: 20px;
+  min-height: 21.875rem;
+  margin: 1.25rem;
   flex-wrap: wrap;
   opacity: 0.7;
   flex-direction: ${(props) => props.flexDirection};
+`;
+const ContainerTab = styled.div`
+  display: flex;
+  min-height: 2.5rem;
+  margin: 1.25rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.7;
 `;
 
 const Left = styled.div`
@@ -26,7 +35,7 @@ const Right = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
-  padding: 0 12px;
+  padding: 0 0.75rem;
   justify-content: space-between;
 `;
 const Image = styled.div`
@@ -34,11 +43,18 @@ const Image = styled.div`
   height: 100%;
   animation: ${skeletonLoading} 1s linear infinite alternate;
 `;
+const Pill = styled.div`
+  margin: 0 1rem;
+  width: 4.375rem;
+  height: 2.1875rem;
+  border-radius: 3.125rem;
+  animation: ${skeletonLoading} 1s linear infinite alternate;
+`;
 const Title = styled.div`
   display: flex;
   width: 50%;
-  min-height: 30px;
-  border-radius: 40px;
+  min-height: 1.875rem;
+  border-radius: 2.5rem;
   animation: ${skeletonLoading} 1s linear infinite alternate;
 `;
 const ContainerTitle = styled.div`
@@ -52,15 +68,15 @@ const ContainerSubTitle = styled.div`
   align-items: center;
 `;
 const SubTitle = styled.div`
-  width: 60px;
-  height: 30px;
-  margin: 10px 10px 10px 0;
-  border-radius: 40px;
+  width: 3.75rem;
+  height: 1.875rem;
+  margin: 0.625rem 0.625rem 0.625rem 0;
+  border-radius: 2.5rem;
   animation: ${skeletonLoading} 1s linear infinite alternate;
 `;
 const Desc = styled.div`
-  min-height: 80px;
-  border-radius: 40px;
+  min-height: 5rem;
+  border-radius: 2.5rem;
   animation: ${skeletonLoading} 1s linear infinite alternate;
 `;
 const ButtonContainer = styled.div`
@@ -71,14 +87,14 @@ const ButtonContainer = styled.div`
 `;
 
 const Button = styled.div`
-  width: 40px;
-  height: 40px;
+  width: 2.5rem;
+  height: 2.5rem;
   border-radius: 50%;
   margin-right: 0.5rem;
   animation: ${skeletonLoading} 1s linear infinite alternate;
 `;
 
-export default function Skeleton({ type }) {
+export const SkeletonItem = ({ type }) => {
   return (
     <>
       <Container flexDirection={type}>
@@ -104,4 +120,15 @@ export default function Skeleton({ type }) {
       </Container>
     </>
   );
-}
+};
+export const SkeletonTab = ({ type }) => {
+  return (
+    <>
+      <ContainerTab flexDirection={type}>
+        <Pill />
+        <Pill />
+        <Pill />
+      </ContainerTab>
+    </>
+  );
+};
