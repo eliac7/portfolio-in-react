@@ -10,6 +10,7 @@ import localjson from "../../projects.json";
 
 import AOS from "aos";
 import "aos/dist/aos.css";
+import Skeleton from "../Skeleton/Skeleton";
 AOS.init({ delay: 100, once: true, disable: window.innerWidth < 768 });
 
 const age = new Date().getFullYear() - Number(1997);
@@ -26,13 +27,14 @@ function Content() {
       .get(URL_TO_FETCH)
       .then((res) => {
         setProjects(res.data);
-        setLoading(false);
       })
       .catch((err) => {
         if (err.message) {
           setProjects(localjson);
-          setLoading(false);
         }
+      })
+      .then(() => {
+        setLoading(false);
       });
   }, []);
 
@@ -68,16 +70,6 @@ function Content() {
         btns[i].classList.remove("active");
       }
     }
-  }
-  if (isLoading) {
-    return (
-      <div
-        className="Loading min-vh-100 d-flex align-items-center justify-content-center fw-bold text-white"
-        style={{ backgroundColor: "var(--light-blue)" }}
-      >
-        Loading...
-      </div>
-    );
   }
 
   return (
@@ -234,93 +226,102 @@ function Content() {
             </div>
           </div>
 
-          {projects.map(function (item, index) {
-            let items = item.technologies.split(",");
+          {isLoading
+            ? [1, 2, 3].map((i) => {
+                return (
+                  <Skeleton
+                    key={i}
+                    type={i % 2 === 0 ? "row-reverse" : "row"}
+                  />
+                );
+              })
+            : projects.map(function (item, index) {
+                let items = item.technologies.split(",");
 
-            return (
-              <div
-                className={
-                  "row d-flex mt-5 projects-row " +
-                  (index % 2 === 1 ? "flex-row-reverse" : "")
-                }
-                data-item={item.type}
-                data-aos="fade-up"
-                key={item.className}
-              >
-                <div className="col-lg-6">
-                  <div className={"screen " + item.className}></div>
-                </div>
-                <div
-                  className={
-                    "col-lg-6 text-lg-start text-center d-flex flex-column justify-content-between" +
-                    (index % 2 === 1 ? " text-lg-end " : "")
-                  }
-                >
-                  <div className="d-flex flex-column">
-                    <h4>{item.name}</h4>
+                return (
+                  <div
+                    className={
+                      "row d-flex mt-5 projects-row " +
+                      (index % 2 === 1 ? "flex-row-reverse" : "")
+                    }
+                    data-item={item.type}
+                    data-aos="fade-up"
+                    key={item.className}
+                  >
+                    <div className="col-lg-6">
+                      <div className={"screen " + item.className}></div>
+                    </div>
                     <div
                       className={
-                        "technologies d-flex flex-wrap  flex-sm-column flex-md-row align-items-center justify-content-center my-3 " +
-                        (index % 2 === 1
-                          ? "justify-content-lg-end"
-                          : "justify-content-lg-start")
+                        "col-lg-6 text-lg-start text-center d-flex flex-column justify-content-between" +
+                        (index % 2 === 1 ? " text-lg-end " : "")
                       }
                     >
-                      <p className="mb-0 me-2">Technologies:</p>
-                      <div className="technology-outer d-flex flex-wrap justify-content-center align-items-center">
-                        {items.map(function (technology) {
-                          return (
-                            <span
-                              className="technology my-2 my-lg-0"
-                              key={technology.toString()}
-                            >
-                              {technology}
-                            </span>
-                          );
-                        })}
+                      <div className="d-flex flex-column">
+                        <h4>{item.name}</h4>
+                        <div
+                          className={
+                            "technologies d-flex flex-wrap  flex-sm-column flex-md-row align-items-center justify-content-center my-3 " +
+                            (index % 2 === 1
+                              ? "justify-content-lg-end"
+                              : "justify-content-lg-start")
+                          }
+                        >
+                          <p className="mb-0 me-2">Technologies:</p>
+                          <div className="technology-outer d-flex flex-wrap justify-content-center align-items-center">
+                            {items.map(function (technology) {
+                              return (
+                                <span
+                                  className="technology my-2 my-lg-0"
+                                  key={technology.toString()}
+                                >
+                                  {technology}
+                                </span>
+                              );
+                            })}
+                          </div>
+                        </div>
+                      </div>
+
+                      <p>{item.content}</p>
+                      <div
+                        className={
+                          "links d-flex justify-content-center " +
+                          (index % 2 === 1
+                            ? "justify-content-lg-end"
+                            : "justify-content-lg-start")
+                        }
+                      >
+                        {item.github ? (
+                          <a
+                            href={item.github}
+                            style={{ borderRadius: 50 + "%" }}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="mx-2"
+                          >
+                            <MyIcons.Github />
+                          </a>
+                        ) : (
+                          ""
+                        )}
+                        {item.live ? (
+                          <a
+                            href={item.live}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="mx-2"
+                          >
+                            <MyIcons.Site />
+                          </a>
+                        ) : (
+                          ""
+                        )}
                       </div>
                     </div>
                   </div>
-
-                  <p>{item.content}</p>
-                  <div
-                    className={
-                      "links d-flex justify-content-center " +
-                      (index % 2 === 1
-                        ? "justify-content-lg-end"
-                        : "justify-content-lg-start")
-                    }
-                  >
-                    {item.github ? (
-                      <a
-                        href={item.github}
-                        style={{ borderRadius: 50 + "%" }}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="mx-2"
-                      >
-                        <MyIcons.Github />
-                      </a>
-                    ) : (
-                      ""
-                    )}
-                    {item.live ? (
-                      <a
-                        href={item.live}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="mx-2"
-                      >
-                        <MyIcons.Site />
-                      </a>
-                    ) : (
-                      ""
-                    )}
-                  </div>
-                </div>
-              </div>
-            );
-          })}
+                );
+              })}
         </div>
       </section>
       <section className="contact position-relative">
