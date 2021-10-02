@@ -10,7 +10,8 @@ import localjson from "../../projects.json";
 
 import AOS from "aos";
 import "aos/dist/aos.css";
-import Skeleton from "../Skeleton/Skeleton";
+import { SkeletonItem, SkeletonTab } from "../Skeleton/Skeleton";
+
 AOS.init({ delay: 100, once: true, disable: window.innerWidth < 768 });
 
 const age = new Date().getFullYear() - Number(1997);
@@ -197,39 +198,43 @@ function Content() {
             </div>
           </div>
 
-          <div className="row toggles-row d-flex align-items-center justify-content-center mt-3 ">
-            <div
-              className="toggles mw-100 d-flex align-items-center justify-content-center "
-              data-aos="fade-up"
-            >
-              <button
-                className="btn btn-toggle mx-3 active"
-                data-toggle="all"
-                onClick={(e) => handleToggler(e)}
+          {isLoading ? (
+            <SkeletonTab />
+          ) : (
+            <div className="row toggles-row d-flex align-items-center justify-content-center mt-3 ">
+              <div
+                className="toggles mw-100 d-flex align-items-center justify-content-center "
+                data-aos="fade-up"
               >
-                All
-              </button>
-              <button
-                className="btn btn-toggle mx-3"
-                data-toggle="work"
-                onClick={(e) => handleToggler(e)}
-              >
-                Work
-              </button>
-              <button
-                className="btn btn-toggle mx-3"
-                data-toggle="personal"
-                onClick={(e) => handleToggler(e)}
-              >
-                Personal
-              </button>
+                <button
+                  className="btn btn-toggle mx-3 active"
+                  data-toggle="all"
+                  onClick={(e) => handleToggler(e)}
+                >
+                  All
+                </button>
+                <button
+                  className="btn btn-toggle mx-3"
+                  data-toggle="work"
+                  onClick={(e) => handleToggler(e)}
+                >
+                  Work
+                </button>
+                <button
+                  className="btn btn-toggle mx-3"
+                  data-toggle="personal"
+                  onClick={(e) => handleToggler(e)}
+                >
+                  Personal
+                </button>
+              </div>
             </div>
-          </div>
+          )}
 
           {isLoading
             ? [1, 2, 3].map((i) => {
                 return (
-                  <Skeleton
+                  <SkeletonItem
                     key={i}
                     type={i % 2 === 0 ? "row-reverse" : "row"}
                   />
