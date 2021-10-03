@@ -19,7 +19,6 @@ const Auth = () => {
   const [isRequesting, setIsRequesting] = useState(false);
   const [successRecaptcha, setSuccessRecaptcha] = useState(false);
 
-  console.log(isRequesting);
   useEffect(() => {
     if (localStorage.getItem("isAuthenticated")) {
       history.push("/admin");
