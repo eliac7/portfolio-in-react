@@ -20,9 +20,17 @@ function NewSkill() {
   const [FormSubmitted, setFormSubmitted] = useState(null);
   const [FormSubmitting, setFormSubmitting] = useState(false);
   const [image, setImage] = useState("");
+  const [isUp, setisUp] = useState(false);
 
   const [isActive, setIsActive] = useState(false);
   const [counter, setCounter] = useState(3);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/api/skills")
+      .then(() => setisUp(true))
+      .catch(() => setisUp(false));
+  }, [isUp]);
 
   useEffect(() => {
     let intervalId;
@@ -37,6 +45,7 @@ function NewSkill() {
   }, [isActive, counter]);
 
   const HeaderArray = [
+    { name: "Home", link: "/admin/" },
     { name: "All Skills", link: "/admin/skills" },
     { name: "Add New Skill", link: "/admin/new" },
   ];
@@ -104,166 +113,181 @@ function NewSkill() {
       <div className="main">
         <div className="container">
           <h2 className="text-center">Add new skill</h2>
-          <div className="row min-vh-100">
+          <div className="row ">
             <div className="row">
-              <div className="col-lg-12">
-                <form onSubmit={handleSubmit(SubmittedForm)} ref={formRef}>
-                  <div className="row mt-5">
-                    <div className="col-lg-6 d-flex flex-column">
-                      <div className="form-group d-flex flex-column">
-                        <label htmlFor="title" className="form-label my-2">
-                          Title
-                          <span>*</span>
-                        </label>
-                        <input
-                          type="text"
-                          className="form-control"
-                          id="title"
-                          required
-                          {...register("title", { required: true })}
-                        />
-                        <span>{errors.title?.message}</span>
-                        <label
-                          htmlFor="description"
-                          className="form-label my-2"
-                        >
-                          Description
-                          <span>*</span>
-                        </label>
-                        <textarea
-                          rows={6}
-                          className="form-control"
-                          id="description"
-                          required
-                          {...register("description", { required: true })}
-                        />
-                        <span>{errors.description?.message}</span>
-                        <label
-                          className="form-label my-2"
-                          htmlFor="technologies"
-                        >
-                          Technologies
-                          <span>*</span>
-                        </label>
-                        <input
-                          type="text"
-                          id="technologies"
-                          className="form-control"
-                          required
-                          {...register("technologies", { required: true })}
-                        />
-                        <span className="form-text text-muted">
-                          With commas only.
-                        </span>
-                        <span>{errors.technologies?.message}</span>
+              {isUp ? (
+                <div className="col-lg-12">
+                  <form onSubmit={handleSubmit(SubmittedForm)} ref={formRef}>
+                    <div className="row mt-5">
+                      <div className="col-lg-6 d-flex flex-column">
+                        <div className="form-group d-flex flex-column">
+                          <label htmlFor="title" className="form-label my-2">
+                            Title
+                            <span>*</span>
+                          </label>
+                          <input
+                            type="text"
+                            className="form-control"
+                            id="title"
+                            required
+                            {...register("title", { required: true })}
+                          />
+                          <span>{errors.title?.message}</span>
+                          <label
+                            htmlFor="description"
+                            className="form-label my-2"
+                          >
+                            Description
+                            <span>*</span>
+                          </label>
+                          <textarea
+                            rows={6}
+                            className="form-control"
+                            id="description"
+                            required
+                            {...register("description", { required: true })}
+                          />
+                          <span>{errors.description?.message}</span>
+                          <label
+                            className="form-label my-2"
+                            htmlFor="technologies"
+                          >
+                            Technologies
+                            <span>*</span>
+                          </label>
+                          <input
+                            type="text"
+                            id="technologies"
+                            className="form-control"
+                            required
+                            {...register("technologies", { required: true })}
+                          />
+                          <span className="form-text text-muted">
+                            With commas only.
+                          </span>
+                          <span>{errors.technologies?.message}</span>
+                        </div>
                       </div>
-                    </div>
-                    <div className="col-lg-6 d-flex flex-column justify-content-around">
-                      <div className="form-group d-flex flex-column">
-                        <label className="form-label my-2" htmlFor="type">
-                          Type
-                          <span>*</span>
-                        </label>
-                        <input
-                          type="text"
-                          id="type"
-                          className="form-control"
-                          required
-                          {...register("type", { required: true })}
-                        />
-                        <span>{errors.type?.message}</span>
-                        <label className="form-label my-2" htmlFor="className">
-                          Classname
-                          <span>*</span>
-                        </label>
-                        <input
-                          type="text"
-                          className="form-control"
-                          id="className"
-                          required
-                          {...register("className", { required: true })}
-                        />
-                        <span>{errors.className?.message}</span>
-                        <label className="form-label my-2" htmlFor="url_live">
-                          URL Live
-                        </label>
-                        <input
-                          type="text"
-                          id="url_live"
-                          placeholder="https://www."
-                          className="form-control"
-                          {...register("URL.live")}
-                        />
-                        <span>{errors?.URL?.live?.message}</span>
-                        <label className="form-label my-2" htmlFor="url_github">
-                          URL Github
-                        </label>
-                        <input
-                          type="text"
-                          id="url_github"
-                          placeholder="https://www."
-                          className="form-control"
-                          {...register("URL.github")}
-                        />
-                        <span>{errors?.URL?.github?.message}</span>
+                      <div className="col-lg-6 d-flex flex-column justify-content-around">
+                        <div className="form-group d-flex flex-column">
+                          <label className="form-label my-2" htmlFor="type">
+                            Type
+                            <span>*</span>
+                          </label>
+                          <input
+                            type="text"
+                            id="type"
+                            className="form-control"
+                            required
+                            {...register("type", { required: true })}
+                          />
+                          <span>{errors.type?.message}</span>
+                          <label
+                            className="form-label my-2"
+                            htmlFor="className"
+                          >
+                            Classname
+                            <span>*</span>
+                          </label>
+                          <input
+                            type="text"
+                            className="form-control"
+                            id="className"
+                            required
+                            {...register("className", { required: true })}
+                          />
+                          <span>{errors.className?.message}</span>
+                          <label className="form-label my-2" htmlFor="url_live">
+                            URL Live
+                          </label>
+                          <input
+                            type="text"
+                            id="url_live"
+                            placeholder="https://www."
+                            className="form-control"
+                            {...register("URL.live")}
+                          />
+                          <span>{errors?.URL?.live?.message}</span>
+                          <label
+                            className="form-label my-2"
+                            htmlFor="url_github"
+                          >
+                            URL Github
+                          </label>
+                          <input
+                            type="text"
+                            id="url_github"
+                            placeholder="https://www."
+                            className="form-control"
+                            {...register("URL.github")}
+                          />
+                          <span>{errors?.URL?.github?.message}</span>
 
-                        <label htmlFor="formFile" className="form-label my-2">
-                          Image
-                        </label>
-                        <input
-                          className="form-control"
-                          type="file"
-                          onChange={(e) => {
-                            setImage(e.target.files[0]);
-                          }}
-                          id="formFile"
-                        ></input>
+                          <label htmlFor="formFile" className="form-label my-2">
+                            Image
+                          </label>
+                          <input
+                            className="form-control"
+                            type="file"
+                            onChange={(e) => {
+                              setImage(e.target.files[0]);
+                            }}
+                            id="formFile"
+                          ></input>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div className="row text-center mt-5 w-100">
-                    <div className="col-lg-6 offset-lg-3 d-flex align-items-center justify-content-evenly ">
-                      <Button
-                        type="submit"
-                        variant="success"
-                        disabled={
-                          FormSubmitting || Object.keys(errors).length > 0
-                        }
-                      >
-                        Add
-                      </Button>
-                    </div>
-                    {(() => {
-                      if (FormSubmitted) {
-                        return (
-                          <>
-                            <p className="text-success mt-2">
-                              Your new skill has been created successfully!
-                            </p>
-                            <p>
-                              You will be redirected back to skills in {counter}
-                              {counter <= 0
-                                ? history.push("/admin/skills")
-                                : ""}
-                            </p>
-                          </>
-                        );
-                      } else {
-                        if (
-                          FormSubmitted !== undefined &&
-                          FormSubmitted !== null
-                        ) {
+                    <div className="row text-center mt-5 w-100">
+                      <div className="col-lg-6 offset-lg-3 d-flex align-items-center justify-content-evenly ">
+                        <Button
+                          type="submit"
+                          variant="success"
+                          disabled={
+                            FormSubmitting || Object.keys(errors).length > 0
+                          }
+                        >
+                          Add
+                        </Button>
+                      </div>
+                      {(() => {
+                        if (FormSubmitted) {
                           return (
-                            <span className="text-danger mt-2">
-                              An error occured. Please try again later.
-                            </span>
+                            <>
+                              <p className="text-success mt-2">
+                                Your new skill has been created successfully!
+                              </p>
+                              <p>
+                                You will be redirected back to skills in{" "}
+                                {counter}
+                                {counter <= 0
+                                  ? history.push("/admin/skills")
+                                  : ""}
+                              </p>
+                            </>
                           );
+                        } else {
+                          if (
+                            FormSubmitted !== undefined &&
+                            FormSubmitted !== null
+                          ) {
+                            return (
+                              <span className="text-danger mt-2">
+                                An error occured. Please try again later.
+                              </span>
+                            );
+                          }
                         }
-                      }
-                    })()}
-                  </div>
-                </form>
-              </div>
+                      })()}
+                    </div>
+                  </form>
+                </div>
+              ) : (
+                <div className="col-lg-12">
+                  <p className="text-center fs-5 mt-5 text-info">
+                    Server is down. Please try again later.
+                  </p>
+                </div>
+              )}
             </div>
           </div>
         </div>
