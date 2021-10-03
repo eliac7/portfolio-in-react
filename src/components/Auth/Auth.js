@@ -16,6 +16,7 @@ const Auth = () => {
   const [username, setUserName] = useState();
   const [password, setPassword] = useState();
   const [isError, setIsError] = useState("");
+  const [isRequesting, setIsRequesting] = useState(false);
   const [successRecaptcha, setSuccessRecaptcha] = useState(false);
 
   useEffect(() => {
@@ -26,6 +27,7 @@ const Auth = () => {
 
   async function loginUser(credentials) {
     try {
+      setIsRequesting(true);
       const res = await axios.post(
         "http://localhost:5000/api/users/login",
         credentials
@@ -33,8 +35,17 @@ const Auth = () => {
       const data = res.data.data;
       return data;
     } catch (err) {
-      setIsError(err.response.data.msg);
+      if (err) {
+        if (err.request) {
+          setIsError("Request error. Please try again later.");
+        } else if (err.response.data && err.response.data !== undefined) {
+          setIsError(err.response.data.msg);
+        } else {
+          setIsError(err.message.toString());
+        }
+      }
     }
+    setIsRequesting(false);
   }
   const handleSubmit = async (e) => {
     e.preventDefault();
