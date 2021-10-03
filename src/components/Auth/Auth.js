@@ -3,6 +3,10 @@ import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
+import {
+  GoogleReCaptchaProvider,
+  GoogleReCaptcha,
+} from "react-google-recaptcha-v3";
 
 const Auth = () => {
   const history = useHistory();
@@ -12,6 +16,7 @@ const Auth = () => {
   const [username, setUserName] = useState();
   const [password, setPassword] = useState();
   const [isError, setIsError] = useState("");
+  const [successRecaptcha, setSuccessRecaptcha] = useState(false);
 
   useEffect(() => {
     if (localStorage.getItem("isAuthenticated")) {
@@ -42,7 +47,6 @@ const Auth = () => {
       history.push("/admin");
     }
   };
-
   return (
     <>
       <Header items={HeaderArray} />
@@ -81,7 +85,20 @@ const Auth = () => {
                     ></input>
                   </div>
                   <div className="col-12">
-                    <button type="submit" className="btn btn-light float-end">
+                    <GoogleReCaptchaProvider
+                      reCaptchaKey={process.env.REACT_APP_RECAPTCHA_SITE_KEY}
+                    >
+                      <GoogleReCaptcha
+                        onVerify={() => setSuccessRecaptcha(true)}
+                      />
+                    </GoogleReCaptchaProvider>
+                  </div>
+                  <div className="col-12">
+                    <button
+                      type="submit"
+                      className="btn btn-light float-end"
+                      disabled={!successRecaptcha}
+                    >
                       Login
                     </button>
                   </div>
