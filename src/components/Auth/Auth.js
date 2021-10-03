@@ -16,8 +16,10 @@ const Auth = () => {
   const [username, setUserName] = useState();
   const [password, setPassword] = useState();
   const [isError, setIsError] = useState("");
+  const [isRequesting, setIsRequesting] = useState(false);
   const [successRecaptcha, setSuccessRecaptcha] = useState(false);
 
+  console.log(isRequesting);
   useEffect(() => {
     if (localStorage.getItem("isAuthenticated")) {
       history.push("/admin");
@@ -26,6 +28,7 @@ const Auth = () => {
 
   async function loginUser(credentials) {
     try {
+      setIsRequesting(true);
       const res = await axios.post(
         "http://localhost:5000/api/users/login",
         credentials
@@ -33,8 +36,17 @@ const Auth = () => {
       const data = res.data.data;
       return data;
     } catch (err) {
-      setIsError(err.response.data.msg);
+      if (err) {
+        if (err.request) {
+          setIsError("Request error. Please try again later.");
+        } else if (err.response.data && err.response.data !== undefined) {
+          setIsError(err.response.data.msg);
+        } else {
+          setIsError(err.message.toString());
+        }
+      }
     }
+    setIsRequesting(false);
   }
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -64,6 +76,7 @@ const Auth = () => {
                       name="username"
                       className="form-control"
                       placeholder="Username"
+                      required
                       onChange={(e) => {
                         isError && setIsError("");
                         setUserName(e.target.value);
@@ -78,6 +91,7 @@ const Auth = () => {
                       autoComplete="on"
                       className="form-control"
                       placeholder="Password"
+                      required
                       onChange={(e) => {
                         isError && setIsError("");
                         setPassword(e.target.value);
@@ -97,7 +111,7 @@ const Auth = () => {
                     <button
                       type="submit"
                       className="btn btn-light float-end"
-                      disabled={!successRecaptcha}
+                      disabled={!successRecaptcha || isRequesting}
                     >
                       Login
                     </button>
