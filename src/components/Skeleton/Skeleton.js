@@ -17,15 +17,20 @@ const Container = styled.div`
   flex-wrap: wrap;
   opacity: 0.7;
   flex-direction: ${(props) => props.flexDirection};
+
+  @media (max-width: 991px) {
+    flex-direction: column;
+  }
 `;
 const ContainerTab = styled.div`
   display: flex;
   min-height: 2.5rem;
-  margin: 1.25rem;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   opacity: 0.7;
+  max-width: 300px;
+  margin: 1rem auto;
 `;
 
 const Left = styled.div`
@@ -37,15 +42,22 @@ const Right = styled.div`
   flex-direction: column;
   padding: 0 0.75rem;
   justify-content: space-between;
+
+  @media (max-width: 991px) {
+    margin-top: 1.25rem;
+    padding: unset;
+    align-items: center;
+  }
 `;
+
 const Image = styled.div`
   width: 100%;
-  height: 100%;
+  height: 21.875rem;
   animation: ${skeletonLoading} 1s linear infinite alternate;
 `;
 const Pill = styled.div`
   margin: 0 1rem;
-  width: 4.375rem;
+  flex: 1;
   height: 2.1875rem;
   border-radius: 3.125rem;
   animation: ${skeletonLoading} 1s linear infinite alternate;
@@ -76,6 +88,7 @@ const SubTitle = styled.div`
 `;
 const Desc = styled.div`
   min-height: 5rem;
+  width: 100%;
   border-radius: 2.5rem;
   animation: ${skeletonLoading} 1s linear infinite alternate;
 `;
@@ -84,6 +97,11 @@ const ButtonContainer = styled.div`
   align-items: center;
   align-self: ${(props) =>
     props.custom === "row-reverse" ? "flex-end" : "flex-start"};
+
+  @media (max-width: 991px) {
+    align-self: center;
+    margin-top: 1.25rem;
+  }
 `;
 
 const Button = styled.div`

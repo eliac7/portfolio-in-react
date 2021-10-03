@@ -12,6 +12,7 @@ function Skills() {
   const history = useHistory();
 
   const HeaderArray = [
+    { name: "Home", link: "/admin/" },
     { name: "All Skills", link: "/admin/skills" },
     { name: "Add New Skill", link: "/admin/new" },
   ];
@@ -81,7 +82,7 @@ function Skills() {
       <div className="main">
         <div className="container" id="allskills">
           <h2 className="text-center">All Skills</h2>
-          <div className="row min-vh-100">
+          <div className="row ">
             <div className="col-lg-12 d-flex flex-wrap justify-content-center ">
               {ErrorGetSkills && (
                 <p className="fs-5 text-info text-center text-break ">
