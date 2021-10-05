@@ -155,21 +155,6 @@ const Users = () => {
     }
   }, [isShowModal, areUsers]);
 
-  // useEffect(() => {
-  // axios
-  //   .delete("http://localhost:5000/api/users/delete/" + userToDelete._id, {
-  //     headers,
-  //   })
-  //   .then(() => {
-  //     const newUsers = [...areUsers];
-  //     const index = areUsers.findIndex((user) => user._id === userToDelete._id);
-  //     newUsers.splice(index, 1);
-  //     setAreUsers(newUsers);
-  //     setIsShowModal(false);
-  //     setHandleResponse(false);
-  //   });
-  // }, [HandleResponse]);
-
   return (
     <>
       <EditModal show={isShowModalEdit} handleShow={setIsShowModalEdit} />
