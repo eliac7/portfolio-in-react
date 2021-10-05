@@ -17,12 +17,6 @@ function Admin() {
     { name: "All users", link: "/admin/users" },
   ];
 
-  const handleLogout = () => {
-    localStorage.removeItem("isAuthenticated");
-    localStorage.removeItem("grecaptcha");
-    history.push("/login");
-  };
-
   const token = JSON.parse(localStorage.getItem("isAuthenticated")).accessToken;
   useEffect(() => {
     const fetchUser = async () => {
@@ -51,7 +45,10 @@ function Admin() {
           <button
             type="button"
             className="btn btn-danger"
-            onClick={() => handleLogout()}
+            onClick={() => {
+              localStorage.removeItem("isAuthenticated");
+              history.push("/login");
+            }}
           >
             Logout
           </button>

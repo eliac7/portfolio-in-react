@@ -23,7 +23,6 @@ const Auth = () => {
         })
         .then((token) => {
           setSuccessRecaptcha(true);
-          localStorage.setItem("grecaptcha", token);
         });
     });
   };
