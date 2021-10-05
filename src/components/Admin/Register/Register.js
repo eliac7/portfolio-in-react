@@ -17,11 +17,10 @@ const HeaderArray = [
   { name: "Register user", link: "/admin/register" },
   { name: "All users", link: "/admin/users" },
 ];
-// const token = JSON.parse(localStorage.getItem("isAuthenticated")).accessToken;
+const token = JSON.parse(localStorage.getItem("isAuthenticated"))?.accessToken;
 
 const headers = {
-  authorization:
-    "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNTVjOTA3MTQ4ZDMyMjFkNTVhODliYyIsInVzZXJuYW1lIjoiaWxpYXNhZG1pbiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYzMzI2ODgxMywiZXhwIjoxNjMzMzA0ODEzfQ.gGBd1Oh13zr-1_a75R-Ix3Me5dkeemYhbUVui2xGlfg",
+  authorization: "Bearer " + token,
 };
 
 const Register = () => {
