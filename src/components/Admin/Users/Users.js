@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import DataTable from "react-data-table-component";
 import Header from "../../Header/Header";
@@ -58,7 +58,7 @@ const Users = () => {
     setIsLoading();
   }, [isShowModalEdit]);
 
-  const handleDelete = async (row) => {
+  const handleDelete = (row) => {
     setIsShowModal((prevState) => ({
       ...prevState,
       open: true,
@@ -82,7 +82,7 @@ const Users = () => {
     { name: "All users", link: "/admin/users" },
   ];
 
-  const columns = useMemo(() => [
+  const columns = [
     {
       name: "ID",
       selector: (areUsers) => areUsers._id,
@@ -129,7 +129,7 @@ const Users = () => {
         </button>
       ),
     },
-  ]);
+  ];
 
   useEffect(() => {
     if (isShowModal.deleted) {
