@@ -3,10 +3,6 @@ import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
-import {
-  GoogleReCaptchaProvider,
-  GoogleReCaptcha,
-} from "react-google-recaptcha-v3";
 
 const Auth = () => {
   const history = useHistory();
@@ -18,6 +14,27 @@ const Auth = () => {
   const [isError, setIsError] = useState("");
   const [isRequesting, setIsRequesting] = useState(false);
   const [successRecaptcha, setSuccessRecaptcha] = useState(false);
+
+  const handleLoaded = (_) => {
+    window.grecaptcha.ready((_) => {
+      window.grecaptcha
+        .execute(process.env.REACT_APP_RECAPTCHA_SITE_KEY, {
+          action: "homepage",
+        })
+        .then((token) => {
+          setSuccessRecaptcha(true);
+          localStorage.setItem("grecaptcha", token);
+        });
+    });
+  };
+
+  useEffect(() => {
+    // Add reCaptchaV3
+    const script = document.createElement("script");
+    script.src = `https://www.google.com/recaptcha/api.js?render=${process.env.REACT_APP_RECAPTCHA_SITE_KEY}`;
+    script.addEventListener("load", handleLoaded);
+    document.body.appendChild(script);
+  }, []);
 
   useEffect(() => {
     if (localStorage.getItem("isAuthenticated")) {
@@ -47,6 +64,7 @@ const Auth = () => {
     }
     setIsRequesting(false);
   }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const token = await loginUser({
@@ -58,6 +76,7 @@ const Auth = () => {
       history.push("/admin");
     }
   };
+
   return (
     <>
       <Header items={HeaderArray} />
@@ -97,14 +116,12 @@ const Auth = () => {
                       }}
                     ></input>
                   </div>
-                  <div className="col-12">
-                    <GoogleReCaptchaProvider
-                      reCaptchaKey={process.env.REACT_APP_RECAPTCHA_SITE_KEY}
-                    >
-                      <GoogleReCaptcha
-                        onVerify={() => setSuccessRecaptcha(true)}
-                      />
-                    </GoogleReCaptchaProvider>
+                  <div className="col-lg-12">
+                    <div
+                      className="g-recaptcha"
+                      data-sitekey="_reCAPTCHA_site_key_"
+                      data-size="invisible"
+                    ></div>
                   </div>
                   <div className="col-12">
                     <button

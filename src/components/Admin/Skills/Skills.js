@@ -15,6 +15,8 @@ function Skills() {
     { name: "Home", link: "/admin/" },
     { name: "All Skills", link: "/admin/skills" },
     { name: "Add New Skill", link: "/admin/new" },
+    { name: "Register user", link: "/admin/register" },
+    { name: "All users", link: "/admin/users" },
   ];
 
   const [skills, setSkills] = useState([]);

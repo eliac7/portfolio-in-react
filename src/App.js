@@ -9,12 +9,14 @@ import NewSkill from "./components/Admin/NewSkill/NewSkill";
 import Edit from "./components/Admin/Edit/Edit";
 import Auth from "./components/Auth/Auth";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
+import Register from "./components/Admin/Register/Register";
+import Users from "./components/Admin/Users/Users";
 
 const App = () => {
   return (
     <>
-      <Mouse></Mouse>
-      <BackToTop></BackToTop>
+      <Mouse />
+      <BackToTop />
       <Router>
         <Switch>
           <Route path="/" exact component={Home}></Route>
@@ -29,7 +31,6 @@ const App = () => {
             component={Edit}
           ></ProtectedRoute>
           <Route path="/login" component={Auth}></Route>
-          <Route path="/register" component={Auth}></Route>
           <ProtectedRoute
             path="/admin/skills"
             component={Skills}
@@ -37,6 +38,14 @@ const App = () => {
           <ProtectedRoute
             path="/admin/new"
             component={NewSkill}
+          ></ProtectedRoute>
+          <ProtectedRoute
+            path="/admin/register"
+            component={Register}
+          ></ProtectedRoute>
+          <ProtectedRoute
+            path="/admin/users"
+            component={Users}
           ></ProtectedRoute>
           <Route path="*" component={NotFound}></Route>
         </Switch>
