@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../../Header/Header";
 import Footer from "../../Footer/Footer";
 import Button from "react-bootstrap/Button";
@@ -24,6 +24,10 @@ const headers = {
 };
 
 const Register = () => {
+  const [counter, setCounter] = useState(3);
+
+  const history = useHistory();
+
   const [isError, setIsError] = useState("");
   const [isValid, setIsValid] = useState(false);
 
@@ -57,7 +61,9 @@ const Register = () => {
       .post("http://localhost:5000/api/users/register", e, {
         headers,
       })
-      .then(() => setIsValid(true))
+      .then(() => {
+        setIsValid(true);
+      })
       .catch((err) => {
         if (err) {
           if (err.response.data.errors) {
@@ -70,6 +76,23 @@ const Register = () => {
         }
       });
   };
+
+  //useEffect of counter
+  useEffect(() => {
+    let intervalId;
+
+    if (isValid && counter >= 0) {
+      intervalId = setInterval(() => {
+        setCounter((counter) => counter - 1);
+      }, 1000);
+    }
+
+    if (counter === 0) {
+      history.push("/admin/users");
+    }
+
+    return () => clearInterval(intervalId);
+  }, [isValid, history, counter]);
 
   return (
     <>
@@ -138,7 +161,7 @@ const Register = () => {
                 </Form.Group>
                 <Row className="text-center mt-3">
                   <Col>
-                    <Button variant="primary" type="submit">
+                    <Button variant="primary" type="submit" disabled={isValid}>
                       Submit
                     </Button>
                   </Col>
@@ -148,9 +171,14 @@ const Register = () => {
           </Row>
           {isError && <p className="text-danger text-center"> {isError} </p>}
           {isValid && (
-            <p className="text-success text-center mt-3">
-              User has been created successfully.
-            </p>
+            <>
+              <p className="text-success text-center mt-3">
+                User has been created successfully.
+              </p>
+              <p className="text-center mt-1">
+                You will be redirected in {counter}
+              </p>
+            </>
           )}
         </Container>
       </div>

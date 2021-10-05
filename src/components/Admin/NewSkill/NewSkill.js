@@ -36,14 +36,18 @@ function NewSkill() {
   useEffect(() => {
     let intervalId;
 
-    if (isActive) {
+    if (isActive && counter >= 0) {
       intervalId = setInterval(() => {
         setCounter((counter) => counter - 1);
       }, 1000);
     }
 
+    if (counter === 0) {
+      history.push("/admin/skills");
+    }
+
     return () => clearInterval(intervalId);
-  }, [isActive, counter]);
+  }, [isActive, history, counter]);
 
   const HeaderArray = [
     { name: "Home", link: "/admin/" },
@@ -260,11 +264,7 @@ function NewSkill() {
                                 Your new skill has been created successfully!
                               </p>
                               <p>
-                                You will be redirected back to skills in{" "}
-                                {counter}
-                                {counter <= 0
-                                  ? history.push("/admin/skills")
-                                  : ""}
+                                You will be redirected to skills in {counter}
                               </p>
                             </>
                           );
