@@ -33,11 +33,11 @@ My portfolio was designed and implemented by me. You can visit the live version 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-I made my portfolio to show on what projects I have already worked on and get my hands dirty on React.js concept. There is the front-end and the back-end. For the front-end part, I used React.js with React-Bootstrap and axios to get my projects through the Rest API I made. Also, I used Firebase storage to save my screenshots of my projects and EmailJS to make the contact form. Additionally, I used yup resolver to validate any fields, AOS for animating elements, Styled-Components, data React Data Table Component for showing users and finally UUID to generate an ID before pushing image to Firebase storage. 
+I made my portfolio to show what projects I have already worked on and get my hands dirty on the React.js concept. There is the front-end and the back-end. I used React.js with React-Bootstrap and Axios to get my projects through the Rest API I made for the front-end part. Also, I used Firebase storage to save screenshots of my projects and EmailJS to complete the contact form. Additionally, I used YUP resolver to validate any fields, AOS for animating elements, Styled-Components, data React Data Table Component for showing users, and finally UUID to generate an ID before pushing the image to Firebase storage. 
 
-For the back-end, I used Node.js with Express and MongoDB for the database. You can check the API Repo [here](https://github.com/eliac7/projects-rest-api).
+The back-end, wich comprises the REST API, you can find it [here](https://github.com/eliac7/projects-rest-api).
 
-Except the main homepage, there is an Admin dashboard which can make CRUD (Create,Remove,Update,Delete) operations for my projects and users.
+Except of the main homepage, an Admin dashboard has been made, which can do CRUD (Create, Remove, Update, Delete) operations for my projects and users.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -48,9 +48,13 @@ Except the main homepage, there is an Admin dashboard which can make CRUD (Creat
 * [React.js](https://reactjs.org/)
 * [React Bootstrap](https://react-bootstrap.github.io/)
 * [Firebase](https://firebase.google.com/)
-* [Node.js](https://nodejs.org/en/)
-* [Expressjs](https://expressjs.com/)
-* [MongoDB](https://www.mongodb.com/)
+* [Axios](https://github.com/axios/axios)
+* [EmailJS](https://www.emailjs.com/)
+* [YUP](https://github.com/jquense/yup)
+* [AOS](https://michalsnik.github.io/aos/)
+* [Styled-Components](https://styled-components.com/)
+* [React Data Table Component](https://github.com/jbetancur/react-data-table-component)
+* [UUID](https://github.com/uuidjs/uuid)
 
 
 
@@ -59,23 +63,27 @@ Except the main homepage, there is an Admin dashboard which can make CRUD (Creat
 
 <!-- SCREENSHOT EXAMPLES -->
 ## Screenshots
-![image](https://i.imgur.com/zaQ1nLW.png)
-
 <div align="center">
   <i>Main admin panel</i>
 </div>
 
-![image](https://user-images.githubusercontent.com/26083840/136392835-66b5ae14-cb49-467c-94f0-370e802dbbf4.png)
+![image](https://i.imgur.com/zaQ1nLW.png)
+
 
 <div align="center">
   <i>All skills</i>
 </div>
 
-![image](https://i.imgur.com/ItV6Cf6.jpg)
+![image](https://user-images.githubusercontent.com/26083840/136392835-66b5ae14-cb49-467c-94f0-370e802dbbf4.png)
+
 
 <div align="center">
   <i>Users datatable</i>
 </div>
+
+![image](https://i.imgur.com/ItV6Cf6.jpg)
+
+
 
 
 
@@ -162,4 +170,3 @@ Project Link: [https://github.com/eliac7/portfolio-in-ract](https://github.com/e
 
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/eliac7/
-[product-screenshot]: images/screenshot.png
