@@ -6,14 +6,12 @@ import Footer from "../../Footer/Footer";
 import EditModal from "../EditModal/EditModal";
 import DeleteModal from "../DeleteModal/DeleteModal";
 
-const token = JSON.parse(localStorage.getItem("isAuthenticated"))?.accessToken;
-const id = JSON.parse(localStorage.getItem("isAuthenticated"))?.id;
-
-const headers = {
-  authorization: "Bearer " + token,
-};
-
-const Users = () => {
+const Users = ({ isAuthenticated }) => {
+  const token = isAuthenticated?.accessToken;
+  const id = isAuthenticated?.id;
+  const headers = {
+    authorization: "Bearer " + token,
+  };
   const [areUsers, setAreUsers] = useState([]);
   const [isError, setIsError] = useState("");
 

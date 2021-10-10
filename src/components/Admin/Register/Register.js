@@ -17,13 +17,14 @@ const HeaderArray = [
   { name: "Register user", link: "/admin/register" },
   { name: "All users", link: "/admin/users" },
 ];
-const token = JSON.parse(localStorage.getItem("isAuthenticated"))?.accessToken;
 
-const headers = {
-  authorization: "Bearer " + token,
-};
+const Register = ({ isAuthenticated }) => {
+  const token = isAuthenticated.accessToken;
 
-const Register = () => {
+  const headers = {
+    authorization: "Bearer " + token,
+  };
+
   const [counter, setCounter] = useState(3);
 
   const history = useHistory();
