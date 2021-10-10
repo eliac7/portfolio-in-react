@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 import "./Admin.css";
 
-function Admin() {
+function Admin({ isAuthenticated }) {
   const history = useHistory();
   const [user, setUser] = useState("");
 
@@ -17,7 +17,7 @@ function Admin() {
     { name: "All users", link: "/admin/users" },
   ];
 
-  const token = JSON.parse(localStorage.getItem("isAuthenticated")).accessToken;
+  const token = isAuthenticated.accessToken;
   useEffect(() => {
     const fetchUser = async () => {
       try {

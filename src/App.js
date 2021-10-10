@@ -20,6 +20,7 @@ const App = () => {
       <Router>
         <Switch>
           <Route path="/" exact component={Home}></Route>
+          <Route path="/login" component={Auth}></Route>
           <ProtectedRoute
             path="/admin"
             exact
@@ -30,7 +31,6 @@ const App = () => {
             exact
             component={Edit}
           ></ProtectedRoute>
-          <Route path="/login" component={Auth}></Route>
           <ProtectedRoute
             path="/admin/skills"
             component={Skills}
