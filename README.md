@@ -156,7 +156,7 @@ Distributed under the GNU General Public License v3.0. See `LICENSE.txt` for mor
 
 Ilias Thalassochoritis - [@ilias_thal](https://twitter.com/ilias_thal) - elias_thal[at]hotmail.com
 
-Project Link: [https://github.com/eliac7/portfolio-in-ract](https://github.com/eliac7/portfolio-in-ract)
+Project Link: [https://github.com/eliac7/portfolio-in-react](https://github.com/eliac7/portfolio-in-react)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
