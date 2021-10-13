@@ -161,7 +161,7 @@ function Content() {
                   ></ContentItem>
                   <ContentItem name="API" src={MyIcons.API}></ContentItem>
                   <ContentItem
-                    name="ReactLogo"
+                    name="React"
                     src={MyIcons.ReactLogo}
                   ></ContentItem>
                   <ContentItem name="GIT" src={MyIcons.Git}></ContentItem>
