@@ -100,14 +100,10 @@ To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-You will need npm and yarn.
+You will need npm.
 * npm
   ```sh
   npm install npm@latest -g
-  ```
-* yarn
-  ```sh
-  npm install --global yarn
   ```
 
 ### Installation
@@ -116,9 +112,9 @@ You will need npm and yarn.
    ```sh
    git clone https://github.com/eliac7/portfolio-in-react.git
    ```
-2. Install Yarn packages
+2. Install NPM packages
    ```sh
-   yarn install
+   npm install
    ```
 3. Enter API tokens in `.env`
    ```
