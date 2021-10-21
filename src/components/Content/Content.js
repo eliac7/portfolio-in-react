@@ -239,7 +239,6 @@ function Content() {
               })
             : projects.map(function (item, index) {
                 let items = item.technologies.split(",");
-                console.log(typeof item.fixed);
 
                 return (
                   <div
