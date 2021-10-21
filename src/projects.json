@@ -1,59 +1,101 @@
 [
   {
-    "name": "Rebrain Platform",
+    "URL": {
+      "live": "https://platform.rebraingreece.gr",
+      "github": ""
+    },
+    "_id": "6150cb5142b8c86746cca702",
+    "title": "Rebrain Platform",
+    "technologies": "WordPress, PHP,REST API,JavaScript",
     "type": "work",
     "className": "rebrain",
-    "content": "Mechanism for connecting highly skilled workers abroad with businesses operating in Greece. Each user can be registered as Scientists / Experts / Researchers (S.E.R) or as business and have the respectively permissions and features. Implemented with CPT's of WordPress, ACF. It contains interactivity with ESCO's API.",
-    "technologies": "WordPress, PHP,REST API,JavaScript",
-    "live": "https://platform.rebraingreece.gr/"
+    "description": "A mechanism for connecting highly skilled workers abroad with businesses operating in Greece. Each user can be registered as a Scientists / Experts / Researchers (S.E.R) or as a business and have the respective permissions and features. Implemented with CPT's of WordPress, ACF. It contains interactivity with ESCO's API.\n*Only coding, no design.\n",
+    "__v": 0,
+    "image": "https://firebasestorage.googleapis.com/v0/b/skills-b6807.appspot.com/o/skills%2F20f8bee0-86a1-4375-91c7-393b10fa8d97-rebrain.png?alt=media&token=ad3cb91c-19a0-478d-bdc9-353a78044448",
+    "fixed": "false"
   },
   {
-    "name": "Support Greek Music",
+    "URL": {
+      "live": "https://supportgreekmusic.gr"
+    },
+    "_id": "6150ccfa42b8c86746cca715",
+    "title": "Support Greek Music",
+    "technologies": "WordPress, PHP,JavaScript",
     "type": "work",
     "className": "sgm",
-    "content": "Crowdfunding platform to aid and practically bind the creators’ copyright, during a deafeningly resonant period, caused by COVID-19 pandemic. My contribution in that project was the frontend development.",
-    "technologies": "WordPress, PHP,JavaScript",
-    "live": "https://supportgreekmusic.gr/"
+    "description": "Crowdfunding platform to aid and practically bind the creators’ copyright, during a deafeningly resonant period, caused by the COVID-19 pandemic. My contribution to that project was the front-end development.\n*Only coding, no design.",
+    "__v": 0,
+    "image": "https://firebasestorage.googleapis.com/v0/b/skills-b6807.appspot.com/o/skills%2F0cdb505a-05f1-4a80-a280-65b06d37c87c-sgm.png?alt=media&token=698b4a99-8138-4d32-90df-9479a71dfb71",
+    "fixed": "false"
   },
   {
-    "name": "Ampelokipi - Menemeni",
+    "URL": {
+      "live": "https://ampelokipi-menemeni.gr"
+    },
+    "_id": "6150cd1542b8c86746cca717",
+    "title": "Ampelokipi - Menemeni",
+    "technologies": "WordPress,PHP,JavaScript",
     "type": "work",
     "className": "ampelokipi",
-    "content": "A multilanguage portal for Ampelokipi - Menemeni Municipality. The citizen can apply online for problems or questions, connected with TaxisNet or simple login. Implementation of custom search functionality with AJAX filters to improve user's experience.",
-    "technologies": "WordPress, PHP, JavaScript",
-    "live": "https://www.ampelokipi-menemeni.gr/"
+    "description": "A multilanguage portal for Ampelokipi - Menemeni Municipality. The citizen can apply online for problems or questions, connected with TaxisNet, or simply log in. Implementation of custom search functionality with AJAX filters to improve user experience.\n*Only coding, no design.",
+    "__v": 0,
+    "image": "https://firebasestorage.googleapis.com/v0/b/skills-b6807.appspot.com/o/skills%2Ffef8dcc4-4dec-4a33-a769-abf99a0adba9-ampelokipi.png?alt=media&token=3a21fc64-4b84-45df-924b-f046b16392b6",
+    "fixed": "false"
   },
   {
-    "name": "HEDNO (ΔΕΔΔΗΕ) Chatbot",
+    "URL": {
+      "live": "https://chatbot.deddie.gr"
+    },
+    "_id": "6150cd3342b8c86746cca719",
+    "title": "HEDNO (ΔΕΔΔΗΕ) Chatbot",
+    "technologies": "HTML, SCSS, JavaScript",
     "type": "work",
     "className": "chatbot",
-    "content": "Hellenic Electricity Distribution Network Operator's chatbot landing page.",
-    "technologies": "HTML, SCSS, JavaScript",
-    "live": "https://chatbot.deddie.gr/"
+    "description": "Hellenic Electricity Distribution Network Operator's chatbot landing page.\n\n*Only coding, no design.",
+    "__v": 0,
+    "image": "https://firebasestorage.googleapis.com/v0/b/skills-b6807.appspot.com/o/skills%2Fc6efc007-842e-4c88-9210-7c1cf325161d-chatbot.png?alt=media&token=c91248df-98c9-4333-8a3b-c8e371ad1bd6",
+    "fixed": "false"
   },
   {
-    "name": "Crowdpolicy events",
+    "URL": {
+      "live": "https://crowdpolicy.com/en/events"
+    },
+    "_id": "6150cd6642b8c86746cca71b",
+    "title": "Crowdpolicy events",
+    "technologies": "WordPress, jQuery",
     "type": "work",
     "className": "events",
-    "content": "Crowdpolicy's events with AJAX filtering with pagination. Built with WordPress' CPT, ACF.",
-    "technologies": "WordPress, jQuery",
-    "live": "https://www.crowdpolicy.com/en/events/"
+    "description": "Crowdpolicy's events with AJAX filtering with pagination. Built with WordPress' CPT, ACF.\n*Only coding, no design.",
+    "__v": 0,
+    "image": "https://firebasestorage.googleapis.com/v0/b/skills-b6807.appspot.com/o/skills%2F6eaca730-64ae-4301-9f03-94a532bdf0c8-cp-events.png?alt=media&token=3b415d14-ca5d-4dc9-a929-ddfca31f98ee",
+    "fixed": "false"
   },
   {
-    "name": "Web app for Image Similarity using Siamese Neural Network",
+    "URL": {
+      "github": "https://github.com/eliac7/image-similarity-siamese"
+    },
+    "_id": "6150cd8d42b8c86746cca71d",
+    "title": "Web app for Image Similarity using Siamese Neural Network",
+    "technologies": "Python, jQuery, JavaScript, REST API",
     "type": "personal",
     "className": "thesis",
-    "content": "My thesis was to implement a Siamese Neural Network using the VGG19 model, pre-trained on ImageNet to calculate the match of a query image through a dataset of images. To find the similarity, I used a contrastive loss function and a Euclidean distance. You will find my implementation on a web app for this purpose on the below link of Github.",
-    "technologies": "Python, jQuery, JavaScript, REST API",
-    "github": "https://github.com/eliac7/image-similarity-siamese"
+    "description": "My thesis was to implement a Siamese Neural Network using the VGG19 model, pre-trained on ImageNet to calculate the match of a query image through a dataset of images. To find the similarity, I used a contrastive loss function and a Euclidean distance. You will find my implementation on a web app for this purpose on the below link of Github.",
+    "__v": 0,
+    "image": "https://firebasestorage.googleapis.com/v0/b/skills-b6807.appspot.com/o/skills%2F7f999363-0238-4604-94be-e0b4c32b9869-thesis.png?alt=media&token=ca13fe84-f865-4afd-b864-846a62d350ce",
+    "fixed": "true"
   },
   {
-    "name": "Todo App",
+    "URL": {
+      "live": "https://eliac7.github.io/React-Todo-App-Pages",
+      "github": "https://github.com/eliac7/React-Todo-App"
+    },
+    "_id": "617158dd892417484a80f787",
+    "title": "Todo App",
+    "technologies": "React,Javascript",
     "type": "personal",
     "className": "todo",
-    "content": "Classic Todo app developed on React(CRA) as a practice project. You can add, edit and delete a task, as well as, to mark it as completed with one click.",
-    "technologies": "React, Javascript",
-    "live": "https://eliac7.github.io/React-Todo-App-Pages/",
-    "github": "https://github.com/eliac7/React-Todo-App"
+    "description": "Classic Todo app developed on React(CRA) as a practice project. You can add, edit and delete a task, as well as, to mark it as completed with one click.",
+    "fixed": "true",
+    "__v": 0
   }
 ]

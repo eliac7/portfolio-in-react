@@ -33,7 +33,9 @@ const Users = ({ isAuthenticated }) => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/users/", { headers })
+      .get("https://new-projects-api.herokuapp.com/api/users/", {
+        headers,
+      })
       .then((res) => {
         setAreUsers(res.data.data);
         setIsLoading(false);
@@ -133,9 +135,13 @@ const Users = ({ isAuthenticated }) => {
     if (isShowModal.deleted) {
       const UserToDeleteID = isShowModal.data._id;
       axios
-        .delete("http://localhost:5000/api/users/delete/" + UserToDeleteID, {
-          headers,
-        })
+        .delete(
+          "https://new-projects-api.herokuapp.com/api/users/delete/" +
+            UserToDeleteID,
+          {
+            headers,
+          }
+        )
         .then(() => {
           const newUsers = [...areUsers];
           const index = areUsers.findIndex(
@@ -151,7 +157,7 @@ const Users = ({ isAuthenticated }) => {
           setAreUsers(newUsers);
         });
     }
-  }, [isShowModal, areUsers]);
+  }, [isShowModal, areUsers, headers]);
 
   return (
     <>

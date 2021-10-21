@@ -21,11 +21,14 @@ function Admin({ isAuthenticated }) {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/users/", {
-          headers: {
-            authorization: "Bearer " + token,
-          },
-        });
+        const res = await axios.get(
+          "https://new-projects-api.herokuapp.com/api/users/",
+          {
+            headers: {
+              authorization: "Bearer " + token,
+            },
+          }
+        );
         setUser(await res.data.data[0]);
       } catch (err) {
         setUser("");

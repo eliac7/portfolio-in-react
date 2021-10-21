@@ -45,7 +45,7 @@ const Auth = () => {
     try {
       setIsRequesting(true);
       const res = await axios.post(
-        "http://localhost:5000/api/users/login",
+        "https://new-projects-api.herokuapp.com/api/users/login",
         credentials
       );
       const data = res.data.data;

@@ -37,8 +37,11 @@ function Edit(props) {
     resolver: yupResolver(schema),
   });
   const HeaderArray = [
+    { name: "Home", link: "/admin/" },
     { name: "All Skills", link: "/admin/skills" },
     { name: "Add New Skill", link: "/admin/new" },
+    { name: "Register user", link: "/admin/register" },
+    { name: "All users", link: "/admin/users" },
   ];
   const [toUpdate, setToUpdate] = useState([]);
   const [tempTitle, settempTitle] = useState("");
@@ -55,7 +58,9 @@ function Edit(props) {
   const updateToAPI = async (id, data) => {
     await axios
       .patch(
-        `http://localhost:5000/api/skills/${id && id !== undefined ? id : ""}`,
+        `https://new-projects-api.herokuapp.com/api/skills/${
+          id && id !== undefined ? id : ""
+        }`,
         data
       )
       .then((res) => {
@@ -130,7 +135,6 @@ function Edit(props) {
               toUpdate["image"] = downloadURL;
             })
             .then(() => {
-              console.log("ELAAA");
               console.log(toUpdate);
               updateToAPI(id, toUpdate);
             });
@@ -138,7 +142,10 @@ function Edit(props) {
       } else {
         //else just update the fields
         axios
-          .patch("http://localhost:5000/api/skills/" + id, toUpdate)
+          .patch(
+            "https://new-projects-api.herokuapp.com/api/skills/" + id,
+            toUpdate
+          )
           .then((res) => {
             console.log(res);
             setIsActive(!isActive);
@@ -150,7 +157,7 @@ function Edit(props) {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/skills/" + id)
+      .get("https://new-projects-api.herokuapp.com/api/skills/" + id)
       .then((res) => {
         setIsLoading(true);
         setToUpdate(res.data);
@@ -183,7 +190,7 @@ function Edit(props) {
         <div className="container">
           {!isError.err ? (
             <>
-              <h2 className="text-center">Editting skill: {tempTitle}</h2>
+              <h2 className="text-center">Editing skill: {tempTitle}</h2>
               <div className="row">
                 <div className="col-lg-12">
                   <form onSubmit={handleSubmit(PostUpdate)}>
@@ -209,6 +216,8 @@ function Edit(props) {
                             }}
                           />
                           <span>{errors.title?.message}</span>
+                        </div>
+                        <div className="form-group d-flex flex-column">
                           <label
                             htmlFor="description"
                             className="form-label my-2"
@@ -231,6 +240,8 @@ function Edit(props) {
                             }}
                           />
                           <span>{errors.description?.message}</span>
+                        </div>
+                        <div className="form-group d-flex flex-column">
                           <label
                             className="form-label my-2"
                             htmlFor="technologies"
@@ -257,9 +268,31 @@ function Edit(props) {
                           </span>
                           <span>{errors.technologies?.message}</span>
                         </div>
+                        <div className="form-group d-flex flex-column">
+                          <div className="form-check form-switch my-3">
+                            <input
+                              className="form-check-input"
+                              type="checkbox"
+                              id="fixedImage"
+                              {...register("fixed")}
+                              onChange={function (e) {
+                                setToUpdate((prevState) => ({
+                                  ...prevState,
+                                  fixed: e.target.checked,
+                                }));
+                              }}
+                            ></input>
+                            <label
+                              className="form-check-label"
+                              htmlFor="fixedImage"
+                            >
+                              Fixed image?
+                            </label>
+                          </div>
+                        </div>
                       </div>
                       <div className="col-lg-6 d-flex flex-column justify-content-around">
-                        <div className="form-group d-flex flex-column justify-content-around">
+                        <div className="form-group d-flex flex-column">
                           <label className="form-label my-2" htmlFor="type">
                             Type
                             <span>*</span>
@@ -279,6 +312,8 @@ function Edit(props) {
                             }}
                           />
                           <span>{errors.type?.message}</span>
+                        </div>
+                        <div className="form-group d-flex flex-column">
                           <label
                             className="form-label my-2"
                             htmlFor="className"
@@ -301,6 +336,8 @@ function Edit(props) {
                             }}
                           />
                           <span>{errors.className?.message}</span>
+                        </div>
+                        <div className="form-group d-flex flex-column">
                           <label className="form-label my-2" htmlFor="url_live">
                             URL Live
                           </label>
@@ -323,6 +360,8 @@ function Edit(props) {
                               }));
                             }}
                           />
+                        </div>
+                        <div className="form-group d-flex flex-column">
                           <label
                             className="form-label my-2"
                             htmlFor="url_github"
@@ -348,6 +387,7 @@ function Edit(props) {
                               }));
                             }}
                           />
+
                           {toUpdate.image ? (
                             <div className="w-100 mt-3 text-center d-flex flex-column justify-content-center align-items-center">
                               <label className="form-label">
@@ -363,7 +403,8 @@ function Edit(props) {
                           ) : (
                             ""
                           )}
-
+                        </div>
+                        <div className="form-group d-flex flex-column my-2">
                           <label htmlFor="formFile" className="form-label">
                             {toUpdate.image ? "Replace image with" : "Image"}
                           </label>
