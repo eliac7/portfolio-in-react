@@ -294,10 +294,10 @@ section.contact svg.mailman {
   display: inline-block;
   width: 1.8rem;
   height: 1.8rem;
-}
-
-.links a:hover svg:first-child {
   fill: white;
+}
+.links a:hover svg {
+  fill: #303038;
 }
 .links a:hover svg .clear-1 {
   fill: white;
