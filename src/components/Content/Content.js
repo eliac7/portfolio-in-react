@@ -255,7 +255,7 @@ function Content() {
                         className={
                           index === 0
                             ? "screen rebrain"
-                            : item.fixed === "true"
+                            : item.fixed
                             ? "screen fixed"
                             : "screen"
                         }
