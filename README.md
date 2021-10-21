@@ -1,11 +1,6 @@
 <div id="top"></div>
 
 
-[![LinkedIn][linkedin-shield]][linkedin-url]
-
-
-
-
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
@@ -32,6 +27,10 @@ My portfolio was designed and implemented by me. You can visit the live version 
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
+
+[![LinkedIn][linkedin-shield]][linkedin-url]
+[![Netlify Status](https://api.netlify.com/api/v1/badges/781ae27a-367d-46c3-b9d9-26fbbc6801ef/deploy-status)](https://app.netlify.com/sites/ilias-netlify-portfolio/deploys)
+
 
 I made my portfolio to show what projects I have already worked on and get my hands dirty on the React.js concept. There is the front-end and the back-end. I used React.js with React-Bootstrap and Axios to get my projects through the Rest API I made for the front-end part. Also, I used Firebase storage to save screenshots of my projects and EmailJS to complete the contact form. Additionally, I used YUP resolver to validate any fields, AOS for animating elements, Styled-Components, data React Data Table Component for showing users, and finally UUID to generate an ID before pushing the image to Firebase storage. 
 
