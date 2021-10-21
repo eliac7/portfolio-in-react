@@ -15,10 +15,7 @@ import { SkeletonItem, SkeletonTab } from "../Skeleton/Skeleton";
 AOS.init({ delay: 100, once: true, disable: window.innerWidth < 768 });
 
 const age = new Date().getFullYear() - Number(1997);
-const URL_TO_FETCH =
-  "https://agile-sea-08846.herokuapp.com/?key=" +
-  process.env.REACT_APP_API_TOKEN;
-
+const URL_TO_FETCH = "https://new-projects-api.herokuapp.com/api/skills";
 function Content() {
   const [isLoading, setLoading] = useState(true);
   let [projects, setProjects] = useState(null);
@@ -242,6 +239,7 @@ function Content() {
               })
             : projects.map(function (item, index) {
                 let items = item.technologies.split(",");
+                console.log(typeof item.fixed);
 
                 return (
                   <div
@@ -254,7 +252,18 @@ function Content() {
                     key={item.className}
                   >
                     <div className="col-lg-6">
-                      <div className={"screen " + item.className}></div>
+                      <div
+                        className={
+                          index === 0
+                            ? "screen rebrain"
+                            : item.fixed === "true"
+                            ? "screen fixed"
+                            : "screen"
+                        }
+                        style={{
+                          backgroundImage: `url(${item.image})`,
+                        }}
+                      ></div>
                     </div>
                     <div
                       className={
@@ -263,7 +272,7 @@ function Content() {
                       }
                     >
                       <div className="d-flex flex-column">
-                        <h4>{item.name}</h4>
+                        <h4>{item.title}</h4>
                         <div
                           className={
                             "technologies d-flex flex-wrap  flex-sm-column flex-md-row align-items-center justify-content-center my-3 " +
@@ -288,7 +297,7 @@ function Content() {
                         </div>
                       </div>
 
-                      <p>{item.content}</p>
+                      <p>{item.description}</p>
                       <div
                         className={
                           "links d-flex justify-content-center " +
@@ -297,9 +306,9 @@ function Content() {
                             : "justify-content-lg-start")
                         }
                       >
-                        {item.github ? (
+                        {item.URL.github ? (
                           <a
-                            href={item.github}
+                            href={item.URL.github}
                             style={{ borderRadius: 50 + "%" }}
                             target="_blank"
                             rel="noreferrer"
@@ -310,9 +319,9 @@ function Content() {
                         ) : (
                           ""
                         )}
-                        {item.live ? (
+                        {item.URL.live ? (
                           <a
-                            href={item.live}
+                            href={item.URL.live}
                             target="_blank"
                             rel="noreferrer"
                             className="mx-2"

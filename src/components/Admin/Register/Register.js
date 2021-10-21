@@ -59,7 +59,7 @@ const Register = ({ isAuthenticated }) => {
 
   const submitForm = async (e) => {
     await axios
-      .post("http://localhost:5000/api/users/register", e, {
+      .post("https://new-projects-api.herokuapp.com/api/users/register", e, {
         headers,
       })
       .then(() => {

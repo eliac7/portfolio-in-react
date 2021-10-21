@@ -28,7 +28,7 @@ function NewSkill() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/skills")
+      .get("https://new-projects-api.herokuapp.com/api/skills")
       .then(() => setisUp(true))
       .catch(() => setisUp(false));
   }, [isUp]);
@@ -63,6 +63,7 @@ function NewSkill() {
     technologies: yup.string().required("Technologies are required."),
     className: yup.string().required("Classname is required."),
     type: yup.string().required("Type is required."),
+    fixed: yup.boolean(),
     URL: yup.object().shape({
       live: yup.string().url("Live must be a valid URL."),
       github: yup.string().url("Github must be a valid URL."),
@@ -71,7 +72,7 @@ function NewSkill() {
 
   const SubmitToAPI = (data) => {
     axios
-      .post("http://localhost:5000/api/skills/", data)
+      .post("https://new-projects-api.herokuapp.com/api/skills/", data)
       .then(() => {
         setFormSubmitted(true);
         setFormSubmitting(true);
@@ -140,6 +141,8 @@ function NewSkill() {
                             {...register("title", { required: true })}
                           />
                           <span>{errors.title?.message}</span>
+                        </div>
+                        <div className="form-group d-flex flex-column">
                           <label
                             htmlFor="description"
                             className="form-label my-2"
@@ -155,6 +158,8 @@ function NewSkill() {
                             {...register("description", { required: true })}
                           />
                           <span>{errors.description?.message}</span>
+                        </div>
+                        <div className="form-group d-flex flex-column">
                           <label
                             className="form-label my-2"
                             htmlFor="technologies"
@@ -174,6 +179,22 @@ function NewSkill() {
                           </span>
                           <span>{errors.technologies?.message}</span>
                         </div>
+                        <div className="form-group d-flex flex-column">
+                          <div className="form-check form-switch my-3">
+                            <input
+                              className="form-check-input"
+                              type="checkbox"
+                              id="fixedImage"
+                              {...register("fixed", { required: true })}
+                            ></input>
+                            <label
+                              className="form-check-label"
+                              htmlFor="fixedImage"
+                            >
+                              Fixed image?
+                            </label>
+                          </div>
+                        </div>
                       </div>
                       <div className="col-lg-6 d-flex flex-column justify-content-around">
                         <div className="form-group d-flex flex-column">
@@ -189,6 +210,8 @@ function NewSkill() {
                             {...register("type", { required: true })}
                           />
                           <span>{errors.type?.message}</span>
+                        </div>
+                        <div className="form-group d-flex flex-column">
                           <label
                             className="form-label my-2"
                             htmlFor="className"
@@ -204,6 +227,8 @@ function NewSkill() {
                             {...register("className", { required: true })}
                           />
                           <span>{errors.className?.message}</span>
+                        </div>
+                        <div className="form-group d-flex flex-column">
                           <label className="form-label my-2" htmlFor="url_live">
                             URL Live
                           </label>
@@ -215,6 +240,8 @@ function NewSkill() {
                             {...register("URL.live")}
                           />
                           <span>{errors?.URL?.live?.message}</span>
+                        </div>
+                        <div className="form-group d-flex flex-column">
                           <label
                             className="form-label my-2"
                             htmlFor="url_github"
@@ -229,7 +256,8 @@ function NewSkill() {
                             {...register("URL.github")}
                           />
                           <span>{errors?.URL?.github?.message}</span>
-
+                        </div>
+                        <div className="form-group d-flex flex-column">
                           <label htmlFor="formFile" className="form-label my-2">
                             Image
                           </label>

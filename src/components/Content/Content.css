@@ -256,8 +256,10 @@ section.contact svg.mailman {
 .screen:hover {
   background-position: bottom center !important;
 }
-.screen.rebrain {
-  background-image: url("../../assets/images/rebrain.png");
+.screen.fixed {
+  background-repeat: no-repeat !important;
+  background-position: top !important;
+  background-size: cover !important;
 }
 .screen.rebrain::before {
   content: "";
@@ -286,31 +288,6 @@ section.contact svg.mailman {
   color: var(--yellow);
   transform: rotate(340deg);
   width: fit-content;
-}
-
-.screen.sgm {
-  background-image: url("../../assets/images/sgm.png");
-}
-.screen.ampelokipi {
-  background-image: url("../../assets/images/ampelokipi.png");
-}
-.screen.chatbot {
-  background-image: url("../../assets/images/chatbot.png");
-}
-.screen.events {
-  background-image: url("../../assets/images/cp-events.png");
-}
-.screen.thesis {
-  background-repeat: no-repeat !important;
-  background-position: top !important;
-  background-image: url("../../assets/images/thesis.png");
-  background-size: cover !important;
-}
-.screen.todo {
-  background-repeat: no-repeat !important;
-  background-position: top !important;
-  background-image: url("../../assets/images/todo_gif.gif");
-  background-size: cover !important;
 }
 
 .links a svg {

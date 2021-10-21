@@ -33,7 +33,10 @@ function Skills() {
     settoDelete(val);
     if (val) {
       axios
-        .delete("http://localhost:5000/api/skills/" + skillToDelete.id)
+        .delete(
+          "https://new-projects-api.herokuapp.com/api/skills/" +
+            skillToDelete.id
+        )
         .then(() => {
           console.log(`${skillToDelete.id} was deleted successfully.`);
           const remainingResults = skills.filter(
@@ -66,7 +69,7 @@ function Skills() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/skills")
+      .get("https://new-projects-api.herokuapp.com/api/skills")
       .then((res) => setSkills(res.data))
       .catch(() => setErrorGetSkills(true));
   }, []);
