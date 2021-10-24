@@ -22,6 +22,12 @@ function Header(props) {
     }
   });
 
+  if (NavMobile) {
+    document.body.classList.add("nav-mobile");
+  } else {
+    document.body.classList.remove("nav-mobile");
+  }
+
   return (
     <div className="header">
       <header>
