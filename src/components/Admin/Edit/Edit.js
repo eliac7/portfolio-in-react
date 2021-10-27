@@ -273,6 +273,7 @@ function Edit(props) {
                             <input
                               className="form-check-input"
                               type="checkbox"
+                              checked={toUpdate.fixed}
                               id="fixedImage"
                               {...register("fixed")}
                               onChange={function (e) {
