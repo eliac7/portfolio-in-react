@@ -9,9 +9,7 @@ import DeleteModal from "../DeleteModal/DeleteModal";
 const Users = ({ isAuthenticated }) => {
   const token = isAuthenticated?.accessToken;
   const id = isAuthenticated?.id;
-  const headers = {
-    authorization: "Bearer " + token,
-  };
+
   const [areUsers, setAreUsers] = useState([]);
   const [isError, setIsError] = useState("");
 
@@ -34,7 +32,9 @@ const Users = ({ isAuthenticated }) => {
   useEffect(() => {
     axios
       .get("https://new-projects-api.herokuapp.com/api/users/", {
-        headers,
+        headers: {
+          authorization: "Bearer " + token,
+        },
       })
       .then((res) => {
         setAreUsers(res.data.data);
@@ -52,11 +52,41 @@ const Users = ({ isAuthenticated }) => {
           }
         }
       });
-  }, [isLoading]);
+  }, [isLoading, token]);
 
   useEffect(() => {
     setIsLoading();
   }, [isShowModalEdit]);
+
+  useEffect(() => {
+    if (isShowModal.deleted) {
+      const UserToDeleteID = isShowModal.data._id;
+      axios
+        .delete(
+          "https://new-projects-api.herokuapp.com/api/users/delete/" +
+            UserToDeleteID,
+          {
+            headers: {
+              authorization: "Bearer " + token,
+            },
+          }
+        )
+        .then(() => {
+          const newUsers = [...areUsers];
+          const index = areUsers.findIndex(
+            (user) => user._id === UserToDeleteID
+          );
+          setIsShowModal({
+            open: false,
+            deleted: false,
+            data: [],
+          });
+
+          newUsers.splice(index, 1);
+          setAreUsers(newUsers);
+        });
+    }
+  }, [isShowModal, areUsers, token]);
 
   const handleDelete = (row) => {
     setIsShowModal((prevState) => ({
@@ -130,34 +160,6 @@ const Users = ({ isAuthenticated }) => {
       ),
     },
   ];
-
-  useEffect(() => {
-    if (isShowModal.deleted) {
-      const UserToDeleteID = isShowModal.data._id;
-      axios
-        .delete(
-          "https://new-projects-api.herokuapp.com/api/users/delete/" +
-            UserToDeleteID,
-          {
-            headers,
-          }
-        )
-        .then(() => {
-          const newUsers = [...areUsers];
-          const index = areUsers.findIndex(
-            (user) => user._id === UserToDeleteID
-          );
-          setIsShowModal({
-            open: false,
-            deleted: false,
-            data: [],
-          });
-
-          newUsers.splice(index, 1);
-          setAreUsers(newUsers);
-        });
-    }
-  }, [isShowModal, areUsers, headers]);
 
   return (
     <>
