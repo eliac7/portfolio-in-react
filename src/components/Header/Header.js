@@ -31,7 +31,7 @@ function Header(props) {
   return (
     <div className="header">
       <header>
-        <Link to={window.location.pathname === "/" ? "/" : "/admin"}>
+        <Link to="/">
           <div className="logo">
             <MyIcons.Logo />
           </div>

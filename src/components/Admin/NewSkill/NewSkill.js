@@ -21,7 +21,7 @@ function NewSkill() {
   const [FormSubmitted, setFormSubmitted] = useState(null);
   const [FormSubmitting, setFormSubmitting] = useState(false);
   const [image, setImage] = useState("");
-  const [isUp, setisUp] = useState(false);
+  const [isUp, setisUp] = useState(true);
 
   const [isActive, setIsActive] = useState(false);
   const [counter, setCounter] = useState(3);

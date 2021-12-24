@@ -12,35 +12,7 @@
     "description": "A mechanism for connecting highly skilled workers abroad with businesses operating in Greece. Each user can be registered as a Scientists / Experts / Researchers (S.E.R) or as a business and have the respective permissions and features. Implemented with CPT's of WordPress, ACF. It contains interactivity with ESCO's API.\n*Only coding, no design.\n",
     "__v": 0,
     "image": "https://firebasestorage.googleapis.com/v0/b/skills-b6807.appspot.com/o/skills%2F20f8bee0-86a1-4375-91c7-393b10fa8d97-rebrain.png?alt=media&token=ad3cb91c-19a0-478d-bdc9-353a78044448",
-    "fixed": "false"
-  },
-  {
-    "URL": {
-      "live": "https://supportgreekmusic.gr"
-    },
-    "_id": "6150ccfa42b8c86746cca715",
-    "title": "Support Greek Music",
-    "technologies": "WordPress, PHP,JavaScript",
-    "type": "work",
-    "className": "sgm",
-    "description": "Crowdfunding platform to aid and practically bind the creators’ copyright, during a deafeningly resonant period, caused by the COVID-19 pandemic. My contribution to that project was the front-end development.\n*Only coding, no design.",
-    "__v": 0,
-    "image": "https://firebasestorage.googleapis.com/v0/b/skills-b6807.appspot.com/o/skills%2F0cdb505a-05f1-4a80-a280-65b06d37c87c-sgm.png?alt=media&token=698b4a99-8138-4d32-90df-9479a71dfb71",
-    "fixed": "false"
-  },
-  {
-    "URL": {
-      "live": "https://ampelokipi-menemeni.gr"
-    },
-    "_id": "6150cd1542b8c86746cca717",
-    "title": "Ampelokipi - Menemeni",
-    "technologies": "WordPress,PHP,JavaScript",
-    "type": "work",
-    "className": "ampelokipi",
-    "description": "A multilanguage portal for Ampelokipi - Menemeni Municipality. The citizen can apply online for problems or questions, connected with TaxisNet, or simply log in. Implementation of custom search functionality with AJAX filters to improve user experience.\n*Only coding, no design.",
-    "__v": 0,
-    "image": "https://firebasestorage.googleapis.com/v0/b/skills-b6807.appspot.com/o/skills%2Ffef8dcc4-4dec-4a33-a769-abf99a0adba9-ampelokipi.png?alt=media&token=3a21fc64-4b84-45df-924b-f046b16392b6",
-    "fixed": "false"
+    "fixed": false
   },
   {
     "URL": {
@@ -54,7 +26,35 @@
     "description": "Hellenic Electricity Distribution Network Operator's chatbot landing page.\n\n*Only coding, no design.",
     "__v": 0,
     "image": "https://firebasestorage.googleapis.com/v0/b/skills-b6807.appspot.com/o/skills%2Fc6efc007-842e-4c88-9210-7c1cf325161d-chatbot.png?alt=media&token=c91248df-98c9-4333-8a3b-c8e371ad1bd6",
-    "fixed": "false"
+    "fixed": false
+  },
+  {
+    "URL": {
+      "live": "https://ampelokipi-menemeni.gr"
+    },
+    "_id": "6150cd1542b8c86746cca717",
+    "title": "Ampelokipi - Menemeni",
+    "technologies": "WordPress,PHP,JavaScript",
+    "type": "work",
+    "className": "ampelokipi",
+    "description": "A multilanguage portal for Ampelokipi - Menemeni Municipality. The citizen can apply online for problems or questions, connected with TaxisNet, or simply log in. Implementation of custom search functionality with AJAX filters to improve user experience.\n*Only coding, no design.",
+    "__v": 0,
+    "image": "https://firebasestorage.googleapis.com/v0/b/skills-b6807.appspot.com/o/skills%2Ffef8dcc4-4dec-4a33-a769-abf99a0adba9-ampelokipi.png?alt=media&token=3a21fc64-4b84-45df-924b-f046b16392b6",
+    "fixed": false
+  },
+  {
+    "URL": {
+      "live": "https://supportgreekmusic.gr"
+    },
+    "_id": "6150ccfa42b8c86746cca715",
+    "title": "Support Greek Music",
+    "technologies": "WordPress, PHP,JavaScript",
+    "type": "work",
+    "className": "sgm",
+    "description": "Crowdfunding platform to aid and practically bind the creators’ copyright, during a deafeningly resonant period, caused by the COVID-19 pandemic. My contribution to that project was the front-end development.\n*Only coding, no design.",
+    "__v": 0,
+    "image": "https://firebasestorage.googleapis.com/v0/b/skills-b6807.appspot.com/o/skills%2F0cdb505a-05f1-4a80-a280-65b06d37c87c-sgm.png?alt=media&token=698b4a99-8138-4d32-90df-9479a71dfb71",
+    "fixed": false
   },
   {
     "URL": {
@@ -68,7 +68,7 @@
     "description": "Crowdpolicy's events with AJAX filtering with pagination. Built with WordPress' CPT, ACF.\n*Only coding, no design.",
     "__v": 0,
     "image": "https://firebasestorage.googleapis.com/v0/b/skills-b6807.appspot.com/o/skills%2F6eaca730-64ae-4301-9f03-94a532bdf0c8-cp-events.png?alt=media&token=3b415d14-ca5d-4dc9-a929-ddfca31f98ee",
-    "fixed": "false"
+    "fixed": false
   },
   {
     "URL": {
@@ -82,7 +82,7 @@
     "description": "My thesis was to implement a Siamese Neural Network using the VGG19 model, pre-trained on ImageNet to calculate the match of a query image through a dataset of images. To find the similarity, I used a contrastive loss function and a Euclidean distance. You will find my implementation on a web app for this purpose on the below link of Github.",
     "__v": 0,
     "image": "https://firebasestorage.googleapis.com/v0/b/skills-b6807.appspot.com/o/skills%2F7f999363-0238-4604-94be-e0b4c32b9869-thesis.png?alt=media&token=ca13fe84-f865-4afd-b864-846a62d350ce",
-    "fixed": "true"
+    "fixed": true
   },
   {
     "URL": {
@@ -95,7 +95,38 @@
     "type": "personal",
     "className": "todo",
     "description": "Classic Todo app developed on React(CRA) as a practice project. You can add, edit and delete a task, as well as, to mark it as completed with one click.",
-    "fixed": "true",
+    "__v": 0,
+    "fixed": true,
+    "image": "https://firebasestorage.googleapis.com/v0/b/skills-b6807.appspot.com/o/skills%2F50291840-1996-457a-8625-e9d11dee309d-todo_gif.gif?alt=media&token=df2e15cf-887c-4ab1-80bb-46e52e797a94"
+  },
+  {
+    "URL": {
+      "live": "https://bit.ly/node_weather",
+      "github": "https://github.com/eliac7/node-openweather-proxy-server"
+    },
+    "_id": "61795bc22df3f441616310f9",
+    "title": "Weather App with Node API Proxy Server",
+    "technologies": "Node.js, Express.js, HTML, CSS, Javascript",
+    "type": "personal",
+    "className": "nodeweather",
+    "description": "A Node API Proxy Server for hiding the API keys with rate limiting and caching. Also, includes a modern weather app, built with HTML, CSS, and Vanilla JS, using OpenWeatherMap API to interact with. The proxy server uses the OpenWeather API but you can easily change it to whatever API you are using for.\n",
+    "image": "https://firebasestorage.googleapis.com/v0/b/skills-b6807.appspot.com/o/skills%2F7c9c8f4a-4ffa-4e0c-96dc-854bb4882879-weather-app.png?alt=media&token=6f84ad9a-f179-40b9-9836-d58b2159cd1e",
+    "fixed": true,
+    "__v": 0
+  },
+  {
+    "URL": {
+      "live": "https://bit.ly/efood-analytics",
+      "github": "https://github.com/eliac7/efood-analytics"
+    },
+    "_id": "61a73883ffd5a93a453bc32b",
+    "title": "E-food Analytics",
+    "technologies": "Node.js,Expressjs,Chart.js,Leafletjs,Bootstrap",
+    "type": "personal",
+    "className": "efood",
+    "description": "Have you ever wondered how much you have spent on E-food? Well, this project is for you. Check Github for features.",
+    "image": "https://firebasestorage.googleapis.com/v0/b/skills-b6807.appspot.com/o/skills%2F4839451b-40c5-4c68-adb5-2f717a8e0eee-Animation.gif?alt=media&token=058df08a-42bd-4136-9a5d-a4bc9c4f9368",
+    "fixed": true,
     "__v": 0
   }
 ]
