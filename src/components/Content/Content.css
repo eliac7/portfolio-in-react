@@ -178,7 +178,6 @@ section.skills {
 }
 .skillsGrid {
   display: grid;
-  gap: unset;
   grid-template-columns: repeat(auto-fill, minmax(5rem, 1fr));
   place-items: center;
   grid-column-gap: 3.125rem;
