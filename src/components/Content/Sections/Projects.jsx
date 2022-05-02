@@ -156,7 +156,7 @@ function Projects() {
                   <div
                     className={
                       "col-lg-6 text-lg-start text-center d-flex flex-column justify-content-between" +
-                      (index % 2 === 1 && " text-lg-end ")
+                      (index % 2 === 1 ? " text-lg-end" : "")
                     }
                   >
                     <div className="d-flex flex-column">
