@@ -44,10 +44,14 @@ const Auth = () => {
   async function loginUser(credentials) {
     try {
       setIsRequesting(true);
+<<<<<<< HEAD
       const res = await axios.post(
         `${process.env.REACT_APP_BASE_URL}/users/login`,
         credentials
       );
+=======
+      const res = await axios.post("/users/login", credentials);
+>>>>>>> 87f9aef7a5013e2b0329a5c36a8a97935f3a92a3
       const data = res.data.data;
       return data;
     } catch (err) {

@@ -59,7 +59,11 @@ const Register = ({ isAuthenticated }) => {
 
   const submitForm = async (e) => {
     await axios
+<<<<<<< HEAD
       .post(`${process.env.REACT_APP_BASE_URL}/users/register`, e, {
+=======
+      .post("/users/register", e, {
+>>>>>>> 87f9aef7a5013e2b0329a5c36a8a97935f3a92a3
         headers,
       })
       .then(() => {

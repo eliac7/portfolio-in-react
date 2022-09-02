@@ -31,7 +31,11 @@ const Users = ({ isAuthenticated }) => {
 
   useEffect(() => {
     axios
+<<<<<<< HEAD
       .get(`${process.env.REACT_APP_BASE_URL}/users/`, {
+=======
+      .get("/users/", {
+>>>>>>> 87f9aef7a5013e2b0329a5c36a8a97935f3a92a3
         headers: {
           authorization: "Bearer " + token,
         },
