@@ -28,7 +28,7 @@ function NewSkill() {
 
   useEffect(() => {
     axios
-      .get("https://new-projects-api.herokuapp.com/api/skills")
+      .get("/skills")
       .then(() => setisUp(true))
       .catch(() => setisUp(false));
   }, [isUp]);
@@ -72,7 +72,7 @@ function NewSkill() {
 
   const SubmitToAPI = (data) => {
     axios
-      .post("https://new-projects-api.herokuapp.com/api/skills/", data)
+      .post(" /skills/", data)
       .then(() => {
         setFormSubmitted(true);
         setFormSubmitting(true);

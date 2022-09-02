@@ -57,12 +57,7 @@ function Edit(props) {
 
   const updateToAPI = async (id, data) => {
     await axios
-      .patch(
-        `https://new-projects-api.herokuapp.com/api/skills/${
-          id && id !== undefined ? id : ""
-        }`,
-        data
-      )
+      .patch(`/skills/${id && id !== undefined ? id : ""}`, data)
       .then((res) => {
         console.log(res);
         setIsActive(!isActive);
@@ -142,10 +137,7 @@ function Edit(props) {
       } else {
         //else just update the fields
         axios
-          .patch(
-            "https://new-projects-api.herokuapp.com/api/skills/" + id,
-            toUpdate
-          )
+          .patch(" /skills/" + id, toUpdate)
           .then((res) => {
             console.log(res);
             setIsActive(!isActive);
@@ -157,7 +149,7 @@ function Edit(props) {
 
   useEffect(() => {
     axios
-      .get("https://new-projects-api.herokuapp.com/api/skills/" + id)
+      .get(" /skills/" + id)
       .then((res) => {
         setIsLoading(true);
         setToUpdate(res.data);

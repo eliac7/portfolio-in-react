@@ -31,7 +31,7 @@ const Users = ({ isAuthenticated }) => {
 
   useEffect(() => {
     axios
-      .get("https://new-projects-api.herokuapp.com/api/users/", {
+      .get("/users/", {
         headers: {
           authorization: "Bearer " + token,
         },
@@ -62,15 +62,11 @@ const Users = ({ isAuthenticated }) => {
     if (isShowModal.deleted) {
       const UserToDeleteID = isShowModal.data._id;
       axios
-        .delete(
-          "https://new-projects-api.herokuapp.com/api/users/delete/" +
-            UserToDeleteID,
-          {
-            headers: {
-              authorization: "Bearer " + token,
-            },
-          }
-        )
+        .delete(" /users/delete/" + UserToDeleteID, {
+          headers: {
+            authorization: "Bearer " + token,
+          },
+        })
         .then(() => {
           const newUsers = [...areUsers];
           const index = areUsers.findIndex(

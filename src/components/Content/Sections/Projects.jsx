@@ -15,7 +15,6 @@ function Projects() {
     });
     AOS.refresh();
   }, []);
-  const URL_TO_FETCH = "https://new-projects-api.herokuapp.com/api/skills";
 
   const [isLoading, setLoading] = useState(true);
   const [projects, setProjects] = useState(null);
@@ -54,7 +53,7 @@ function Projects() {
 
   useEffect(() => {
     axios
-      .get(URL_TO_FETCH)
+      .get("/skills")
       .then((res) => {
         setProjects(res.data);
       })

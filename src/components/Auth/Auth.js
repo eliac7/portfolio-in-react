@@ -44,10 +44,7 @@ const Auth = () => {
   async function loginUser(credentials) {
     try {
       setIsRequesting(true);
-      const res = await axios.post(
-        "https://new-projects-api.herokuapp.com/api/users/login",
-        credentials
-      );
+      const res = await axios.post("/users/login", credentials);
       const data = res.data.data;
       return data;
     } catch (err) {

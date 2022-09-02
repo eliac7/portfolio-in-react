@@ -56,5 +56,6 @@
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.17.0"
-  }
+  },
+  "proxy": "https://rest-api.adaptable.app/api"
 }
