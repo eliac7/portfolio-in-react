@@ -65,11 +65,7 @@ function EditModal(props) {
     const id = props.show.data._id;
 
     await axios
-<<<<<<< HEAD
       .patch(`${process.env.REACT_APP_BASE_URL}/users/update/${id}`, e, {
-=======
-      .patch("/users/update/" + id, e, {
->>>>>>> 87f9aef7a5013e2b0329a5c36a8a97935f3a92a3
         headers,
       })
       .then(() => setIsUpdated(true))

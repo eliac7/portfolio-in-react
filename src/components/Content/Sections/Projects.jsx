@@ -53,11 +53,7 @@ function Projects() {
 
   useEffect(() => {
     axios
-<<<<<<< HEAD
       .get(`${process.env.REACT_APP_BASE_URL}/skills`)
-=======
-      .get("/skills")
->>>>>>> 87f9aef7a5013e2b0329a5c36a8a97935f3a92a3
       .then((res) => {
         setProjects(res.data);
       })
