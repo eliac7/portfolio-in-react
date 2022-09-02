@@ -57,16 +57,12 @@ function Edit(props) {
 
   const updateToAPI = async (id, data) => {
     await axios
-<<<<<<< HEAD
       .patch(
         `${process.env.REACT_APP_BASE_URL}/skills/${
           id && id !== undefined ? id : ""
         }`,
         data
       )
-=======
-      .patch(`/skills/${id && id !== undefined ? id : ""}`, data)
->>>>>>> 87f9aef7a5013e2b0329a5c36a8a97935f3a92a3
       .then((res) => {
         console.log(res);
         setIsActive(!isActive);
