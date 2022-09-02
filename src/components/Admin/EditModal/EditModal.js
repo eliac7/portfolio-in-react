@@ -65,13 +65,9 @@ function EditModal(props) {
     const id = props.show.data._id;
 
     await axios
-      .patch(
-        "https://new-projects-api.herokuapp.com/api/users/update/" + id,
-        e,
-        {
-          headers,
-        }
-      )
+      .patch(`${process.env.REACT_APP_BASE_URL}/users/update/${id}`, e, {
+        headers,
+      })
       .then(() => setIsUpdated(true))
       .catch((err) => {
         if (err) {

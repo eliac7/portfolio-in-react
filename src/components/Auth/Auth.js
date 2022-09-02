@@ -45,7 +45,7 @@ const Auth = () => {
     try {
       setIsRequesting(true);
       const res = await axios.post(
-        "https://new-projects-api.herokuapp.com/api/users/login",
+        `${process.env.REACT_APP_BASE_URL}/users/login`,
         credentials
       );
       const data = res.data.data;

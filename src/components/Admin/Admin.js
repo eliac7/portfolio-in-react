@@ -22,7 +22,7 @@ function Admin({ isAuthenticated }) {
     const fetchUser = async () => {
       try {
         const res = await axios.get(
-          "https://new-projects-api.herokuapp.com/api/users/",
+          `${process.env.REACT_APP_BASE_URL}/users/`,
           {
             headers: {
               authorization: "Bearer " + token,
