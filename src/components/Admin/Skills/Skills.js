@@ -33,11 +33,7 @@ function Skills() {
     settoDelete(val);
     if (val) {
       axios
-<<<<<<< HEAD
         .delete(`${process.env.REACT_APP_BASE_URL}/skills/${skillToDelete.id}`)
-=======
-        .delete("/skills/" + skillToDelete.id)
->>>>>>> 87f9aef7a5013e2b0329a5c36a8a97935f3a92a3
         .then(() => {
           console.log(`${skillToDelete.id} was deleted successfully.`);
           const remainingResults = skills.filter(
