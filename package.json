@@ -21,6 +21,7 @@
     "react-router-dom": "^5.3.0",
     "react-router-hash-link": "^2.4.3",
     "react-scripts": "^5.0.0",
+    "react-scroll": "^1.8.7",
     "styled-components": "^5.3.5",
     "typeface-poppins": "^1.1.13",
     "uuid": "^8.3.2",

@@ -56,13 +56,10 @@ function Projects() {
       .get(`${process.env.REACT_APP_BASE_URL}/skills`)
       .then((res) => {
         setProjects(res.data);
+        setLoading(false);
       })
       .catch((err) => {
-        if (err.message) {
-          setProjects(localjson);
-        }
-      })
-      .then(() => {
+        setProjects(localjson);
         setLoading(false);
       });
   }, []);

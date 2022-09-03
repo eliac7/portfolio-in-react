@@ -7,13 +7,15 @@ import Hero from "./Sections/Hero";
 import Projects from "./Sections/Projects";
 import Skills from "./Sections/Skills";
 
-function Content() {
+function Content({ fixed }) {
   return (
     <>
-      <Hero />
-      <Skills />
-      <Projects />
-      <Contact />
+      <main style={fixed ? { paddingTop: "100px" } : { paddingTop: "0px" }}>
+        <Hero />
+        <Skills />
+        <Projects />
+        <Contact />
+      </main>
     </>
   );
 }

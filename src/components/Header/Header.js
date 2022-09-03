@@ -1,6 +1,7 @@
 import React from "react";
-import { useState } from "react";
-import { NavHashLink as Link } from "react-router-hash-link";
+import { useState, useEffect } from "react";
+import { NavHashLink } from "react-router-hash-link";
+import { Link } from "react-scroll";
 import "./Header.css";
 import MyIcons from "../Icons/Icons";
 
@@ -8,30 +9,48 @@ function Header(props) {
   const [NavMobile, setNavMobile] = useState(false);
   const [NavMobileSidebar, setNavMobileSidebar] = useState(false);
   const [Overlay, setOverlay] = useState(false);
-  window.addEventListener("resize", function (e) {
-    if (e.target.innerWidth > 768) {
-      if (NavMobileSidebar) {
-        setNavMobile(!NavMobile);
-        setNavMobileSidebar(!NavMobileSidebar);
-        setOverlay(!Overlay);
-      } else {
-        setNavMobile(false);
-        setNavMobileSidebar(false);
-        setOverlay(false);
-      }
-    }
-  });
 
-  if (NavMobile) {
-    document.body.classList.add("nav-mobile");
-  } else {
-    document.body.classList.remove("nav-mobile");
-  }
+  useEffect(() => {
+    if (NavMobile) {
+      document.body.classList.add("nav-mobile");
+    } else {
+      document.body.classList.remove("nav-mobile");
+    }
+  }, [NavMobile]);
+
+  useEffect(() => {
+    // on window scroll, change the header style to fixed
+    window.addEventListener("scroll", function (e) {
+      if (e.target.scrollingElement.scrollTop > 150) {
+        document.querySelector(".header").classList.add("header-fixed");
+        props.fixed(true);
+      } else {
+        document.querySelector(".header").classList.remove("header-fixed");
+        props.fixed(false);
+      }
+    });
+  }, [props]);
+
+  useEffect(() => {
+    window.addEventListener("resize", function (e) {
+      if (e.target.innerWidth > 768) {
+        if (NavMobileSidebar) {
+          setNavMobile(!NavMobile);
+          setNavMobileSidebar(!NavMobileSidebar);
+          setOverlay(!Overlay);
+        } else {
+          setNavMobile(false);
+          setNavMobileSidebar(false);
+          setOverlay(false);
+        }
+      }
+    });
+  }, [NavMobileSidebar, NavMobile, Overlay]);
 
   return (
     <div className="header">
       <header>
-        <Link to="/">
+        <Link smooth to="/">
           <div className="logo">
             <MyIcons.Logo />
           </div>
@@ -53,7 +72,18 @@ function Header(props) {
             {props.items.map((item, index) => {
               return (
                 <li key={index}>
-                  <Link to={item.link}>{item.name}</Link>
+                  <Link
+                    activeClass="active"
+                    smooth
+                    spy
+                    hashSpy={true}
+                    to={item.link}
+                    offset={-160}
+                    delay={0}
+                    isDynamic={true}
+                  >
+                    {item.name}
+                  </Link>
                 </li>
               );
             })}
@@ -86,7 +116,9 @@ function Header(props) {
                       setOverlay(!Overlay);
                     }}
                   >
-                    <Link to={item.link}>{item.name}</Link>
+                    <Link activeClass="active" smooth to={item.link} spy>
+                      {item.name}
+                    </Link>
                   </li>
                 );
               })}

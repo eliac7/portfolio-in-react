@@ -15,8 +15,6 @@ import Users from "./components/Admin/Users/Users";
 const App = () => {
   return (
     <>
-      <Mouse />
-      <BackToTop />
       <Router>
         <Switch>
           <Route path="/" exact component={Home}></Route>
@@ -50,6 +48,8 @@ const App = () => {
           <Route path="*" component={NotFound}></Route>
         </Switch>
       </Router>
+      <Mouse />
+      <BackToTop />
     </>
   );
 };

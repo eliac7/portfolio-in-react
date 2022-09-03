@@ -11,7 +11,7 @@ section.hero {
   justify-content: center;
 }
 section.contact {
-  min-height: 80vh;
+  min-height: 120vh;
 }
 section svg {
   max-width: 100%;
