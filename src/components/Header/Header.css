@@ -6,12 +6,12 @@
 }
 
 header {
-  padding: 2.5rem;
+  padding: 2.5rem 15rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 71.25rem;
   margin: 0 auto;
+  height: 100%;
   -webkit-transition: all 0.5s ease;
   -moz-transition: position 10s;
   -ms-transition: position 10s;
@@ -44,7 +44,7 @@ body.nav-mobile .header.header-fixed {
   }
 }
 .header.header-fixed header {
-  padding: 1rem;
+  padding: 0.5rem 15rem;
 }
 .header.header-fixed .logo {
   width: 4rem;
@@ -157,11 +157,18 @@ ul li a.active {
 ul li a:hover {
   color: var(--yellow);
 }
+@media (max-width: 75rem) {
+  header {
+    padding: 1.25rem 5rem;
+  }
+}
 @media (max-width: 36.25rem) {
   header {
     gap: 1.25rem;
+    padding: 1.25rem;
   }
 }
+
 @media (min-width: 769px) {
   nav.mobile {
     display: none;

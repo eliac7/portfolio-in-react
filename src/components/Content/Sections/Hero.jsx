@@ -12,7 +12,7 @@ function Hero() {
         id="about"
       >
         <div className="row flex-column flex-md-row hero-row">
-          <div className="col">
+          <div className="col-lg-6">
             <div className="info d-flex flex-column justify-content-start ">
               <h1 className="hero-text">
                 Hi, I'm <br className="br-hero" />
@@ -38,7 +38,7 @@ function Hero() {
               </a>
             </div>
           </div>
-          <div className="col d-flex align-items-center justify-content-center position-relative me-col">
+          <div className="col-lg-6 d-flex align-items-center justify-content-center position-relative me-col mt-5">
             <div className="image">
               <img
                 src={MyIcons.Me}

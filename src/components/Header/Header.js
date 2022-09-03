@@ -48,92 +48,100 @@ function Header(props) {
   }, [NavMobileSidebar, NavMobile, Overlay]);
 
   return (
-    <div className="header">
-      <header>
-        <Link smooth to="/">
-          <div className="logo">
-            <MyIcons.Logo />
+    <div className="container-fluid">
+      <div className="row ">
+        <div className="col g-0">
+          <div className="header">
+            <header>
+              <Link smooth to="/">
+                <div className="logo">
+                  <MyIcons.Logo />
+                </div>
+              </Link>
+              <div
+                className={NavMobile ? "burger" : "burger closed "}
+                onClick={() => {
+                  setNavMobile(!NavMobile);
+                  setNavMobileSidebar(!NavMobileSidebar);
+                  setOverlay(!Overlay);
+                }}
+              >
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+              <nav>
+                <ul>
+                  {props.items.map((item, index) => {
+                    return (
+                      <li key={index}>
+                        <Link
+                          activeClass="active"
+                          smooth
+                          spy
+                          hashSpy={true}
+                          to={item.link}
+                          offset={-160}
+                          delay={0}
+                          isDynamic={true}
+                        >
+                          {item.name}
+                        </Link>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </nav>
+              <div
+                className={
+                  NavMobileSidebar
+                    ? "sidemenu mobile"
+                    : "sidemenu mobile closed"
+                }
+              >
+                <div
+                  className="close-btn"
+                  onClick={() => {
+                    setNavMobile(!NavMobile);
+                    setNavMobileSidebar(!NavMobileSidebar);
+                    setOverlay(!Overlay);
+                  }}
+                >
+                  ×
+                </div>
+                <nav className="mobile">
+                  <ul>
+                    {props.items.map((item, index) => {
+                      return (
+                        <li
+                          key={index}
+                          onClick={() => {
+                            setNavMobile(!NavMobile);
+                            setNavMobileSidebar(!NavMobileSidebar);
+                            setOverlay(!Overlay);
+                          }}
+                        >
+                          <Link activeClass="active" smooth to={item.link} spy>
+                            {item.name}
+                          </Link>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </nav>
+              </div>
+              <div
+                className={Overlay ? "overlay" : "overlay closed"}
+                onClick={() => {
+                  setNavMobile(!NavMobile);
+                  setNavMobileSidebar(!NavMobileSidebar);
+                  setOverlay(!Overlay);
+                }}
+              ></div>
+            </header>
           </div>
-        </Link>
-        <div
-          className={NavMobile ? "burger" : "burger closed "}
-          onClick={() => {
-            setNavMobile(!NavMobile);
-            setNavMobileSidebar(!NavMobileSidebar);
-            setOverlay(!Overlay);
-          }}
-        >
-          <span></span>
-          <span></span>
-          <span></span>
         </div>
-        <nav>
-          <ul>
-            {props.items.map((item, index) => {
-              return (
-                <li key={index}>
-                  <Link
-                    activeClass="active"
-                    smooth
-                    spy
-                    hashSpy={true}
-                    to={item.link}
-                    offset={-160}
-                    delay={0}
-                    isDynamic={true}
-                  >
-                    {item.name}
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-        </nav>
-        <div
-          className={
-            NavMobileSidebar ? "sidemenu mobile" : "sidemenu mobile closed"
-          }
-        >
-          <div
-            className="close-btn"
-            onClick={() => {
-              setNavMobile(!NavMobile);
-              setNavMobileSidebar(!NavMobileSidebar);
-              setOverlay(!Overlay);
-            }}
-          >
-            ×
-          </div>
-          <nav className="mobile">
-            <ul>
-              {props.items.map((item, index) => {
-                return (
-                  <li
-                    key={index}
-                    onClick={() => {
-                      setNavMobile(!NavMobile);
-                      setNavMobileSidebar(!NavMobileSidebar);
-                      setOverlay(!Overlay);
-                    }}
-                  >
-                    <Link activeClass="active" smooth to={item.link} spy>
-                      {item.name}
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
-          </nav>
-        </div>
-        <div
-          className={Overlay ? "overlay" : "overlay closed"}
-          onClick={() => {
-            setNavMobile(!NavMobile);
-            setNavMobileSidebar(!NavMobileSidebar);
-            setOverlay(!Overlay);
-          }}
-        ></div>
-      </header>
+      </div>
     </div>
   );
 }
