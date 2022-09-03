@@ -39,7 +39,6 @@ function Hero() {
             </div>
           </div>
           <div className="col d-flex align-items-center justify-content-center position-relative me-col">
-            <div className="image-behind"></div>
             <div className="image">
               <img
                 src={MyIcons.Me}
@@ -48,7 +47,6 @@ function Hero() {
                 loading="lazy"
               />
             </div>
-            <div className="image-front"></div>
           </div>
         </div>
       </div>

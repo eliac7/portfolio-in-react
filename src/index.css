@@ -183,6 +183,7 @@ img {
   --yellow: #f7ea90;
   --light-red: #cf7873;
   --light-red-disabled: #cf78736b;
+  --green: #0b575b;
 }
 
 ::-webkit-scrollbar-track {
