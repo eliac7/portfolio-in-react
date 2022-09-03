@@ -1,6 +1,5 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { NavHashLink } from "react-router-hash-link";
 import { Link } from "react-scroll";
 import "./Header.css";
 import MyIcons from "../Icons/Icons";
