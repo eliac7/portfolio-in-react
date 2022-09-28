@@ -13,7 +13,13 @@ function Projects() {
       once: true,
       disable: window.innerWidth < 768,
     });
-    AOS.refresh();
+  }, []);
+
+  //when window is resized, refresh AOS
+  useEffect(() => {
+    window.addEventListener("resize", () => {
+      AOS.refresh();
+    });
   }, []);
 
   const [isLoading, setLoading] = useState(true);

@@ -43,9 +43,7 @@ body.nav-mobile .header.header-fixed {
     transform: translateY(0px);
   }
 }
-.header.header-fixed header {
-  padding: 0.5rem 15rem;
-}
+
 .header.header-fixed .logo {
   width: 4rem;
 }
