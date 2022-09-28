@@ -142,18 +142,28 @@ function Projects() {
                   key={item.className}
                 >
                   <div className="col-lg-6">
-                    <div
-                      className={
-                        index === 0
-                          ? "screen rebrain"
-                          : item.fixed
-                          ? "screen fixed"
-                          : "screen"
-                      }
-                      style={{
-                        backgroundImage: `url(${item.image})`,
-                      }}
-                    ></div>
+                    {item.image.endsWith(".mp4") ? (
+                      <video
+                        className="project-video"
+                        src={item.image}
+                        autoPlay
+                        loop
+                        muted
+                      ></video>
+                    ) : (
+                      <div
+                        className={
+                          index === 0
+                            ? "screen rebrain"
+                            : item.fixed
+                            ? "screen fixed"
+                            : "screen"
+                        }
+                        style={{
+                          backgroundImage: `url(${item.image})`,
+                        }}
+                      ></div>
+                    )}
                   </div>
                   <div
                     className={

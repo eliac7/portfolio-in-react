@@ -67,6 +67,12 @@ section svg {
   transform: rotate(334deg);
   font-family: "Allison", cursive;
 }
+.project-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .touch-text {
   max-width: fit-content;
 }
