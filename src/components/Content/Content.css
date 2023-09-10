@@ -203,6 +203,7 @@ section.skills {
   width: 5rem;
   border: 0.0625rem solid #eee;
   transition: all 0.3s ease-in !important;
+  margin: 0;
 }
 
 .skillsGrid li img {
@@ -390,17 +391,6 @@ section.contact svg.mailman {
   }
   .screen.todo {
     background-position: center !important;
-  }
-  [data-aos] {
-    pointer-events: auto !important;
-  }
-
-  html:not(.no-js) [data-aos^="fade"][data-aos^="fade"] {
-    opacity: 1 !important;
-  }
-
-  html:not(.no-js) [data-aos="fade-up"] {
-    transform: none !important;
   }
 }
 

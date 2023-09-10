@@ -1,16 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import DataTable from "react-data-table-component";
 import Header from "../../Header/Header";
 import Footer from "../../Footer/Footer";
 import EditModal from "../EditModal/EditModal";
 import DeleteModal from "../DeleteModal/DeleteModal";
+import UserContext from "../../../context/UserContext";
+import { useHistory } from "react-router-dom";
 
-const Users = ({ isAuthenticated }) => {
-  const token = isAuthenticated?.accessToken;
-  const id = isAuthenticated?.id;
+const Users = () => {
+  const history = useHistory();
+  const { token, setUsers, users, setUser, setToken, user } =
+    useContext(UserContext);
+  const id = user.id;
 
-  const [areUsers, setAreUsers] = useState([]);
   const [isError, setIsError] = useState("");
 
   //Edit useState
@@ -37,22 +40,26 @@ const Users = ({ isAuthenticated }) => {
         },
       })
       .then((res) => {
-        setAreUsers(res.data.data);
+        setUsers(res.data.data);
         setIsLoading(false);
       })
       .catch((err) => {
+        console.log(err);
+        setIsError(err);
         setIsLoading(true);
-        if (err) {
-          if (err.response.data.errors) {
-            setIsError(err.response.data.errors);
-          } else if (err.response.message) {
-            setIsError(err.message.toString());
-          } else {
-            setIsError("Request error. Please try again later.");
-          }
-        }
+        setToken(null);
+        setUser(null);
+        history.push("/login");
       });
-  }, [isLoading, token]);
+  }, [
+    isShowModal.deleted,
+    isShowModalEdit.updated,
+    setUsers,
+    setToken,
+    setUser,
+    token,
+    history,
+  ]);
 
   useEffect(() => {
     setIsLoading();
@@ -62,27 +69,27 @@ const Users = ({ isAuthenticated }) => {
     if (isShowModal.deleted) {
       const UserToDeleteID = isShowModal.data._id;
       axios
-        .delete(" /users/delete/" + UserToDeleteID, {
-          headers: {
-            authorization: "Bearer " + token,
-          },
-        })
+        .delete(
+          `${process.env.REACT_APP_BASE_URL}/users/delete/${UserToDeleteID}`,
+          {
+            headers: {
+              authorization: "Bearer " + token,
+            },
+          }
+        )
         .then(() => {
-          const newUsers = [...areUsers];
-          const index = areUsers.findIndex(
-            (user) => user._id === UserToDeleteID
+          const remainingResults = users.filter(
+            (user) => user._id !== UserToDeleteID
           );
+          setUsers(remainingResults);
           setIsShowModal({
             open: false,
             deleted: false,
             data: [],
           });
-
-          newUsers.splice(index, 1);
-          setAreUsers(newUsers);
         });
     }
-  }, [isShowModal, areUsers, token]);
+  }, [isShowModal, users, token, setUsers, id]);
 
   const handleDelete = (row) => {
     setIsShowModal((prevState) => ({
@@ -168,10 +175,10 @@ const Users = ({ isAuthenticated }) => {
           <h2 className="text-center mb-5">Users</h2>
           <div className="row">
             <div className="col-lg-10 offset-lg-1">
-              {!isError ? (
+              {!isError || isLoading ? (
                 <DataTable
                   columns={columns}
-                  data={areUsers}
+                  data={users}
                   progressPending={isLoading}
                   pagination
                 />

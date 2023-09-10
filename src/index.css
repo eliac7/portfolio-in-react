@@ -202,3 +202,7 @@ img {
 ::selection {
   background: #98c1d9;
 }
+
+.react-reveal {
+  width: 100%;
+}

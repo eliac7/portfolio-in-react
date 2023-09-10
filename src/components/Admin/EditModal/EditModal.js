@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo, useContext } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
@@ -8,14 +8,13 @@ import Modal from "react-bootstrap/Modal";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
-
 import axios from "axios";
+import UserContext from "../../../context/UserContext";
 
 function EditModal(props) {
+  const { token } = useContext(UserContext);
+
   const [isUpdated, setIsUpdated] = useState(undefined);
-  const accessToken = JSON.parse(
-    localStorage.getItem("isAuthenticated")
-  ).accessToken;
 
   const schema = yup.object().shape(
     {
@@ -58,7 +57,7 @@ function EditModal(props) {
   });
 
   const headers = {
-    authorization: "Bearer " + accessToken,
+    authorization: "Bearer " + token,
   };
 
   const submitForm = async (e) => {

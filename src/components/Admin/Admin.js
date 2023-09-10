@@ -1,14 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useContext } from "react";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import { useHistory } from "react-router-dom";
-import axios from "axios";
 import "./Admin.css";
+import UserContext from "../../context/UserContext";
 
-function Admin({ isAuthenticated }) {
-  const history = useHistory();
-  const [user, setUser] = useState("");
-
+function Admin() {
   const HeaderArray = [
     { name: "Home", link: "/admin/" },
     { name: "All Skills", link: "/admin/skills" },
@@ -16,29 +13,15 @@ function Admin({ isAuthenticated }) {
     { name: "Register user", link: "/admin/register" },
     { name: "All users", link: "/admin/users" },
   ];
+  const history = useHistory();
+  const { isAuthenticated, setUser, user, token, setToken } =
+    useContext(UserContext);
 
-  const token = isAuthenticated.accessToken;
   useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        const res = await axios.get(
-          `${process.env.REACT_APP_BASE_URL}/users/`,
-          {
-            headers: {
-              authorization: "Bearer " + token,
-            },
-          }
-        );
-        setUser(await res.data.data[0]);
-      } catch (err) {
-        setUser("");
-        localStorage.removeItem("isAuthenticated");
-        localStorage.removeItem("grecaptcha");
-        history.push("/login");
-      }
-    };
-    fetchUser();
-  }, [token, history]);
+    if (!isAuthenticated) {
+      history.push("/login");
+    }
+  }, [isAuthenticated, history, setUser, token]);
 
   return (
     <>
@@ -49,7 +32,8 @@ function Admin({ isAuthenticated }) {
             type="button"
             className="btn btn-danger"
             onClick={() => {
-              localStorage.removeItem("isAuthenticated");
+              setUser(null);
+              setToken(null);
               history.push("/login");
             }}
           >
@@ -59,8 +43,8 @@ function Admin({ isAuthenticated }) {
         <div className="container">
           <div className="row h-100">
             <div className="col-lg-12 d-flex align-items-center justify-content-center">
-              <p className="text-center fs-3">
-                Welcome to admin panel {user.fullName}.😊
+              <p className="text-center fs-3 ">
+                Welcome {user.fullName} to the admin panel
               </p>
             </div>
           </div>

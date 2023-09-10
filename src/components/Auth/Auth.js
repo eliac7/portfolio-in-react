@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
+import UserContext from "../../context/UserContext";
 
 const Auth = () => {
   const history = useHistory();
+  const { setIsAuthenticated, setToken, setUser } = useContext(UserContext);
 
   const HeaderArray = [{ name: "Login", link: "/login" }];
 
@@ -35,12 +37,6 @@ const Auth = () => {
     document.body.appendChild(script);
   }, []);
 
-  useEffect(() => {
-    if (localStorage.getItem("isAuthenticated")) {
-      history.push("/admin");
-    }
-  }, [history]);
-
   async function loginUser(credentials) {
     try {
       setIsRequesting(true);
@@ -48,7 +44,7 @@ const Auth = () => {
         `${process.env.REACT_APP_BASE_URL}/users/login`,
         credentials
       );
-      const data = res.data.data;
+      const data = res.data;
       return data;
     } catch (err) {
       if (err) {
@@ -71,7 +67,10 @@ const Auth = () => {
       password,
     });
     if (token) {
-      localStorage.setItem("isAuthenticated", JSON.stringify(token));
+      // Save token to context
+      setIsAuthenticated(token.data);
+      setToken(token.data.accessToken);
+      setUser(token.data);
       history.push("/admin");
     }
   };
@@ -81,8 +80,8 @@ const Auth = () => {
       <Header items={HeaderArray} />
       <div className="main ">
         <div className="container ">
-          <div className="row d-flex align-items-center h-100 ">
-            <div className="col-md-4 offset-md-4">
+          <div className="row d-flex align-items-center justify-content-center h-100 ">
+            <div className="col d-flex align-items-center justify-content-center">
               <div className="login-form bg-dark mt-4 p-4 rounded-3">
                 <form className="row g-3" onSubmit={handleSubmit}>
                   <h4>Welcome Back</h4>

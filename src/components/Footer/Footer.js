@@ -23,8 +23,8 @@ function Footer() {
             by me.
           </div>
           <div className="sm mt-5 mt-md-0">
-            <ul>
-              <li>
+            <ul className="d-flex justify-content-center list-unstyled mb-0 gap-3">
+              <li className="mr-3 mr-md-5">
                 <a
                   href="https://www.instagram.com/ilias_thal/"
                   target="_blank"

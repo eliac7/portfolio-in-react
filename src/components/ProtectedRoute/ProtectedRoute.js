@@ -1,19 +1,20 @@
-import React from "react";
+import { useContext } from "react";
 import { Redirect, Route } from "react-router-dom";
+import UserContext from "../../context/UserContext";
 
 function ProtectedRoute({ component: Component, ...props }) {
-  const isAuthenticated = JSON.parse(localStorage.getItem("isAuthenticated"));
+  const { isAuthenticated } = useContext(UserContext);
 
   return (
     <Route
       {...props}
-      render={(props) =>
-        isAuthenticated ? (
-          <Component {...props} isAuthenticated={isAuthenticated} />
-        ) : (
-          <Redirect to="/login" />
-        )
-      }
+      render={(props) => {
+        if (isAuthenticated) {
+          return <Component {...props} />;
+        } else {
+          return <Redirect to="/login" />;
+        }
+      }}
     />
   );
 }

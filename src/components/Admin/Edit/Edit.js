@@ -6,15 +6,7 @@ import Button from "react-bootstrap/Button";
 import { useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import {
-  getStorage,
-  ref,
-  deleteObject,
-  uploadBytes,
-  getDownloadURL,
-} from "firebase/storage";
 import * as yup from "yup";
-import { v4 as uuidv4 } from "uuid";
 
 function Edit(props) {
   const id = props.match.params.id;
@@ -85,35 +77,21 @@ function Edit(props) {
   }, [isActive, counter]);
 
   const PostUpdate = () => {
-    const storage = getStorage();
     if (toUpdate.image && toUpdate.image !== undefined) {
       //If we have already image and not undefined
       if (image) {
-        //And if we have a new image, then delete the existed one
-
-        const storageRef = ref(storage, `/skills/${uuidv4()}-${image.name}`);
-
-        const fileRef = ref(storage, toUpdate.image);
-        deleteObject(fileRef)
-          .then(() => {
-            console.log("Image deleted successfully.");
+        //upload to imgur
+        const formData = new FormData();
+        formData.append("image", image);
+        axios
+          .post("https://api.imgur.com/3/image", formData, {
+            headers: {
+              Authorization: `Client-ID ${process.env.REACT_APP_IMGUR_CLIENT_ID}`,
+            },
           })
-          .catch((error) => {
-            console.log(error);
-          })
-          .then(() => {
-            uploadBytes(storageRef, image).then((snapshot) => {
-              getDownloadURL(snapshot.ref)
-                .then((downloadURL) => {
-                  return downloadURL;
-                })
-                .then((url) => {
-                  toUpdate["image"] = url;
-                })
-                .then(() => {
-                  updateToAPI(id, toUpdate);
-                });
-            });
+          .then((res) => {
+            toUpdate["image"] = res.data.link;
+            updateToAPI(id, toUpdate);
           });
       } else if (!image) {
         //else if we don't have a new image, then just update our fieldss
@@ -122,23 +100,20 @@ function Edit(props) {
     } else if (!toUpdate.image) {
       //if we don't have an already uploaded image
       if (image) {
-        //and we have a new image
+        //and we have a new image, then upload it to imgur
 
-        const storageRef = ref(storage, `/skills/${uuidv4()}-${image.name}`);
-        uploadBytes(storageRef, image).then((snapshot) => {
-          getDownloadURL(snapshot.ref)
-            .then((downloadURL) => {
-              return downloadURL;
-            })
-            .then((downloadURL) => {
-              console.log(downloadURL);
-              toUpdate["image"] = downloadURL;
-            })
-            .then(() => {
-              console.log(toUpdate);
-              updateToAPI(id, toUpdate);
-            });
-        });
+        const formData = new FormData();
+        formData.append("image", image);
+        axios
+          .post("https://api.imgur.com/3/image", formData, {
+            headers: {
+              Authorization: `Client-ID ${process.env.REACT_APP_IMGUR_CLIENT_ID}`,
+            },
+          })
+          .then((res) => {
+            toUpdate["image"] = res.data.link;
+            updateToAPI(id, toUpdate);
+          });
       } else {
         //else just update the fields
         axios

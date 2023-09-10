@@ -8,8 +8,8 @@ export const Mouse = () => {
   useEffect(() => {
     document.addEventListener("mousemove", (event) => {
       const { clientX, clientY } = event;
-      const mouseX = clientX - cursorRef.current.clientWidth / 2;
-      const mouseY = clientY - cursorRef.current.clientHeight / 2;
+      const mouseX = clientX - cursorRef.current?.clientWidth / 2;
+      const mouseY = clientY - cursorRef.current?.clientHeight / 2;
 
       cursorRef.current.style.top = mouseY + "px";
       cursorRef.current.style.left = mouseX + "px";

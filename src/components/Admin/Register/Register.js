@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Header from "../../Header/Header";
 import Footer from "../../Footer/Footer";
 import Button from "react-bootstrap/Button";
@@ -9,6 +9,7 @@ import { useHistory } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import axios from "axios";
+import UserContext from "../../../context/UserContext";
 
 const HeaderArray = [
   { name: "Home", link: "/admin/" },
@@ -18,8 +19,8 @@ const HeaderArray = [
   { name: "All users", link: "/admin/users" },
 ];
 
-const Register = ({ isAuthenticated }) => {
-  const token = isAuthenticated.accessToken;
+const Register = () => {
+  const { token } = useContext(UserContext);
 
   const headers = {
     authorization: "Bearer " + token,

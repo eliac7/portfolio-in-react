@@ -5,7 +5,6 @@ import Footer from "../../Footer/Footer";
 import Button from "react-bootstrap/Button";
 import "./Skills.css";
 import { useHistory } from "react-router-dom";
-import { getStorage, ref, deleteObject } from "firebase/storage";
 import ModalDialog from "../Modal/ModalDialog";
 
 function Skills() {
@@ -31,31 +30,19 @@ function Skills() {
   };
   const Deleting = (val) => {
     settoDelete(val);
+
     if (val) {
       axios
         .delete(`${process.env.REACT_APP_BASE_URL}/skills/${skillToDelete.id}`)
         .then(() => {
-          console.log(`${skillToDelete.id} was deleted successfully.`);
           const remainingResults = skills.filter(
             (skill) => skill._id !== skillToDelete.id
           );
+
           setSkills(remainingResults);
         })
         .catch((err) => console.log(err))
         .then(() => setShow(false));
-
-      if (skillToDelete.image) {
-        const storage = getStorage();
-        const fileRef = ref(storage, skillToDelete.image);
-        console.log(fileRef);
-        deleteObject(fileRef)
-          .then(() => {
-            console.log("Image deleted successfully.");
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-      }
     }
   };
 
@@ -66,7 +53,7 @@ function Skills() {
 
   useEffect(() => {
     axios
-      .get(" /skills")
+      .get(`${process.env.REACT_APP_BASE_URL}/skills/`)
       .then((res) => setSkills(res.data))
       .catch(() => setErrorGetSkills(true));
   }, []);
@@ -104,16 +91,33 @@ function Skills() {
                         height: "150px",
                       }}
                     >
-                      <img
-                        className="card-img-top position-absolute h-100 w-100"
-                        style={{ inset: 0, objectFit: "cover" }}
-                        src={
-                          skill.image
-                            ? skill.image
-                            : "https://via.placeholder.com/300/D3D3D3/FFFFFFF/?text=Project"
-                        }
-                        alt="Placeholder"
-                      />
+                      {skill.image.endsWith(".mp4") ? (
+                        <video
+                          src={skill.image}
+                          style={{
+                            position: "absolute",
+                            top: "0",
+                            left: "0",
+                            width: "100%",
+                            height: "100%",
+                            objectFit: "cover",
+                          }}
+                          autoPlay
+                          loop
+                          muted
+                        ></video>
+                      ) : (
+                        <img
+                          className="card-img-top position-absolute h-100 w-100"
+                          style={{ inset: 0, objectFit: "cover" }}
+                          src={
+                            skill.image
+                              ? skill.image
+                              : "https://via.placeholder.com/300/D3D3D3/FFFFFFF/?text=Project"
+                          }
+                          alt="Placeholder"
+                        />
+                      )}
                     </div>
 
                     <div className="card-body d-flex flex-column justify-content-between">
@@ -150,6 +154,7 @@ function Skills() {
                               title: skill.title,
                               id: skill._id,
                               image: skill?.image,
+                              imageDeleteUrl: skill?.imageDeleteUrl,
                             });
                           }}
                         >

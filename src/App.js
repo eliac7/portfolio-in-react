@@ -11,6 +11,7 @@ import Auth from "./components/Auth/Auth";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import Register from "./components/Admin/Register/Register";
 import Users from "./components/Admin/Users/Users";
+import { UserProvider } from "./context/UserContext.js";
 
 const App = () => {
   return (
@@ -18,33 +19,35 @@ const App = () => {
       <Router>
         <Switch>
           <Route path="/" exact component={Home}></Route>
-          <Route path="/login" component={Auth}></Route>
-          <ProtectedRoute
-            path="/admin"
-            exact
-            component={Admin}
-          ></ProtectedRoute>
-          <ProtectedRoute
-            path="/admin/edit/:id"
-            exact
-            component={Edit}
-          ></ProtectedRoute>
-          <ProtectedRoute
-            path="/admin/skills"
-            component={Skills}
-          ></ProtectedRoute>
-          <ProtectedRoute
-            path="/admin/new"
-            component={NewSkill}
-          ></ProtectedRoute>
-          <ProtectedRoute
-            path="/admin/register"
-            component={Register}
-          ></ProtectedRoute>
-          <ProtectedRoute
-            path="/admin/users"
-            component={Users}
-          ></ProtectedRoute>
+          <UserProvider>
+            <Route path="/login" component={Auth}></Route>
+            <ProtectedRoute
+              path="/admin"
+              exact
+              component={Admin}
+            ></ProtectedRoute>
+            <ProtectedRoute
+              path="/admin/edit/:id"
+              exact
+              component={Edit}
+            ></ProtectedRoute>
+            <ProtectedRoute
+              path="/admin/skills"
+              component={Skills}
+            ></ProtectedRoute>
+            <ProtectedRoute
+              path="/admin/new"
+              component={NewSkill}
+            ></ProtectedRoute>
+            <ProtectedRoute
+              path="/admin/register"
+              component={Register}
+            ></ProtectedRoute>
+            <ProtectedRoute
+              path="/admin/users"
+              component={Users}
+            ></ProtectedRoute>
+          </UserProvider>
           <Route path="*" component={NotFound}></Route>
         </Switch>
       </Router>
